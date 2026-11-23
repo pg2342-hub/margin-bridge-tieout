@@ -1,0 +1,133 @@
+# 25 planted scenarios on a made-up aftermarket parts maker (two quarters, ~5,500 invoice lines).
+# input: the scenario the extract is built from. expected: what a correct analysis must say.
+# Groups: routine (one visible driver), hidden (a driver a product-line bridge gets wrong),
+# trap (a data problem that must stop the bridge), control (nothing planted, nothing flagged).
+cases:
+  - id: r01
+    group: routine
+    title: Sensors list price up 4%
+    input: {seed: 7, changes: [{type: price, where: {line: Sensors}, pct: 0.04}]}
+    expected: {finding: {driver: price, dimension: line, member: Sensors, sign: 1}, truth: price}
+  - id: r02
+    group: routine
+    title: Distributor D gets a 6% price cut
+    input: {seed: 7, changes: [{type: price, where: {customer: Distributor D}, pct: -0.06}]}
+    expected: {finding: {driver: price, dimension: customer, member: Distributor D, sign: -1}, truth: price}
+  - id: r03
+    group: routine
+    title: China tariff rate 10% to 25%
+    input: {seed: 7, changes: [{type: tariff_rate, origin: China, rate: 0.25}]}
+    expected: {finding: {driver: cost_tariff, dimension: origin, member: China, sign: -1}, truth: cost_tariff}
+  - id: r04
+    group: routine
+    title: Climate material cost up 8%
+    input: {seed: 11, changes: [{type: material_cost, where: {line: Climate}, pct: 0.08}]}
+    expected: {finding: {driver: cost_other, dimension: line, member: Climate, sign: -1}, truth: cost_other}
+  - id: r05
+    group: routine
+    title: Units down 8% across the board
+    input: {seed: 11, changes: [{type: volume, pct: -0.08}]}
+    expected: {finding: {driver: volume, sign: -1}}
+  - id: r06
+    group: routine
+    title: Four new Sensors SKUs launched
+    input: {seed: 19, changes: [{type: new_skus, line: Sensors, n: 4}]}
+    expected: {finding: {driver: new, dimension: line, member: Sensors, sign: 1}}
+  - id: r07
+    group: routine
+    title: Six Sensors SKUs discontinued
+    input: {seed: 19, changes: [{type: discontinue, line: Sensors, n: 6}]}
+    expected: {finding: {driver: lost, dimension: line, member: Sensors, sign: -1}}
+  - id: r08
+    group: routine
+    title: Wipers price up 5%, Retailer C buys wipers in cases of six
+    input: {seed: 23, changes: [{type: price, where: {line: Wipers}, pct: 0.05}], traps: [{type: case_pack, customer: Retailer C, prefix: WIP, pack: 6}]}
+    expected: {finding: {driver: price, dimension: line, member: Wipers, sign: 1}, truth: price}
+
+  - id: h01
+    group: hidden
+    title: Installer (DIFM) shift at Retailer B hides under a richer product mix
+    input: {seed: 7, changes: [{type: channel_shift, customer: Retailer B, share: 0.4}, {type: line_shift, from: Filters, to: Sensors, share: 0.25}]}
+    expected: {finding: {kind: masked, driver: mix, dimension: channel, sign: -1}}
+  - id: h02
+    group: hidden
+    title: DIFM shift at Retailer A under a Wipers-to-Sensors mix gain
+    input: {seed: 11, changes: [{type: channel_shift, customer: Retailer A, share: 0.4}, {type: line_shift, from: Wipers, to: Sensors, share: 0.2}]}
+    expected: {finding: {kind: masked, driver: mix, dimension: channel, sign: -1}}
+  - id: h03
+    group: hidden
+    title: Price up 5% everywhere except a 10% cut at Distributor E
+    input: {seed: 7, changes: [{type: price, pct: 0.05}, {type: price, where: {customer: Distributor E}, pct: -0.143}]}
+    expected: {finding: {kind: masked, driver: price, dimension: customer, member: Distributor E, sign: -1}}
+  - id: h04
+    group: hidden
+    title: Tariff surcharges held, but Retailer B got a 10% price cut
+    input: {seed: 11, changes: [{type: tariff_rate, origin: China, rate: 0.3}, {type: surcharge, where: {origin: China}, pct: 0.1}, {type: price, where: {customer: Retailer B}, pct: -0.10}]}
+    expected: {finding: {kind: masked, driver: price, dimension: customer, member: Retailer B, sign: -1}}
+  - id: h05
+    group: hidden
+    title: A product-line bridge calls a DIFM shift a price cut
+    input: {seed: 19, changes: [{type: channel_shift, customer: Retailer A, share: 0.4}, {type: channel_shift, customer: Retailer B, share: 0.4}]}
+    expected: {finding: {kind: reattributed, driver: price}}
+  - id: h06
+    group: hidden
+    title: Material savings of 8% everywhere except Ignition, up 15%
+    input: {seed: 23, changes: [{type: material_cost, pct: -0.08}, {type: material_cost, where: {line: Ignition}, pct: 0.25}]}
+    expected: {finding: {kind: masked, driver: cost_other, dimension: line, member: Ignition, sign: -1}}
+  - id: h07
+    group: hidden
+    title: A product-line bridge calls a flat mix a gain
+    input: {seed: 7, changes: [{type: channel_shift, customer: Retailer A, share: 0.3}, {type: channel_shift, customer: Retailer B, share: 0.3}, {type: line_shift, from: Filters, to: Sensors, share: 0.2}, {type: volume, pct: 0.05}]}
+    expected: {finding: {kind: reattributed, driver: mix, sign: -1}}
+  - id: h08
+    group: hidden
+    title: China tariff relief hides a new Mexico tariff
+    input: {seed: 11, changes: [{type: tariff_rate, origin: China, rate: 0.0}, {type: tariff_rate, origin: Mexico, rate: 0.08}]}
+    expected: {finding: {kind: masked, driver: cost_tariff, dimension: origin, member: Mexico, sign: -1}}
+
+  - id: t01
+    group: trap
+    title: New order type XFR missing from the channel map
+    input: {seed: 7, traps: [{type: unmapped_order_code}]}
+    expected: {issue: unmapped_order_code}
+  - id: t02
+    group: trap
+    title: Retailer A starts buying wipers in cases of twelve
+    input: {seed: 7, traps: [{type: case_pack, customer: Retailer A, prefix: WIP, pack: 12}]}
+    expected: {issue: unknown_uom}
+  - id: t03
+    group: trap
+    title: Rebate memo keyed to a customer name the master does not know
+    input: {seed: 11, traps: [{type: unmatched_rebate}]}
+    expected: {issue: unmatched_rebate}
+  - id: t04
+    group: trap
+    title: Extract cut off mid-September; ledger has the full month
+    input: {seed: 11, traps: [{type: missing_lines, n: 60}]}
+    expected: {issue: tie_out_gap}
+  - id: t05
+    group: trap
+    title: Export repeated a page of invoices
+    input: {seed: 19, traps: [{type: duplicate_lines}]}
+    expected: {issue: duplicate_lines}
+  - id: t06
+    group: trap
+    title: Unmapped order type on top of a real DIFM shift
+    input: {seed: 23, changes: [{type: channel_shift, customer: Retailer B, share: 0.4}], traps: [{type: unmapped_order_code}]}
+    expected: {issue: unmapped_order_code}
+
+  - id: c01
+    group: control
+    title: Nothing planted (seed 7)
+    input: {seed: 7}
+    expected: {clean: true}
+  - id: c02
+    group: control
+    title: Nothing planted (seed 31)
+    input: {seed: 31}
+    expected: {clean: true}
+  - id: c03
+    group: control
+    title: Units up 2%, nothing else
+    input: {seed: 43, changes: [{type: volume, pct: 0.02}]}
+    expected: {clean: true}

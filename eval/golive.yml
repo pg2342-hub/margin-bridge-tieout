@@ -1,0 +1,5 @@
+cases: cases.yml
+checks: checks:checks
+agent: agent:tieout_agent
+gate: gate.yml
+runs: 1   # the analysis is deterministic; one run is the whole answer

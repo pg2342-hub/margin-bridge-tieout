@@ -1,0 +1,25 @@
+# Business definitions, written down once and applied to every analysis.
+# Finance owns this file. A change here is reviewed like a change to the close process.
+
+channel_map:          # order type code -> channel
+  RTL: DIY            # store and counter sales to do-it-yourself buyers
+  WEB: DIY            # e-commerce
+  PGM: DIFM           # installer program (do-it-for-me)
+  COM: DIFM           # commercial delivery to repair shops
+
+uom_to_each:          # unit of measure as sold -> eaches
+  EA: 1
+  CS6: 6              # wiper blades sold in cases of six to some retailers
+
+customers:            # customer master names that rebate memos may use
+  - Retailer A
+  - Retailer B
+  - Retailer C
+  - Distributor D
+  - Distributor E
+  - Online F
+
+rebate_allocation: gross_share_within_customer_month   # memos post at customer level, not on the invoice line
+
+tie_out_tolerance: 1.00        # dollars, revenue and gross profit, each period
+materiality: 100000            # smallest effect worth a finding, in dollars of gross profit

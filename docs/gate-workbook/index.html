@@ -1,0 +1,1202 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Margin bridge go-live gate: NO-GO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--fg:#111;--bg:#fff;--muted:#666;--line:#ddd;--soft:#f5f5f5}
+@media (prefers-color-scheme:dark){:root{--fg:#eee;--bg:#111;--muted:#999;--line:#333;--soft:#1b1b1b}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+font:15px/1.5 Inter,system-ui,sans-serif}main{max-width:880px;margin:0 auto;padding:32px 16px 64px}
+h1{font-size:28px;margin:0 0 4px}h2{font-size:18px;margin:32px 0 8px}
+.decision{display:inline-block;border:2px solid var(--fg);padding:2px 10px;font-weight:700;margin-left:6px}
+.muted{color:var(--muted)}table{border-collapse:collapse;width:100%;font-size:14px}
+td,th{text-align:left;border-bottom:1px solid var(--line);padding:6px 8px;vertical-align:top}
+.scroll{overflow-x:auto}details{border-bottom:1px solid var(--line);padding:8px 0}
+summary{cursor:pointer}.mark{display:inline-block;width:18px;font-weight:700}.bad{color:var(--fg)}
+.run{margin:8px 0 8px 22px}.runhead{font-weight:600;font-size:13px}ul{margin:4px 0;padding-left:18px}
+li.fail{font-weight:600}li.na{color:var(--muted)}pre{background:var(--soft);padding:8px;overflow-x:auto;
+font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size:13px}
+</style></head><body><main>
+<h1>Margin bridge go-live gate <span class="decision">NO-GO</span></h1>
+<p class="muted">Agent <code>agent:workbook_agent</code>, 25 cases, 1 run(s). Agent cost $0.0000, judge cost $0.0000, mean latency 27.6 ms per case.</p>
+<ul><li>run 1: 15 critical failure(s): stops_on_bad_data on case t01, names_the_problem on case t01, stops_on_bad_data on case t02, names_the_problem on case t02, stops_on_bad_data on case t03, names_the_problem on case t03, ties_to_ledger on case t03, stops_on_bad_data on case t04, names_the_problem on case t04, ties_to_ledger on case t04, stops_on_bad_data on case t05, names_the_problem on case t05, ties_to_ledger on case t05, stops_on_bad_data on case t06, names_the_problem on case t06</li><li>run 1: overall passed 6 of 25, needs 24 (no-go)</li><li>run 1: hidden drivers passed 0 of 8, needs 8 (no-go)</li><li>run 1: data traps passed 0 of 6, needs 6 (no-go)</li></ul>
+<h2>Pass counts by run</h2><div class="scroll"><table><tr><th>Run</th><th>Passed</th>
+<th>Critical failures</th></tr><tr><td>1</td><td>6 of 25</td><td>15</td></tr></table></div>
+<h2>Gate rules</h2><div class="scroll"><table><tr><th>Rule</th><th>Run</th><th>Passed</th><th>Needs</th>
+<th>Result</th></tr><tr><td>overall</td><td>1</td><td>6 of 25</td><td>24</td><td>broke (no-go)</td></tr><tr><td>hidden drivers</td><td>1</td><td>0 of 8</td><td>8</td><td>broke (no-go)</td></tr><tr><td>data traps</td><td>1</td><td>0 of 6</td><td>6</td><td>broke (no-go)</td></tr><tr><td>controls</td><td>1</td><td>3 of 3</td><td>3</td><td>held</td></tr></table></div>
+<h2>Cases</h2><details><summary><span class='mark ok'>✓</span> <b>Sensors list price up 4%</b> <span class='muted'>routine · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 55 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='pass'><code>finds_the_driver</code> PASS</li><li class='pass'><code>sizes_it_right</code> PASS</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+ &quot;published&quot;: true,
+ &quot;issues&quot;: [],
+ &quot;tie_out&quot;: {
+  &quot;ok&quot;: true,
+  &quot;periods&quot;: {
+   &quot;PY&quot;: {
+    &quot;revenue&quot;: 29054449.81,
+    &quot;gl_revenue&quot;: 29054449.81,
+    &quot;gp&quot;: 7130295.42,
+    &quot;gl_gp&quot;: 7130295.42,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   },
+   &quot;CY&quot;: {
+    &quot;revenue&quot;: 29344004.66,
+    &quot;gl_revenue&quot;: 29344004.66,
+    &quot;gp&quot;: 7405489.91,
+    &quot;gl_gp&quot;: 7405489.91,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   }
+  }
+ },
+ &quot;delta_gp&quot;: 275194.49,
+ &quot;totals&quot;: {
+  &quot;price&quot;: 267562.32,
+  &quot;cost_tariff&quot;: 285.79,
+  &quot;cost_other&quot;: 4732.99,
+  &quot;volume&quot;: 975.38,
+  &quot;mix&quot;: 1638.01,
+  &quot;new&quot;: 0.0,
+  &quot;lost&quot;: 0.0
+ },
+ &quot;findings&quot;: [
+  {
+   &quot;kind&quot;: &quot;top&quot;,
+   &quot;driver&quot;: &quot;price&quot;,
+   &quot;dimension&quot;: &quot;line&quot;,
+   &quot;member&quot;: &quot;Sensors&quot;,
+   &quot;amount&quot;: 268611.0
+  }
+ ],
+ &quot;truth&quot;: {
+  &quot;price&quot;: 272621.25,
+  &quot;cost_tariff&quot;: 0.0,
+  &quot;cost_other&quot;: 0.0
+ }
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Distributor D gets a 6% price cut</b> <span class='muted'>routine · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 36 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='fail'><code>sizes_it_right</code> FAIL</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+ &quot;published&quot;: true,
+ &quot;issues&quot;: [],
+ &quot;tie_out&quot;: {
+  &quot;ok&quot;: true,
+  &quot;periods&quot;: {
+   &quot;PY&quot;: {
+    &quot;revenue&quot;: 29054449.81,
+    &quot;gl_revenue&quot;: 29054449.81,
+    &quot;gp&quot;: 7130295.42,
+    &quot;gl_gp&quot;: 7130295.42,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   },
+   &quot;CY&quot;: {
+    &quot;revenue&quot;: 28832994.97,
+    &quot;gl_revenue&quot;: 28832994.97,
+    &quot;gp&quot;: 6894480.22,
+    &quot;gl_gp&quot;: 6894480.22,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   }
+  }
+ },
+ &quot;delta_gp&quot;: -235815.2,
+ &quot;totals&quot;: {
+  &quot;price&quot;: -243447.37,
+  &quot;cost_tariff&quot;: 285.79,
+  &quot;cost_other&quot;: 4732.99,
+  &quot;volume&quot;: 975.38,
+  &quot;mix&quot;: 1638.01,
+  &quot;new&quot;: 0.0,
+  &quot;lost&quot;: 0.0
+ },
+ &quot;findings&quot;: [
+  {
+   &quot;kind&quot;: &quot;top&quot;,
+   &quot;driver&quot;: &quot;price&quot;,
+   &quot;dimension&quot;: &quot;line&quot;,
+   &quot;member&quot;: &quot;Climate&quot;,
+   &quot;amount&quot;: -108073.0
+  }
+ ],
+ &quot;truth&quot;: {
+  &quot;price&quot;: -238414.94,
+  &quot;cost_tariff&quot;: 0.0,
+  &quot;cost_other&quot;: 0.0
+ }
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>China tariff rate 10% to 25%</b> <span class='muted'>routine · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 27 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='pass'><code>sizes_it_right</code> PASS</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+ &quot;published&quot;: true,
+ &quot;issues&quot;: [],
+ &quot;tie_out&quot;: {
+  &quot;ok&quot;: true,
+  &quot;periods&quot;: {
+   &quot;PY&quot;: {
+    &quot;revenue&quot;: 29054449.81,
+    &quot;gl_revenue&quot;: 29054449.81,
+    &quot;gp&quot;: 7130295.42,
+    &quot;gl_gp&quot;: 7130295.42,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   },
+   &quot;CY&quot;: {
+    &quot;revenue&quot;: 29071409.62,
+    &quot;gl_revenue&quot;: 29071409.62,
+    &quot;gp&quot;: 6399181.45,
+    &quot;gl_gp&quot;: 6399181.45,
+    &quot;diff_gp&quot;: -0.0,
+    &quot;ok&quot;: true
+   }
+  }
+ },
+ &quot;delta_gp&quot;: -731113.97,
+ &quot;totals&quot;: {
+  &quot;price&quot;: -5032.72,
+  &quot;cost_tariff&quot;: -733427.63,
+  &quot;cost_other&quot;: 4732.99,
+  &quot;volume&quot;: 975.38,
+  &quot;mix&quot;: 1638.01,
+  &quot;new&quot;: 0.0,
+  &quot;lost&quot;: 0.0
+ },
+ &quot;findings&quot;: [
+  {
+   &quot;kind&quot;: &quot;top&quot;,
+   &quot;driver&quot;: &quot;cost_tariff&quot;,
+   &quot;dimension&quot;: &quot;line&quot;,
+   &quot;member&quot;: &quot;Sensors&quot;,
+   &quot;amount&quot;: -247095.0
+  }
+ ],
+ &quot;truth&quot;: {
+  &quot;price&quot;: 0.0,
+  &quot;cost_tariff&quot;: -733686.44,
+  &quot;cost_other&quot;: 0.0
+ }
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Climate material cost up 8%</b> <span class='muted'>routine · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 24 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='pass'><code>finds_the_driver</code> PASS</li><li class='fail'><code>sizes_it_right</code> FAIL</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+ &quot;published&quot;: true,
+ &quot;issues&quot;: [],
+ &quot;tie_out&quot;: {
+  &quot;ok&quot;: true,
+  &quot;periods&quot;: {
+   &quot;PY&quot;: {
+    &quot;revenue&quot;: 31981426.37,
+    &quot;gl_revenue&quot;: 31981426.37,
+    &quot;gp&quot;: 7786845.24,
+    &quot;gl_gp&quot;: 7786845.24,
+    &quot;diff_gp&quot;: -0.0,
+    &quot;ok&quot;: true
+   },
+   &quot;CY&quot;: {
+    &quot;revenue&quot;: 32005483.08,
+    &quot;gl_revenue&quot;: 32005483.08,
+    &quot;gp&quot;: 7279529.15,
+    &quot;gl_gp&quot;: 7279529.15,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   }
+  }
+ },
+ &quot;delta_gp&quot;: -507316.09,
+ &quot;totals&quot;: {
+  &quot;price&quot;: 18176.7,
+  &quot;cost_tariff&quot;: -20944.24,
+  &quot;cost_other&quot;: -506733.61,
+  &quot;volume&quot;: 6660.71,
+  &quot;mix&quot;: -4475.66,
+  &quot;new&quot;: 0.0,
+  &quot;lost&quot;: 0.0
+ },
+ &quot;findings&quot;: [
+  {
+   &quot;kind&quot;: &quot;top&quot;,
+   &quot;driver&quot;: &quot;cost_other&quot;,
+   &quot;dimension&quot;: &quot;line&quot;,
+   &quot;member&quot;: &quot;Climate&quot;,
+   &quot;amount&quot;: -498787.0
+  }
+ ],
+ &quot;truth&quot;: {
+  &quot;price&quot;: 0.0,
+  &quot;cost_tariff&quot;: -20251.52,
+  &quot;cost_other&quot;: -492262.17
+ }
+}</pre></div></details><details><summary><span class='mark ok'>✓</span> <b>Units down 8% across the board</b> <span class='muted'>routine · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 23 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='pass'><code>finds_the_driver</code> PASS</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+ &quot;published&quot;: true,
+ &quot;issues&quot;: [],
+ &quot;tie_out&quot;: {
+  &quot;ok&quot;: true,
+  &quot;periods&quot;: {
+   &quot;PY&quot;: {
+    &quot;revenue&quot;: 31981426.37,
+    &quot;gl_revenue&quot;: 31981426.37,
+    &quot;gp&quot;: 7786845.24,
+    &quot;gl_gp&quot;: 7786845.24,
+    &quot;diff_gp&quot;: -0.0,
+    &quot;ok&quot;: true
+   },
+   &quot;CY&quot;: {
+    &quot;revenue&quot;: 29444647.25,
+    &quot;gl_revenue&quot;: 29444647.25,
+    &quot;gp&quot;: 7168417.05,
+    &quot;gl_gp&quot;: 7168417.05,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   }
+  }
+ },
+ &quot;delta_gp&quot;: -618428.19,
+ &quot;totals&quot;: {
+  &quot;price&quot;: 16364.15,
+  &quot;cost_tariff&quot;: -611.3,
+  &quot;cost_other&quot;: -13235.76,
+  &quot;volume&quot;: -616946.96,
+  &quot;mix&quot;: -3998.33,
+  &quot;new&quot;: 0.0,
+  &quot;lost&quot;: 0.0
+ },
+ &quot;findings&quot;: [
+  {
+   &quot;kind&quot;: &quot;top&quot;,
+   &quot;driver&quot;: &quot;volume&quot;,
+   &quot;dimension&quot;: &quot;line&quot;,
+   &quot;member&quot;: &quot;Sensors&quot;,
+   &quot;amount&quot;: -237745.0
+  }
+ ],
+ &quot;truth&quot;: {
+  &quot;price&quot;: 0.0,
+  &quot;cost_tariff&quot;: 0.0,
+  &quot;cost_other&quot;: 0.0
+ }
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Four new Sensors SKUs launched</b> <span class='muted'>routine · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 24 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+ &quot;published&quot;: true,
+ &quot;issues&quot;: [],
+ &quot;tie_out&quot;: {
+  &quot;ok&quot;: true,
+  &quot;periods&quot;: {
+   &quot;PY&quot;: {
+    &quot;revenue&quot;: 30924343.85,
+    &quot;gl_revenue&quot;: 30924343.85,
+    &quot;gp&quot;: 7720043.44,
+    &quot;gl_gp&quot;: 7720043.44,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   },
+   &quot;CY&quot;: {
+    &quot;revenue&quot;: 32172378.69,
+    &quot;gl_revenue&quot;: 32172378.69,
+    &quot;gp&quot;: 8212944.93,
+    &quot;gl_gp&quot;: 8212944.93,
+    &quot;diff_gp&quot;: -0.0,
+    &quot;ok&quot;: true
+   }
+  }
+ },
+ &quot;delta_gp&quot;: 492901.49,
+ &quot;totals&quot;: {
+  &quot;price&quot;: 178868.89,
+  &quot;cost_tariff&quot;: -6701.14,
+  &quot;cost_other&quot;: -59542.66,
+  &quot;volume&quot;: 191916.92,
+  &quot;mix&quot;: 188359.49,
+  &quot;new&quot;: 0.0,
+  &quot;lost&quot;: 0.0
+ },
+ &quot;findings&quot;: [
+  {
+   &quot;kind&quot;: &quot;top&quot;,
+   &quot;driver&quot;: &quot;price&quot;,
+   &quot;dimension&quot;: &quot;line&quot;,
+   &quot;member&quot;: &quot;Sensors&quot;,
+   &quot;amount&quot;: 173749.0
+  },
+  {
+   &quot;kind&quot;: &quot;top&quot;,
+   &quot;driver&quot;: &quot;mix&quot;,
+   &quot;dimension&quot;: &quot;line&quot;,
+   &quot;member&quot;: null,
+   &quot;amount&quot;: 188359.0
+  }
+ ],
+ &quot;truth&quot;: {
+  &quot;price&quot;: 0.0,
+  &quot;cost_tariff&quot;: 0.0,
+  &quot;cost_other&quot;: 0.0
+ }
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Six Sensors SKUs discontinued</b> <span class='muted'>routine · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 22 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+ &quot;published&quot;: true,
+ &quot;issues&quot;: [],
+ &quot;tie_out&quot;: {
+  &quot;ok&quot;: true,
+  &quot;periods&quot;: {
+   &quot;PY&quot;: {
+    &quot;revenue&quot;: 30924343.85,
+    &quot;gl_revenue&quot;: 30924343.85,
+    &quot;gp&quot;: 7720043.44,
+    &quot;gl_gp&quot;: 7720043.44,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   },
+   &quot;CY&quot;: {
+    &quot;revenue&quot;: 27882698.23,
+    &quot;gl_revenue&quot;: 27882698.23,
+    &quot;gp&quot;: 6659463.29,
+    &quot;gl_gp&quot;: 6659463.29,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   }
+  }
+ },
+ &quot;delta_gp&quot;: -1060580.15,
+ &quot;totals&quot;: {
+  &quot;price&quot;: -33767.27,
+  &quot;cost_tariff&quot;: 16062.9,
+  &quot;cost_other&quot;: 31811.01,
+  &quot;volume&quot;: -537720.54,
+  &quot;mix&quot;: -536966.24,
+  &quot;new&quot;: 0.0,
+  &quot;lost&quot;: 0.0
+ },
+ &quot;findings&quot;: [
+  {
+   &quot;kind&quot;: &quot;top&quot;,
+   &quot;driver&quot;: &quot;volume&quot;,
+   &quot;dimension&quot;: &quot;line&quot;,
+   &quot;member&quot;: &quot;Sensors&quot;,
+   &quot;amount&quot;: -222824.0
+  },
+  {
+   &quot;kind&quot;: &quot;top&quot;,
+   &quot;driver&quot;: &quot;mix&quot;,
+   &quot;dimension&quot;: &quot;line&quot;,
+   &quot;member&quot;: null,
+   &quot;amount&quot;: -536966.0
+  }
+ ],
+ &quot;truth&quot;: {
+  &quot;price&quot;: 0.0,
+  &quot;cost_tariff&quot;: 0.0,
+  &quot;cost_other&quot;: 0.0
+ }
+}</pre></div></details><details><summary><span class='mark ok'>✓</span> <b>Wipers price up 5%, Retailer C buys wipers in cases of six</b> <span class='muted'>routine · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 28 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='pass'><code>finds_the_driver</code> PASS</li><li class='pass'><code>sizes_it_right</code> PASS</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+ &quot;published&quot;: true,
+ &quot;issues&quot;: [],
+ &quot;tie_out&quot;: {
+  &quot;ok&quot;: true,
+  &quot;periods&quot;: {
+   &quot;PY&quot;: {
+    &quot;revenue&quot;: 32580626.76,
+    &quot;gl_revenue&quot;: 32580626.76,
+    &quot;gp&quot;: 7716825.32,
+    &quot;gl_gp&quot;: 7716825.32,
+    &quot;diff_gp&quot;: -0.0,
+    &quot;ok&quot;: true
+   },
+   &quot;CY&quot;: {
+    &quot;revenue&quot;: 32714926.04,
+    &quot;gl_revenue&quot;: 32714926.04,
+    &quot;gp&quot;: 7839316.66,
+    &quot;gl_gp&quot;: 7839316.66,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   }
+  }
+ },
+ &quot;delta_gp&quot;: 122491.34,
+ &quot;totals&quot;: {
+  &quot;price&quot;: 122930.31,
+  &quot;cost_tariff&quot;: 210.99,
+  &quot;cost_other&quot;: -952.83,
+  &quot;volume&quot;: 1945.0,
+  &quot;mix&quot;: -1642.12,
+  &quot;new&quot;: 0.0,
+  &quot;lost&quot;: 0.0
+ },
+ &quot;findings&quot;: [
+  {
+   &quot;kind&quot;: &quot;top&quot;,
+   &quot;driver&quot;: &quot;price&quot;,
+   &quot;dimension&quot;: &quot;line&quot;,
+   &quot;member&quot;: &quot;Wipers&quot;,
+   &quot;amount&quot;: 122291.0
+  }
+ ],
+ &quot;truth&quot;: {
+  &quot;price&quot;: 120582.43,
+  &quot;cost_tariff&quot;: 0.0,
+  &quot;cost_other&quot;: 0.0
+ }
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Installer (DIFM) shift at Retailer B hides under a richer product mix</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 23 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+ &quot;published&quot;: true,
+ &quot;issues&quot;: [],
+ &quot;tie_out&quot;: {
+  &quot;ok&quot;: true,
+  &quot;periods&quot;: {
+   &quot;PY&quot;: {
+    &quot;revenue&quot;: 29054449.81,
+    &quot;gl_revenue&quot;: 29054449.81,
+    &quot;gp&quot;: 7130295.42,
+    &quot;gl_gp&quot;: 7130295.42,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   },
+   &quot;CY&quot;: {
+    &quot;revenue&quot;: 29934763.74,
+    &quot;gl_revenue&quot;: 29934763.74,
+    &quot;gp&quot;: 7334386.33,
+    &quot;gl_gp&quot;: 7334386.33,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   }
+  }
+ },
+ &quot;delta_gp&quot;: 204090.91,
+ &quot;totals&quot;: {
+  &quot;price&quot;: -241598.32,
+  &quot;cost_tariff&quot;: 307.57,
+  &quot;cost_other&quot;: 5201.84,
+  &quot;volume&quot;: 1022.39,
+  &quot;mix&quot;: 439157.44,
+  &quot;new&quot;: 0.0,
+  &quot;lost&quot;: 0.0
+ },
+ &quot;findings&quot;: [
+  {
+   &quot;kind&quot;: &quot;top&quot;,
+   &quot;driver&quot;: &quot;mix&quot;,
+   &quot;dimension&quot;: &quot;line&quot;,
+   &quot;member&quot;: null,
+   &quot;amount&quot;: 439157.0
+  }
+ ],
+ &quot;truth&quot;: {
+  &quot;price&quot;: 0.0,
+  &quot;cost_tariff&quot;: 0.0,
+  &quot;cost_other&quot;: 0.0
+ }
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>DIFM shift at Retailer A under a Wipers-to-Sensors mix gain</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 24 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+ &quot;published&quot;: true,
+ &quot;issues&quot;: [],
+ &quot;tie_out&quot;: {
+  &quot;ok&quot;: true,
+  &quot;periods&quot;: {
+   &quot;PY&quot;: {
+    &quot;revenue&quot;: 31981426.37,
+    &quot;gl_revenue&quot;: 31981426.37,
+    &quot;gp&quot;: 7786845.24,
+    &quot;gl_gp&quot;: 7786845.24,
+    &quot;diff_gp&quot;: -0.0,
+    &quot;ok&quot;: true
+   },
+   &quot;CY&quot;: {
+    &quot;revenue&quot;: 33252557.12,
+    &quot;gl_revenue&quot;: 33252557.12,
+    &quot;gp&quot;: 8127805.47,
+    &quot;gl_gp&quot;: 8127805.47,
+    &quot;diff_gp&quot;: -0.0,
+    &quot;ok&quot;: true
+   }
+  }
+ },
+ &quot;delta_gp&quot;: 340960.23,
+ &quot;totals&quot;: {
+  &quot;price&quot;: -321610.07,
+  &quot;cost_tariff&quot;: -654.24,
+  &quot;cost_other&quot;: -15801.37,
+  &quot;volume&quot;: 6752.31,
+  &quot;mix&quot;: 672273.6,
+  &quot;new&quot;: 0.0,
+  &quot;lost&quot;: 0.0
+ },
+ &quot;findings&quot;: [
+  {
+   &quot;kind&quot;: &quot;top&quot;,
+   &quot;driver&quot;: &quot;price&quot;,
+   &quot;dimension&quot;: &quot;line&quot;,
+   &quot;member&quot;: &quot;Climate&quot;,
+   &quot;amount&quot;: -135843.0
+  },
+  {
+   &quot;kind&quot;: &quot;top&quot;,
+   &quot;driver&quot;: &quot;mix&quot;,
+   &quot;dimension&quot;: &quot;line&quot;,
+   &quot;member&quot;: null,
+   &quot;amount&quot;: 672274.0
+  }
+ ],
+ &quot;truth&quot;: {
+  &quot;price&quot;: 0.0,
+  &quot;cost_tariff&quot;: 0.0,
+  &quot;cost_other&quot;: 0.0
+ }
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Price up 5% everywhere except a 10% cut at Distributor E</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 25 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+ &quot;published&quot;: true,
+ &quot;issues&quot;: [],
+ &quot;tie_out&quot;: {
+  &quot;ok&quot;: true,
+  &quot;periods&quot;: {
+   &quot;PY&quot;: {
+    &quot;revenue&quot;: 29054449.81,
+    &quot;gl_revenue&quot;: 29054449.81,
+    &quot;gp&quot;: 7130295.42,
+    &quot;gl_gp&quot;: 7130295.42,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   },
+   &quot;CY&quot;: {
+    &quot;revenue&quot;: 30057492.68,
+    &quot;gl_revenue&quot;: 30057492.68,
+    &quot;gp&quot;: 8118977.93,
+    &quot;gl_gp&quot;: 8118977.93,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   }
+  }
+ },
+ &quot;delta_gp&quot;: 988682.51,
+ &quot;totals&quot;: {
+  &quot;price&quot;: 981050.34,
+  &quot;cost_tariff&quot;: 285.79,
+  &quot;cost_other&quot;: 4732.99,
+  &quot;volume&quot;: 975.38,
+  &quot;mix&quot;: 1638.01,
+  &quot;new&quot;: 0.0,
+  &quot;lost&quot;: 0.0
+ },
+ &quot;findings&quot;: [
+  {
+   &quot;kind&quot;: &quot;top&quot;,
+   &quot;driver&quot;: &quot;price&quot;,
+   &quot;dimension&quot;: &quot;line&quot;,
+   &quot;member&quot;: &quot;Climate&quot;,
+   &quot;amount&quot;: 298528.0
+  }
+ ],
+ &quot;truth&quot;: {
+  &quot;price&quot;: 986077.28,
+  &quot;cost_tariff&quot;: 0.0,
+  &quot;cost_other&quot;: 0.0
+ }
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Tariff surcharges held, but Retailer B got a 10% price cut</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 25 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+ &quot;published&quot;: true,
+ &quot;issues&quot;: [],
+ &quot;tie_out&quot;: {
+  &quot;ok&quot;: true,
+  &quot;periods&quot;: {
+   &quot;PY&quot;: {
+    &quot;revenue&quot;: 31981426.37,
+    &quot;gl_revenue&quot;: 31981426.37,
+    &quot;gp&quot;: 7786845.24,
+    &quot;gl_gp&quot;: 7786845.24,
+    &quot;diff_gp&quot;: -0.0,
+    &quot;ok&quot;: true
+   },
+   &quot;CY&quot;: {
+    &quot;revenue&quot;: 32280952.55,
+    &quot;gl_revenue&quot;: 32280952.55,
+    &quot;gp&quot;: 6967130.76,
+    &quot;gl_gp&quot;: 6967130.76,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   }
+  }
+ },
+ &quot;delta_gp&quot;: -819714.48,
+ &quot;totals&quot;: {
+  &quot;price&quot;: 293646.17,
+  &quot;cost_tariff&quot;: -1100976.57,
+  &quot;cost_other&quot;: -14569.14,
+  &quot;volume&quot;: 6660.71,
+  &quot;mix&quot;: -4475.66,
+  &quot;new&quot;: 0.0,
+  &quot;lost&quot;: 0.0
+ },
+ &quot;findings&quot;: [
+  {
+   &quot;kind&quot;: &quot;top&quot;,
+   &quot;driver&quot;: &quot;price&quot;,
+   &quot;dimension&quot;: &quot;line&quot;,
+   &quot;member&quot;: &quot;Climate&quot;,
+   &quot;amount&quot;: 117159.0
+  },
+  {
+   &quot;kind&quot;: &quot;top&quot;,
+   &quot;driver&quot;: &quot;cost_tariff&quot;,
+   &quot;dimension&quot;: &quot;line&quot;,
+   &quot;member&quot;: &quot;Climate&quot;,
+   &quot;amount&quot;: -507040.0
+  }
+ ],
+ &quot;truth&quot;: {
+  &quot;price&quot;: 275514.19,
+  &quot;cost_tariff&quot;: -1100385.81,
+  &quot;cost_other&quot;: 0.0
+ }
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>A product-line bridge calls a DIFM shift a price cut</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 28 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+ &quot;published&quot;: true,
+ &quot;issues&quot;: [],
+ &quot;tie_out&quot;: {
+  &quot;ok&quot;: true,
+  &quot;periods&quot;: {
+   &quot;PY&quot;: {
+    &quot;revenue&quot;: 30924343.85,
+    &quot;gl_revenue&quot;: 30924343.85,
+    &quot;gp&quot;: 7720043.44,
+    &quot;gl_gp&quot;: 7720043.44,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   },
+   &quot;CY&quot;: {
+    &quot;revenue&quot;: 30390519.94,
+    &quot;gl_revenue&quot;: 30390519.94,
+    &quot;gp&quot;: 7170698.44,
+    &quot;gl_gp&quot;: 7170698.44,
+    &quot;diff_gp&quot;: -0.0,
+    &quot;ok&quot;: true
+   }
+  }
+ },
+ &quot;delta_gp&quot;: -549345.0,
+ &quot;totals&quot;: {
+  &quot;price&quot;: -546188.93,
+  &quot;cost_tariff&quot;: 364.6,
+  &quot;cost_other&quot;: -6337.01,
+  &quot;volume&quot;: 2804.55,
+  &quot;mix&quot;: 11.79,
+  &quot;new&quot;: 0.0,
+  &quot;lost&quot;: 0.0
+ },
+ &quot;findings&quot;: [
+  {
+   &quot;kind&quot;: &quot;top&quot;,
+   &quot;driver&quot;: &quot;price&quot;,
+   &quot;dimension&quot;: &quot;line&quot;,
+   &quot;member&quot;: &quot;Climate&quot;,
+   &quot;amount&quot;: -217372.0
+  }
+ ],
+ &quot;truth&quot;: {
+  &quot;price&quot;: 0.0,
+  &quot;cost_tariff&quot;: 0.0,
+  &quot;cost_other&quot;: 0.0
+ }
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Material savings of 8% everywhere except Ignition, up 15%</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 26 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+ &quot;published&quot;: true,
+ &quot;issues&quot;: [],
+ &quot;tie_out&quot;: {
+  &quot;ok&quot;: true,
+  &quot;periods&quot;: {
+   &quot;PY&quot;: {
+    &quot;revenue&quot;: 32580746.52,
+    &quot;gl_revenue&quot;: 32580746.52,
+    &quot;gp&quot;: 7716836.62,
+    &quot;gl_gp&quot;: 7716836.62,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   },
+   &quot;CY&quot;: {
+    &quot;revenue&quot;: 32594635.04,
+    &quot;gl_revenue&quot;: 32594635.04,
+    &quot;gp&quot;: 8604692.35,
+    &quot;gl_gp&quot;: 8604692.35,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   }
+  }
+ },
+ &quot;delta_gp&quot;: 887855.73,
+ &quot;totals&quot;: {
+  &quot;price&quot;: -103.83,
+  &quot;cost_tariff&quot;: 41502.97,
+  &quot;cost_other&quot;: 845700.41,
+  &quot;volume&quot;: 3998.87,
+  &quot;mix&quot;: -3242.69,
+  &quot;new&quot;: 0.0,
+  &quot;lost&quot;: 0.0
+ },
+ &quot;findings&quot;: [
+  {
+   &quot;kind&quot;: &quot;top&quot;,
+   &quot;driver&quot;: &quot;cost_other&quot;,
+   &quot;dimension&quot;: &quot;line&quot;,
+   &quot;member&quot;: &quot;Climate&quot;,
+   &quot;amount&quot;: 501490.0
+  }
+ ],
+ &quot;truth&quot;: {
+  &quot;price&quot;: 0.0,
+  &quot;cost_tariff&quot;: 41244.78,
+  &quot;cost_other&quot;: 844720.59
+ }
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>A product-line bridge calls a flat mix a gain</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 26 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+ &quot;published&quot;: true,
+ &quot;issues&quot;: [],
+ &quot;tie_out&quot;: {
+  &quot;ok&quot;: true,
+  &quot;periods&quot;: {
+   &quot;PY&quot;: {
+    &quot;revenue&quot;: 29054449.81,
+    &quot;gl_revenue&quot;: 29054449.81,
+    &quot;gp&quot;: 7130295.42,
+    &quot;gl_gp&quot;: 7130295.42,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   },
+   &quot;CY&quot;: {
+    &quot;revenue&quot;: 31022889.6,
+    &quot;gl_revenue&quot;: 31022889.6,
+    &quot;gp&quot;: 7431258.24,
+    &quot;gl_gp&quot;: 7431258.24,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   }
+  }
+ },
+ &quot;delta_gp&quot;: 300962.82,
+ &quot;totals&quot;: {
+  &quot;price&quot;: -431700.86,
+  &quot;cost_tariff&quot;: 343.41,
+  &quot;cost_other&quot;: 5466.54,
+  &quot;volume&quot;: 357318.58,
+  &quot;mix&quot;: 369535.15,
+  &quot;new&quot;: 0.0,
+  &quot;lost&quot;: 0.0
+ },
+ &quot;findings&quot;: [
+  {
+   &quot;kind&quot;: &quot;top&quot;,
+   &quot;driver&quot;: &quot;price&quot;,
+   &quot;dimension&quot;: &quot;line&quot;,
+   &quot;member&quot;: &quot;Climate&quot;,
+   &quot;amount&quot;: -171271.0
+  },
+  {
+   &quot;kind&quot;: &quot;top&quot;,
+   &quot;driver&quot;: &quot;volume&quot;,
+   &quot;dimension&quot;: &quot;line&quot;,
+   &quot;member&quot;: &quot;Sensors&quot;,
+   &quot;amount&quot;: 119975.0
+  },
+  {
+   &quot;kind&quot;: &quot;top&quot;,
+   &quot;driver&quot;: &quot;mix&quot;,
+   &quot;dimension&quot;: &quot;line&quot;,
+   &quot;member&quot;: null,
+   &quot;amount&quot;: 369535.0
+  }
+ ],
+ &quot;truth&quot;: {
+  &quot;price&quot;: 0.0,
+  &quot;cost_tariff&quot;: 0.0,
+  &quot;cost_other&quot;: 0.0
+ }
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>China tariff relief hides a new Mexico tariff</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 24 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+ &quot;published&quot;: true,
+ &quot;issues&quot;: [],
+ &quot;tie_out&quot;: {
+  &quot;ok&quot;: true,
+  &quot;periods&quot;: {
+   &quot;PY&quot;: {
+    &quot;revenue&quot;: 31981426.37,
+    &quot;gl_revenue&quot;: 31981426.37,
+    &quot;gp&quot;: 7786845.24,
+    &quot;gl_gp&quot;: 7786845.24,
+    &quot;diff_gp&quot;: -0.0,
+    &quot;ok&quot;: true
+   },
+   &quot;CY&quot;: {
+    &quot;revenue&quot;: 32005483.08,
+    &quot;gl_revenue&quot;: 32005483.08,
+    &quot;gp&quot;: 7873714.3,
+    &quot;gl_gp&quot;: 7873714.3,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   }
+  }
+ },
+ &quot;delta_gp&quot;: 86869.06,
+ &quot;totals&quot;: {
+  &quot;price&quot;: 18176.7,
+  &quot;cost_tariff&quot;: 81076.44,
+  &quot;cost_other&quot;: -14569.14,
+  &quot;volume&quot;: 6660.71,
+  &quot;mix&quot;: -4475.66,
+  &quot;new&quot;: 0.0,
+  &quot;lost&quot;: 0.0
+ },
+ &quot;findings&quot;: [],
+ &quot;truth&quot;: {
+  &quot;price&quot;: 0.0,
+  &quot;cost_tariff&quot;: 81803.7,
+  &quot;cost_other&quot;: 0.0
+ }
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>New order type XFR missing from the channel map</b> <span class='muted'>trap · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 24 ms</div><ul><li class='fail'><code>stops_on_bad_data</code> FAIL (critical)</li><li class='fail'><code>names_the_problem</code> FAIL (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+ &quot;published&quot;: true,
+ &quot;issues&quot;: [],
+ &quot;tie_out&quot;: {
+  &quot;ok&quot;: true,
+  &quot;periods&quot;: {
+   &quot;PY&quot;: {
+    &quot;revenue&quot;: 29054449.81,
+    &quot;gl_revenue&quot;: 29054449.81,
+    &quot;gp&quot;: 7130295.42,
+    &quot;gl_gp&quot;: 7130295.42,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   },
+   &quot;CY&quot;: {
+    &quot;revenue&quot;: 29071409.62,
+    &quot;gl_revenue&quot;: 29071409.62,
+    &quot;gp&quot;: 7132894.87,
+    &quot;gl_gp&quot;: 7132894.87,
+    &quot;diff_gp&quot;: -0.0,
+    &quot;ok&quot;: true
+   }
+  }
+ },
+ &quot;delta_gp&quot;: 2599.45,
+ &quot;totals&quot;: {
+  &quot;price&quot;: -5032.72,
+  &quot;cost_tariff&quot;: 285.79,
+  &quot;cost_other&quot;: 4732.99,
+  &quot;volume&quot;: 975.38,
+  &quot;mix&quot;: 1638.01,
+  &quot;new&quot;: 0.0,
+  &quot;lost&quot;: 0.0
+ },
+ &quot;findings&quot;: [],
+ &quot;truth&quot;: {
+  &quot;price&quot;: 0.0,
+  &quot;cost_tariff&quot;: 0.0,
+  &quot;cost_other&quot;: 0.0
+ }
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Retailer A starts buying wipers in cases of twelve</b> <span class='muted'>trap · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 32 ms</div><ul><li class='fail'><code>stops_on_bad_data</code> FAIL (critical)</li><li class='fail'><code>names_the_problem</code> FAIL (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+ &quot;published&quot;: true,
+ &quot;issues&quot;: [],
+ &quot;tie_out&quot;: {
+  &quot;ok&quot;: true,
+  &quot;periods&quot;: {
+   &quot;PY&quot;: {
+    &quot;revenue&quot;: 29053809.33,
+    &quot;gl_revenue&quot;: 29053809.33,
+    &quot;gp&quot;: 7130081.71,
+    &quot;gl_gp&quot;: 7130081.71,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   },
+   &quot;CY&quot;: {
+    &quot;revenue&quot;: 29070708.66,
+    &quot;gl_revenue&quot;: 29070708.66,
+    &quot;gp&quot;: 7132763.35,
+    &quot;gl_gp&quot;: 7132763.35,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   }
+  }
+ },
+ &quot;delta_gp&quot;: 2681.64,
+ &quot;totals&quot;: {
+  &quot;price&quot;: -3321.03,
+  &quot;cost_tariff&quot;: 260.38,
+  &quot;cost_other&quot;: 3463.13,
+  &quot;volume&quot;: 378.62,
+  &quot;mix&quot;: 1900.55,
+  &quot;new&quot;: 0.0,
+  &quot;lost&quot;: 0.0
+ },
+ &quot;findings&quot;: [],
+ &quot;truth&quot;: {
+  &quot;price&quot;: 0.0,
+  &quot;cost_tariff&quot;: 0.0,
+  &quot;cost_other&quot;: 0.0
+ }
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Rebate memo keyed to a customer name the master does not know</b> <span class='muted'>trap · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 26 ms</div><ul><li class='fail'><code>stops_on_bad_data</code> FAIL (critical)</li><li class='fail'><code>names_the_problem</code> FAIL (critical)</li><li class='fail'><code>ties_to_ledger</code> FAIL (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+ &quot;published&quot;: true,
+ &quot;issues&quot;: [],
+ &quot;tie_out&quot;: {
+  &quot;ok&quot;: true,
+  &quot;periods&quot;: {
+   &quot;PY&quot;: {
+    &quot;revenue&quot;: 31981426.37,
+    &quot;gl_revenue&quot;: 31981426.37,
+    &quot;gp&quot;: 7786845.24,
+    &quot;gl_gp&quot;: 7786845.24,
+    &quot;diff_gp&quot;: -0.0,
+    &quot;ok&quot;: true
+   },
+   &quot;CY&quot;: {
+    &quot;revenue&quot;: 32005483.08,
+    &quot;gl_revenue&quot;: 32005483.08,
+    &quot;gp&quot;: 7791940.16,
+    &quot;gl_gp&quot;: 7791940.16,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   }
+  }
+ },
+ &quot;delta_gp&quot;: 196542.62,
+ &quot;totals&quot;: {
+  &quot;price&quot;: 209624.4,
+  &quot;cost_tariff&quot;: -697.7,
+  &quot;cost_other&quot;: -14569.14,
+  &quot;volume&quot;: 6660.71,
+  &quot;mix&quot;: -4475.66,
+  &quot;new&quot;: 0.0,
+  &quot;lost&quot;: 0.0
+ },
+ &quot;findings&quot;: [],
+ &quot;truth&quot;: {
+  &quot;price&quot;: 0.0,
+  &quot;cost_tariff&quot;: 0.0,
+  &quot;cost_other&quot;: 0.0
+ }
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Extract cut off mid-September; ledger has the full month</b> <span class='muted'>trap · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 39 ms</div><ul><li class='fail'><code>stops_on_bad_data</code> FAIL (critical)</li><li class='fail'><code>names_the_problem</code> FAIL (critical)</li><li class='fail'><code>ties_to_ledger</code> FAIL (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+ &quot;published&quot;: true,
+ &quot;issues&quot;: [],
+ &quot;tie_out&quot;: {
+  &quot;ok&quot;: false,
+  &quot;periods&quot;: {
+   &quot;PY&quot;: {
+    &quot;revenue&quot;: 31981426.37,
+    &quot;gl_revenue&quot;: 31981426.37,
+    &quot;gp&quot;: 7786845.24,
+    &quot;gl_gp&quot;: 7786845.24,
+    &quot;diff_gp&quot;: -0.0,
+    &quot;ok&quot;: true
+   },
+   &quot;CY&quot;: {
+    &quot;revenue&quot;: 31284771.3,
+    &quot;gl_revenue&quot;: 32005483.08,
+    &quot;gp&quot;: 7613781.86,
+    &quot;gl_gp&quot;: 7791940.16,
+    &quot;diff_gp&quot;: -178158.3,
+    &quot;ok&quot;: false
+   }
+  }
+ },
+ &quot;delta_gp&quot;: -173063.38,
+ &quot;totals&quot;: {
+  &quot;price&quot;: -5307.02,
+  &quot;cost_tariff&quot;: -4121.65,
+  &quot;cost_other&quot;: -11397.78,
+  &quot;volume&quot;: -199782.15,
+  &quot;mix&quot;: 47545.23,
+  &quot;new&quot;: 0.0,
+  &quot;lost&quot;: 0.0
+ },
+ &quot;findings&quot;: [],
+ &quot;truth&quot;: {
+  &quot;price&quot;: 0.0,
+  &quot;cost_tariff&quot;: 0.0,
+  &quot;cost_other&quot;: 0.0
+ }
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Export repeated a page of invoices</b> <span class='muted'>trap · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 34 ms</div><ul><li class='fail'><code>stops_on_bad_data</code> FAIL (critical)</li><li class='fail'><code>names_the_problem</code> FAIL (critical)</li><li class='fail'><code>ties_to_ledger</code> FAIL (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+ &quot;published&quot;: true,
+ &quot;issues&quot;: [],
+ &quot;tie_out&quot;: {
+  &quot;ok&quot;: false,
+  &quot;periods&quot;: {
+   &quot;PY&quot;: {
+    &quot;revenue&quot;: 30924343.85,
+    &quot;gl_revenue&quot;: 30924343.85,
+    &quot;gp&quot;: 7720043.44,
+    &quot;gl_gp&quot;: 7720043.44,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   },
+   &quot;CY&quot;: {
+    &quot;revenue&quot;: 31171612.16,
+    &quot;gl_revenue&quot;: 30944047.09,
+    &quot;gp&quot;: 7783593.74,
+    &quot;gl_gp&quot;: 7726119.63,
+    &quot;diff_gp&quot;: 57474.11,
+    &quot;ok&quot;: false
+   }
+  }
+ },
+ &quot;delta_gp&quot;: 63550.3,
+ &quot;totals&quot;: {
+  &quot;price&quot;: -7765.72,
+  &quot;cost_tariff&quot;: -2260.96,
+  &quot;cost_other&quot;: 17553.35,
+  &quot;volume&quot;: 72567.73,
+  &quot;mix&quot;: -16544.1,
+  &quot;new&quot;: 0.0,
+  &quot;lost&quot;: 0.0
+ },
+ &quot;findings&quot;: [],
+ &quot;truth&quot;: {
+  &quot;price&quot;: 0.0,
+  &quot;cost_tariff&quot;: 0.0,
+  &quot;cost_other&quot;: 0.0
+ }
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Unmapped order type on top of a real DIFM shift</b> <span class='muted'>trap · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 24 ms</div><ul><li class='fail'><code>stops_on_bad_data</code> FAIL (critical)</li><li class='fail'><code>names_the_problem</code> FAIL (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+ &quot;published&quot;: true,
+ &quot;issues&quot;: [],
+ &quot;tie_out&quot;: {
+  &quot;ok&quot;: true,
+  &quot;periods&quot;: {
+   &quot;PY&quot;: {
+    &quot;revenue&quot;: 32580746.52,
+    &quot;gl_revenue&quot;: 32580746.52,
+    &quot;gp&quot;: 7716836.62,
+    &quot;gl_gp&quot;: 7716836.62,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   },
+   &quot;CY&quot;: {
+    &quot;revenue&quot;: 32338102.66,
+    &quot;gl_revenue&quot;: 32338102.66,
+    &quot;gp&quot;: 7461849.73,
+    &quot;gl_gp&quot;: 7461849.73,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   }
+  }
+ },
+ &quot;delta_gp&quot;: -254986.89,
+ &quot;totals&quot;: {
+  &quot;price&quot;: -256865.15,
+  &quot;cost_tariff&quot;: 267.27,
+  &quot;cost_other&quot;: 821.63,
+  &quot;volume&quot;: 3909.15,
+  &quot;mix&quot;: -3119.78,
+  &quot;new&quot;: 0.0,
+  &quot;lost&quot;: 0.0
+ },
+ &quot;findings&quot;: [
+  {
+   &quot;kind&quot;: &quot;top&quot;,
+   &quot;driver&quot;: &quot;price&quot;,
+   &quot;dimension&quot;: &quot;line&quot;,
+   &quot;member&quot;: &quot;Climate&quot;,
+   &quot;amount&quot;: -107812.0
+  }
+ ],
+ &quot;truth&quot;: {
+  &quot;price&quot;: 0.0,
+  &quot;cost_tariff&quot;: 0.0,
+  &quot;cost_other&quot;: 0.0
+ }
+}</pre></div></details><details><summary><span class='mark ok'>✓</span> <b>Nothing planted (seed 7)</b> <span class='muted'>control · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 24 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='pass'><code>no_false_alarm</code> PASS</li></ul><pre>{
+ &quot;published&quot;: true,
+ &quot;issues&quot;: [],
+ &quot;tie_out&quot;: {
+  &quot;ok&quot;: true,
+  &quot;periods&quot;: {
+   &quot;PY&quot;: {
+    &quot;revenue&quot;: 29054449.81,
+    &quot;gl_revenue&quot;: 29054449.81,
+    &quot;gp&quot;: 7130295.42,
+    &quot;gl_gp&quot;: 7130295.42,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   },
+   &quot;CY&quot;: {
+    &quot;revenue&quot;: 29071409.62,
+    &quot;gl_revenue&quot;: 29071409.62,
+    &quot;gp&quot;: 7132894.87,
+    &quot;gl_gp&quot;: 7132894.87,
+    &quot;diff_gp&quot;: -0.0,
+    &quot;ok&quot;: true
+   }
+  }
+ },
+ &quot;delta_gp&quot;: 2599.45,
+ &quot;totals&quot;: {
+  &quot;price&quot;: -5032.72,
+  &quot;cost_tariff&quot;: 285.79,
+  &quot;cost_other&quot;: 4732.99,
+  &quot;volume&quot;: 975.38,
+  &quot;mix&quot;: 1638.01,
+  &quot;new&quot;: 0.0,
+  &quot;lost&quot;: 0.0
+ },
+ &quot;findings&quot;: [],
+ &quot;truth&quot;: {
+  &quot;price&quot;: 0.0,
+  &quot;cost_tariff&quot;: 0.0,
+  &quot;cost_other&quot;: 0.0
+ }
+}</pre></div></details><details><summary><span class='mark ok'>✓</span> <b>Nothing planted (seed 31)</b> <span class='muted'>control · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 21 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='pass'><code>no_false_alarm</code> PASS</li></ul><pre>{
+ &quot;published&quot;: true,
+ &quot;issues&quot;: [],
+ &quot;tie_out&quot;: {
+  &quot;ok&quot;: true,
+  &quot;periods&quot;: {
+   &quot;PY&quot;: {
+    &quot;revenue&quot;: 32492405.65,
+    &quot;gl_revenue&quot;: 32492405.65,
+    &quot;gp&quot;: 8060723.58,
+    &quot;gl_gp&quot;: 8060723.58,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   },
+   &quot;CY&quot;: {
+    &quot;revenue&quot;: 32471054.4,
+    &quot;gl_revenue&quot;: 32471054.4,
+    &quot;gp&quot;: 8058567.72,
+    &quot;gl_gp&quot;: 8058567.72,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   }
+  }
+ },
+ &quot;delta_gp&quot;: -2155.86,
+ &quot;totals&quot;: {
+  &quot;price&quot;: -5616.87,
+  &quot;cost_tariff&quot;: 718.3,
+  &quot;cost_other&quot;: 3461.71,
+  &quot;volume&quot;: 3394.89,
+  &quot;mix&quot;: -4113.89,
+  &quot;new&quot;: 0.0,
+  &quot;lost&quot;: 0.0
+ },
+ &quot;findings&quot;: [],
+ &quot;truth&quot;: {
+  &quot;price&quot;: 0.0,
+  &quot;cost_tariff&quot;: 0.0,
+  &quot;cost_other&quot;: 0.0
+ }
+}</pre></div></details><details><summary><span class='mark ok'>✓</span> <b>Units up 2%, nothing else</b> <span class='muted'>control · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 24 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='pass'><code>no_false_alarm</code> PASS</li></ul><pre>{
+ &quot;published&quot;: true,
+ &quot;issues&quot;: [],
+ &quot;tie_out&quot;: {
+  &quot;ok&quot;: true,
+  &quot;periods&quot;: {
+   &quot;PY&quot;: {
+    &quot;revenue&quot;: 30973353.38,
+    &quot;gl_revenue&quot;: 30973353.38,
+    &quot;gp&quot;: 7724454.93,
+    &quot;gl_gp&quot;: 7724454.93,
+    &quot;diff_gp&quot;: 0.0,
+    &quot;ok&quot;: true
+   },
+   &quot;CY&quot;: {
+    &quot;revenue&quot;: 31620743.19,
+    &quot;gl_revenue&quot;: 31620743.19,
+    &quot;gp&quot;: 7888043.74,
+    &quot;gl_gp&quot;: 7888043.74,
+    &quot;diff_gp&quot;: -0.0,
+    &quot;ok&quot;: true
+   }
+  }
+ },
+ &quot;delta_gp&quot;: 163588.81,
+ &quot;totals&quot;: {
+  &quot;price&quot;: 423.54,
+  &quot;cost_tariff&quot;: -83.02,
+  &quot;cost_other&quot;: 74.53,
+  &quot;volume&quot;: 162189.88,
+  &quot;mix&quot;: 983.89,
+  &quot;new&quot;: 0.0,
+  &quot;lost&quot;: 0.0
+ },
+ &quot;findings&quot;: [],
+ &quot;truth&quot;: {
+  &quot;price&quot;: 0.0,
+  &quot;cost_tariff&quot;: 0.0,
+  &quot;cost_other&quot;: 0.0
+ }
+}</pre></div></details>
+<h2>Checks</h2><div class="scroll"><table><tr><td><code>stops_on_bad_data</code></td><td>critical</td><td>A data problem stops the bridge; clean data publishes one.</td></tr><tr><td><code>names_the_problem</code></td><td>critical</td><td>The analysis names the planted data problem.</td></tr><tr><td><code>ties_to_ledger</code></td><td>critical</td><td>A published bridge ties to the ledger, and its effects add up to the ledger&#x27;s change in gross profit.</td></tr><tr><td><code>finds_the_driver</code></td><td></td><td>The planted driver is in the findings, with the right sign; a hidden one is in the top 3.</td></tr><tr><td><code>sizes_it_right</code></td><td></td><td>The bridge&#x27;s effect for the planted driver is within 2% of the planted dollars.</td></tr><tr><td><code>no_false_alarm</code></td><td></td><td>With nothing planted, there are no data issues and no masked or reattributed findings.</td></tr></table></div>
+<footer class="muted">Made with <a href="https://github.com/pg2342-hub/golive-gate">golive-gate</a>.</footer>
+</main></body></html>

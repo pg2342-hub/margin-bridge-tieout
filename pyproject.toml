@@ -1,0 +1,28 @@
+[project]
+name = "margin-bridge-tieout"
+version = "0.1.0"
+description = "Rebuild a margin bridge from ERP lines, tie it to the ledger, and find the driver a favorable total hides."
+requires-python = ">=3.9"
+dependencies = ["PyYAML>=6.0", "golive-gate>=0.1.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "ruff>=0.5"]
+
+[tool.setuptools]
+packages = ["bridge"]
+
+[tool.setuptools.package-data]
+bridge = ["definitions.yml"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 140
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]
+
+[tool.ruff.lint.per-file-ignores]
+"scripts/build_demo.py" = ["E501"]

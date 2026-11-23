@@ -1,0 +1,15 @@
+gate:
+  name: Margin bridge go-live gate
+  max_critical_failures: 0
+  rules:
+    - name: overall
+      min_pass: 24          # 24 of 25 cases
+    - name: hidden drivers
+      group: hidden
+      min_pass: all         # every driver a product-line bridge gets wrong
+    - name: data traps
+      group: trap
+      min_pass: all         # every bad extract stopped and named
+    - name: controls
+      group: control
+      min_pass: all         # no false alarms

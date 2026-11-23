@@ -1,32 +1,56 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8">
+<html lang="en"><head>
+<!-- demo-chrome --><meta name="theme-color" content="#f4f2ec"><link rel="icon" href="https://pranavgudise.dev/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="https://pranavgudise.dev/kit/demo.css"><!-- /demo-chrome -->
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f4f2ec">
 <title>Margin bridge go-live gate: NO-GO</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--fg:#111;--bg:#fff;--muted:#666;--line:#ddd;--soft:#f5f5f5}
-@media (prefers-color-scheme:dark){:root{--fg:#eee;--bg:#111;--muted:#999;--line:#333;--soft:#1b1b1b}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
-font:15px/1.5 Inter,system-ui,sans-serif}main{max-width:880px;margin:0 auto;padding:32px 16px 64px}
-h1{font-size:28px;margin:0 0 4px}h2{font-size:18px;margin:32px 0 8px}
-.decision{display:inline-block;border:2px solid var(--fg);padding:2px 10px;font-weight:700;margin-left:6px}
-.muted{color:var(--muted)}table{border-collapse:collapse;width:100%;font-size:14px}
-td,th{text-align:left;border-bottom:1px solid var(--line);padding:6px 8px;vertical-align:top}
-.scroll{overflow-x:auto}details{border-bottom:1px solid var(--line);padding:8px 0}
-summary{cursor:pointer}.mark{display:inline-block;width:18px;font-weight:700}.bad{color:var(--fg)}
-.run{margin:8px 0 8px 22px}.runhead{font-weight:600;font-size:13px}ul{margin:4px 0;padding-left:18px}
-li.fail{font-weight:600}li.na{color:var(--muted)}pre{background:var(--soft);padding:8px;overflow-x:auto;
-font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size:13px}
-</style></head><body><main>
-<h1>Margin bridge go-live gate <span class="decision">NO-GO</span></h1>
-<p class="muted">Agent <code>agent:workbook_agent</code>, 25 cases, 1 run(s). Agent cost $0.0000, judge cost $0.0000, mean latency 24.6 ms per case.</p>
-<ul><li>run 1: 10 critical failure(s): stops_on_bad_data on case t01, names_the_problem on case t01, stops_on_bad_data on case t02, names_the_problem on case t02, stops_on_bad_data on case t03, names_the_problem on case t03, ties_to_ledger on case t03, names_the_problem on case t05, stops_on_bad_data on case t06, names_the_problem on case t06</li><li>run 1: overall passed 7 of 25, needs 24 (no-go)</li><li>run 1: hidden drivers passed 0 of 8, needs 8 (no-go)</li><li>run 1: data traps passed 1 of 6, needs 6 (no-go)</li></ul>
+:root{--paper:#f4f2ec;--ink:#1b1a17;--ink-2:#57544c;--rule:rgb(27 26 23/.14);--green:#24513c;--wash:#dce6dc;
+--serif:"Libre Caslon Display",Georgia,serif;--sans:"General Sans","Helvetica Neue",Arial,sans-serif;
+--mono:"Red Hat Mono",ui-monospace,Menlo,monospace;color-scheme:light}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.6 var(--sans)}
+::selection{background:var(--wash)}a{color:var(--green);text-underline-offset:3px}
+main{width:min(1080px,calc(100% - 64px));margin:0 auto;padding:0 0 64px}
+h1{font:400 clamp(30px,3.6vw,46px)/1.15 var(--serif);letter-spacing:-.01em;margin:56px 0 18px;text-wrap:balance}
+h2{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border:1px solid var(--ink);
+border-radius:999px;font:400 21px/1.1 var(--serif);margin:56px 0 20px}
+.lead,h1+p{font-size:18px;color:var(--ink-2);max-width:42em}.muted{color:var(--ink-2)}
+.reasons{padding-left:20px;margin:16px 0 0}.reasons li{margin:6px 0}
+.decision{display:inline-flex;align-items:center;min-height:32px;padding:0 14px;border-radius:999px;
+font:500 15px/1 var(--mono);letter-spacing:.04em;vertical-align:.25em;margin-left:8px;border:1px solid var(--ink)}
+.decision.go{background:var(--wash);border-color:var(--wash);color:var(--green)}
+.decision.no-go{background:var(--ink);color:var(--paper)}.decision.partial{border-style:dashed}
+.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:15px;font-variant-numeric:tabular-nums}
+th{font:400 12.5px/1.4 var(--mono);letter-spacing:.02em;color:var(--ink-2);text-align:left;padding:10px 12px 10px 0;
+border-bottom:1px solid var(--ink);white-space:nowrap}
+td{text-align:left;border-bottom:1px solid var(--rule);padding:12px 12px 12px 0;vertical-align:top}
+details{border-bottom:1px solid var(--rule);padding:12px 0}summary{cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+.mark{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:999px;
+font-size:12px;margin-right:4px}.mark.ok{background:var(--wash);color:var(--green)}
+.mark.bad{background:var(--ink);color:var(--paper)}
+.mark svg{width:12px;height:12px}.mark path{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;
+stroke-linejoin:round}summary b{font-weight:500}
+.run{margin:10px 0 10px 28px}.runhead{font:400 12.5px/1.4 var(--mono);letter-spacing:.02em;color:var(--ink-2)}
+ul{margin:4px 0;padding-left:18px}li.pass::marker{color:var(--green)}li.fail{font-weight:500}li.na{color:var(--ink-2)}
+pre{font:400 12.5px/1.55 var(--mono);background:rgb(27 26 23/.045);border-radius:8px;padding:12px 14px;
+overflow-x:auto;margin:6px 0;white-space:pre-wrap;word-break:break-word}
+code{font-family:var(--mono);font-size:.86em}
+footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--rule);font:400 13px/1.5 var(--mono)}
+@media (max-width:700px){main{width:calc(100% - 40px)}h1{margin-top:32px}h2{font-size:19px;margin-top:44px}
+.lead,h1+p{font-size:16.5px}.run{margin-left:12px}}
+</style></head><body>
+<!-- demo-chrome --><header class="demo-top"><a class="demo-brand" href="https://pranavgudise.dev/"><svg class="demo-mark" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.25"/><g class="n"><path class="f" d="M15.5 8.5 L 13.4 13.4 L 8.5 15.5 L 10.6 10.6 Z"/></g><circle class="p" cx="12" cy="12" r=".7"/></svg><span>Pranav Gudise</span></a><a class="pill" href="https://github.com/pg2342-hub/margin-bridge-tieout">Code on GitHub</a></header><!-- /demo-chrome -->
+<main>
+<h1>Margin bridge go-live gate <span class="decision no-go">NO-GO</span></h1>
+<p class="lead">Agent <code>agent:workbook_agent</code>, 25 cases, 1 run(s). Agent cost $0.0000, judge cost $0.0000, mean latency 29.4 ms per case.</p>
+<ul class="reasons"><li>run 1: 10 critical failure(s): stops_on_bad_data on case t01, names_the_problem on case t01, stops_on_bad_data on case t02, names_the_problem on case t02, stops_on_bad_data on case t03, names_the_problem on case t03, ties_to_ledger on case t03, names_the_problem on case t05, stops_on_bad_data on case t06, names_the_problem on case t06</li><li>run 1: overall passed 7 of 25, needs 24 (no-go)</li><li>run 1: hidden drivers passed 0 of 8, needs 8 (no-go)</li><li>run 1: data traps passed 1 of 6, needs 6 (no-go)</li></ul>
 <h2>Pass counts by run</h2><div class="scroll"><table><tr><th>Run</th><th>Passed</th>
 <th>Critical failures</th></tr><tr><td>1</td><td>7 of 25</td><td>10</td></tr></table></div>
 <h2>Gate rules</h2><div class="scroll"><table><tr><th>Rule</th><th>Run</th><th>Passed</th><th>Needs</th>
 <th>Result</th></tr><tr><td>overall</td><td>1</td><td>7 of 25</td><td>24</td><td>broke (no-go)</td></tr><tr><td>hidden drivers</td><td>1</td><td>0 of 8</td><td>8</td><td>broke (no-go)</td></tr><tr><td>data traps</td><td>1</td><td>1 of 6</td><td>6</td><td>broke (no-go)</td></tr><tr><td>controls</td><td>1</td><td>3 of 3</td><td>3</td><td>held</td></tr></table></div>
-<h2>Cases</h2><details><summary><span class='mark ok'>✓</span> <b>Sensors list price up 4%</b> <span class='muted'>routine · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 30 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='pass'><code>finds_the_driver</code> PASS</li><li class='pass'><code>sizes_it_right</code> PASS</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+<h2>Cases</h2><details><summary><span class='mark ok'><svg viewBox="0 0 12 12" aria-label="passed"><path d="M2.6 6.3 5 8.6 9.4 3.6"/></svg></span> <b>Sensors list price up 4%</b> <span class='muted'>routine · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 32 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='pass'><code>finds_the_driver</code> PASS</li><li class='pass'><code>sizes_it_right</code> PASS</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -103,7 +127,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Distributor D gets a 6% price cut</b> <span class='muted'>routine · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 34 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='fail'><code>sizes_it_right</code> FAIL</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'><svg viewBox="0 0 12 12" aria-label="failed"><path d="M3.4 3.4 8.6 8.6M8.6 3.4 3.4 8.6"/></svg></span> <b>Distributor D gets a 6% price cut</b> <span class='muted'>routine · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 32 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='fail'><code>sizes_it_right</code> FAIL</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -180,7 +204,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>China tariff rate 10% to 25%</b> <span class='muted'>routine · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 25 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='pass'><code>sizes_it_right</code> PASS</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'><svg viewBox="0 0 12 12" aria-label="failed"><path d="M3.4 3.4 8.6 8.6M8.6 3.4 3.4 8.6"/></svg></span> <b>China tariff rate 10% to 25%</b> <span class='muted'>routine · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 29 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='pass'><code>sizes_it_right</code> PASS</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -257,7 +281,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: -733686.44,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Climate material cost up 8%</b> <span class='muted'>routine · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 35 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='pass'><code>finds_the_driver</code> PASS</li><li class='fail'><code>sizes_it_right</code> FAIL</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'><svg viewBox="0 0 12 12" aria-label="failed"><path d="M3.4 3.4 8.6 8.6M8.6 3.4 3.4 8.6"/></svg></span> <b>Climate material cost up 8%</b> <span class='muted'>routine · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 31 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='pass'><code>finds_the_driver</code> PASS</li><li class='fail'><code>sizes_it_right</code> FAIL</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -334,7 +358,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: -20251.52,
   &quot;cost_other&quot;: -492262.17
  }
-}</pre></div></details><details><summary><span class='mark ok'>✓</span> <b>Units down 8% across the board</b> <span class='muted'>routine · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 30 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='pass'><code>finds_the_driver</code> PASS</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details><summary><span class='mark ok'><svg viewBox="0 0 12 12" aria-label="passed"><path d="M2.6 6.3 5 8.6 9.4 3.6"/></svg></span> <b>Units down 8% across the board</b> <span class='muted'>routine · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 30 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='pass'><code>finds_the_driver</code> PASS</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -411,7 +435,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Four new Sensors SKUs launched</b> <span class='muted'>routine · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 32 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'><svg viewBox="0 0 12 12" aria-label="failed"><path d="M3.4 3.4 8.6 8.6M8.6 3.4 3.4 8.6"/></svg></span> <b>Four new Sensors SKUs launched</b> <span class='muted'>routine · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 30 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -495,7 +519,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Six Sensors SKUs discontinued</b> <span class='muted'>routine · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 32 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'><svg viewBox="0 0 12 12" aria-label="failed"><path d="M3.4 3.4 8.6 8.6M8.6 3.4 3.4 8.6"/></svg></span> <b>Six Sensors SKUs discontinued</b> <span class='muted'>routine · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 28 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -579,7 +603,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details><summary><span class='mark ok'>✓</span> <b>Wipers price up 5%, Retailer C buys wipers in cases of six</b> <span class='muted'>routine · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 30 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='pass'><code>finds_the_driver</code> PASS</li><li class='pass'><code>sizes_it_right</code> PASS</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details><summary><span class='mark ok'><svg viewBox="0 0 12 12" aria-label="passed"><path d="M2.6 6.3 5 8.6 9.4 3.6"/></svg></span> <b>Wipers price up 5%, Retailer C buys wipers in cases of six</b> <span class='muted'>routine · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 32 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='pass'><code>finds_the_driver</code> PASS</li><li class='pass'><code>sizes_it_right</code> PASS</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -656,7 +680,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Installer (DIFM) shift at Retailer B hides under a richer product mix</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 22 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'><svg viewBox="0 0 12 12" aria-label="failed"><path d="M3.4 3.4 8.6 8.6M8.6 3.4 3.4 8.6"/></svg></span> <b>Installer (DIFM) shift at Retailer B hides under a richer product mix</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 30 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -733,7 +757,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>DIFM shift at Retailer A under a Wipers-to-Sensors mix gain</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 22 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'><svg viewBox="0 0 12 12" aria-label="failed"><path d="M3.4 3.4 8.6 8.6M8.6 3.4 3.4 8.6"/></svg></span> <b>DIFM shift at Retailer A under a Wipers-to-Sensors mix gain</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 30 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -817,7 +841,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Price up 5% everywhere except a 10% cut at Distributor E</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 23 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'><svg viewBox="0 0 12 12" aria-label="failed"><path d="M3.4 3.4 8.6 8.6M8.6 3.4 3.4 8.6"/></svg></span> <b>Price up 5% everywhere except a 10% cut at Distributor E</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 30 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -894,7 +918,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Tariff surcharges held, but Retailer B got a 10% price cut</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 23 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'><svg viewBox="0 0 12 12" aria-label="failed"><path d="M3.4 3.4 8.6 8.6M8.6 3.4 3.4 8.6"/></svg></span> <b>Tariff surcharges held, but Retailer B got a 10% price cut</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 31 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -978,7 +1002,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: -1100385.81,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>A product-line bridge calls a DIFM shift a price cut</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 22 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'><svg viewBox="0 0 12 12" aria-label="failed"><path d="M3.4 3.4 8.6 8.6M8.6 3.4 3.4 8.6"/></svg></span> <b>A product-line bridge calls a DIFM shift a price cut</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 30 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -1055,7 +1079,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Material savings of 8% everywhere except Ignition, up 15%</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 23 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'><svg viewBox="0 0 12 12" aria-label="failed"><path d="M3.4 3.4 8.6 8.6M8.6 3.4 3.4 8.6"/></svg></span> <b>Material savings of 8% everywhere except Ignition, up 15%</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 30 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -1132,7 +1156,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 41244.78,
   &quot;cost_other&quot;: 844720.59
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>A product-line bridge calls a flat mix a gain</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 22 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'><svg viewBox="0 0 12 12" aria-label="failed"><path d="M3.4 3.4 8.6 8.6M8.6 3.4 3.4 8.6"/></svg></span> <b>A product-line bridge calls a flat mix a gain</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 30 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -1223,7 +1247,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>China tariff relief hides a new Mexico tariff</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 22 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'><svg viewBox="0 0 12 12" aria-label="failed"><path d="M3.4 3.4 8.6 8.6M8.6 3.4 3.4 8.6"/></svg></span> <b>China tariff relief hides a new Mexico tariff</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 29 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -1292,7 +1316,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 81803.7,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>New order type XFR missing from the channel map</b> <span class='muted'>trap · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 22 ms</div><ul><li class='fail'><code>stops_on_bad_data</code> FAIL (critical)</li><li class='fail'><code>names_the_problem</code> FAIL (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'><svg viewBox="0 0 12 12" aria-label="failed"><path d="M3.4 3.4 8.6 8.6M8.6 3.4 3.4 8.6"/></svg></span> <b>New order type XFR missing from the channel map</b> <span class='muted'>trap · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 30 ms</div><ul><li class='fail'><code>stops_on_bad_data</code> FAIL (critical)</li><li class='fail'><code>names_the_problem</code> FAIL (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -1361,7 +1385,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Retailer A starts buying wipers in cases of twelve</b> <span class='muted'>trap · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 23 ms</div><ul><li class='fail'><code>stops_on_bad_data</code> FAIL (critical)</li><li class='fail'><code>names_the_problem</code> FAIL (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'><svg viewBox="0 0 12 12" aria-label="failed"><path d="M3.4 3.4 8.6 8.6M8.6 3.4 3.4 8.6"/></svg></span> <b>Retailer A starts buying wipers in cases of twelve</b> <span class='muted'>trap · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 31 ms</div><ul><li class='fail'><code>stops_on_bad_data</code> FAIL (critical)</li><li class='fail'><code>names_the_problem</code> FAIL (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -1430,7 +1454,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Rebate memo keyed to a customer name the master does not know</b> <span class='muted'>trap · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 22 ms</div><ul><li class='fail'><code>stops_on_bad_data</code> FAIL (critical)</li><li class='fail'><code>names_the_problem</code> FAIL (critical)</li><li class='fail'><code>ties_to_ledger</code> FAIL (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'><svg viewBox="0 0 12 12" aria-label="failed"><path d="M3.4 3.4 8.6 8.6M8.6 3.4 3.4 8.6"/></svg></span> <b>Rebate memo keyed to a customer name the master does not know</b> <span class='muted'>trap · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 29 ms</div><ul><li class='fail'><code>stops_on_bad_data</code> FAIL (critical)</li><li class='fail'><code>names_the_problem</code> FAIL (critical)</li><li class='fail'><code>ties_to_ledger</code> FAIL (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -1499,7 +1523,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details><summary><span class='mark ok'>✓</span> <b>Extract cut off mid-September; ledger has the full month</b> <span class='muted'>trap · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 18 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='pass'><code>names_the_problem</code> PASS (critical)</li><li class='na'><code>ties_to_ledger</code> NA (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details><summary><span class='mark ok'><svg viewBox="0 0 12 12" aria-label="passed"><path d="M2.6 6.3 5 8.6 9.4 3.6"/></svg></span> <b>Extract cut off mid-September; ledger has the full month</b> <span class='muted'>trap · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 23 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='pass'><code>names_the_problem</code> PASS (critical)</li><li class='na'><code>ties_to_ledger</code> NA (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: false,
  &quot;issues&quot;: [
   {
@@ -1564,7 +1588,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Export repeated a page of invoices</b> <span class='muted'>trap · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 17 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='fail'><code>names_the_problem</code> FAIL (critical)</li><li class='na'><code>ties_to_ledger</code> NA (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'><svg viewBox="0 0 12 12" aria-label="failed"><path d="M3.4 3.4 8.6 8.6M8.6 3.4 3.4 8.6"/></svg></span> <b>Export repeated a page of invoices</b> <span class='muted'>trap · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 23 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='fail'><code>names_the_problem</code> FAIL (critical)</li><li class='na'><code>ties_to_ledger</code> NA (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: false,
  &quot;issues&quot;: [
   {
@@ -1629,7 +1653,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Unmapped order type on top of a real DIFM shift</b> <span class='muted'>trap · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 23 ms</div><ul><li class='fail'><code>stops_on_bad_data</code> FAIL (critical)</li><li class='fail'><code>names_the_problem</code> FAIL (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'><svg viewBox="0 0 12 12" aria-label="failed"><path d="M3.4 3.4 8.6 8.6M8.6 3.4 3.4 8.6"/></svg></span> <b>Unmapped order type on top of a real DIFM shift</b> <span class='muted'>trap · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 29 ms</div><ul><li class='fail'><code>stops_on_bad_data</code> FAIL (critical)</li><li class='fail'><code>names_the_problem</code> FAIL (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -1706,7 +1730,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details><summary><span class='mark ok'>✓</span> <b>Nothing planted (seed 7)</b> <span class='muted'>control · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 22 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='pass'><code>no_false_alarm</code> PASS</li></ul><pre>{
+}</pre></div></details><details><summary><span class='mark ok'><svg viewBox="0 0 12 12" aria-label="passed"><path d="M2.6 6.3 5 8.6 9.4 3.6"/></svg></span> <b>Nothing planted (seed 7)</b> <span class='muted'>control · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 29 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='pass'><code>no_false_alarm</code> PASS</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -1775,7 +1799,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details><summary><span class='mark ok'>✓</span> <b>Nothing planted (seed 31)</b> <span class='muted'>control · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 22 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='pass'><code>no_false_alarm</code> PASS</li></ul><pre>{
+}</pre></div></details><details><summary><span class='mark ok'><svg viewBox="0 0 12 12" aria-label="passed"><path d="M2.6 6.3 5 8.6 9.4 3.6"/></svg></span> <b>Nothing planted (seed 31)</b> <span class='muted'>control · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 29 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='pass'><code>no_false_alarm</code> PASS</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -1844,7 +1868,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details><summary><span class='mark ok'>✓</span> <b>Units up 2%, nothing else</b> <span class='muted'>control · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 22 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='pass'><code>no_false_alarm</code> PASS</li></ul><pre>{
+}</pre></div></details><details><summary><span class='mark ok'><svg viewBox="0 0 12 12" aria-label="passed"><path d="M2.6 6.3 5 8.6 9.4 3.6"/></svg></span> <b>Units up 2%, nothing else</b> <span class='muted'>control · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 29 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='pass'><code>no_false_alarm</code> PASS</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -1916,4 +1940,5 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
 }</pre></div></details>
 <h2>Checks</h2><div class="scroll"><table><tr><td><code>stops_on_bad_data</code></td><td>critical</td><td>A data problem stops the bridge; clean data publishes one.</td></tr><tr><td><code>names_the_problem</code></td><td>critical</td><td>The analysis names the planted data problem.</td></tr><tr><td><code>ties_to_ledger</code></td><td>critical</td><td>A published bridge ties to the ledger, and its effects add up to the ledger&#x27;s change in gross profit.</td></tr><tr><td><code>finds_the_driver</code></td><td></td><td>The planted driver is in the findings, with the right sign; a hidden one is in the top 3.</td></tr><tr><td><code>sizes_it_right</code></td><td></td><td>The bridge&#x27;s effect for the planted driver is within 2% of the planted dollars.</td></tr><tr><td><code>no_false_alarm</code></td><td></td><td>With nothing planted, there are no data issues and no masked or reattributed findings.</td></tr></table></div>
 <footer class="muted">Made with <a href="https://github.com/pg2342-hub/golive-gate">golive-gate</a>.</footer>
-</main></body></html>
+</main><!-- demo-chrome --><footer class="demo-foot"><span>A working build by <a href="https://pranavgudise.dev/">Pranav Gudise</a>. Synthetic or public data only.</span><a href="https://github.com/pg2342-hub/margin-bridge-tieout">github.com/pg2342-hub/margin-bridge-tieout</a></footer><!-- /demo-chrome -->
+</body></html>

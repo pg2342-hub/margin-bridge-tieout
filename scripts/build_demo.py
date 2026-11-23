@@ -110,11 +110,16 @@ def main() -> None:
         traps="\n".join(trap_rows),
         g1=f"{p1[0]} of {p1[1]}",
         d1=g1["decision"].upper(),
+        d1c=g1["decision"],
         g2=f"{p2[0]} of {p2[1]}",
         sweep=SWEEP,
         d2=g2["decision"].upper(),
+        d2c=g2["decision"],
     )
     (DOCS / "index.html").write_text(page)
+    import subprocess
+    pages = [str(DOCS / "index.html"), str(DOCS / "gate" / "index.html"), str(DOCS / "gate-workbook" / "index.html")]
+    subprocess.run([sys.executable, str(ROOT / "scripts" / "demo_chrome.py"), *pages, "--repo", "margin-bridge-tieout"], check=True)
     print("wrote", DOCS / "index.html")
 
 
@@ -122,20 +127,16 @@ TEMPLATE = """<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Margin bridge tie-out</title>
 <style>
-:root {{ --fg:#111; --muted:#555; --line:#ddd; --bg:#fff; --soft:#f4f4f4; }}
-@media (prefers-color-scheme: dark) {{ :root {{ --fg:#eee; --muted:#aaa; --line:#333; --bg:#111; --soft:#1b1b1b; }} }}
-body {{ font: 16px/1.55 Inter, -apple-system, Segoe UI, sans-serif; color:var(--fg); background:var(--bg); margin:0; }}
-main {{ max-width: 860px; margin: 0 auto; padding: 32px 16px 64px; }}
-h1 {{ font-size: 28px; margin: 0 0 6px; }} h2 {{ font-size: 19px; margin: 36px 0 8px; }}
-p.lead {{ color: var(--muted); margin-top: 0; }}
-table {{ border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 14.5px; }}
-th, td {{ text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }}
-th {{ font-weight: 600; }} td:nth-child(n+2) {{ white-space: nowrap; }}
-tr.diff td {{ font-weight: 600; background: var(--soft); }}
-.box {{ border: 1px solid var(--fg); padding: 14px 16px; margin: 16px 0; }}
-.muted {{ color: var(--muted); font-size: 14px; }} code {{ font-size: 14px; }}
-a {{ color: inherit; }}
-.wrap td:nth-child(3) {{ white-space: normal; }}
+main{{padding-bottom:24px}}
+p.lead{{color:var(--ink-2);font-size:18px;max-width:42em}}
+table{{margin:16px 0}}
+td:nth-child(n+2){{white-space:nowrap}}
+tr.diff td{{font-weight:500;background:var(--tint-1)}}
+.box{{border-left:2px solid var(--green);padding:4px 0 4px 18px;margin:32px 0;max-width:46em;font-size:17px}}
+.muted{{color:var(--ink-2);font-size:15px;max-width:46em}}
+code{{background:rgb(27 26 23/.05);padding:1px 5px;border-radius:4px}}
+.wrap td:nth-child(3){{white-space:normal}}
+.tbl{{overflow-x:auto}}
 </style></head><body><main>
 <h1>Margin bridge tie-out</h1>
 <p class="lead">Rebuild a quarter's gross-profit bridge from ERP invoice lines, tie it to the ledger, and find the driver a favorable total hides. All data is made up: a parts maker with 6 product lines, 6 customers, {lines} invoice lines and {memos} rebate memos across two quarters.</p>
@@ -144,34 +145,34 @@ a {{ color: inherit; }}
 
 <h2>1. Tie-out first</h2>
 <p>Nothing is decomposed until the extract ties to the general ledger, each quarter: revenue within $1, and gross profit within $1 after named, sized items that post only at the ledger. Anything left unexplained stops the bridge.</p>
-<table><tr><th></th><th>Extract</th><th>Ledger</th></tr>
-{recon}</table>
+<div class="tbl"><table><tr><th></th><th>Extract</th><th>Ledger</th></tr>
+{recon}</table></div>
 <p class="muted">Rebates post as separate customer-level memos, so they are allocated to invoice lines by gross sales within each customer and month before any price is calculated. Order types map to channels, and units convert to eaches, from one definitions file finance owns.</p>
 
 <h2>2. The bridge at two grains</h2>
-<table><tr><th>Effect on gross profit</th><th>Product-line bridge</th><th>Item-level bridge (SKU x customer x channel)</th></tr>
+<div class="tbl"><table><tr><th>Effect on gross profit</th><th>Product-line bridge</th><th>Item-level bridge (SKU x customer x channel)</th></tr>
 {rows}
-<tr><td><strong>Change in gross profit</strong></td><td><strong>{delta}</strong></td><td><strong>{delta}</strong></td></tr></table>
+<tr><td><strong>Change in gross profit</strong></td><td><strong>{delta}</strong></td><td><strong>{delta}</strong></td></tr></table></div>
 <p><strong>Mix, split so the parts add up.</strong> Each level is the mix it adds on top of the coarser one, so the four rows sum to the item-level mix.</p>
-<table><tr><th>Mix level</th><th>Effect</th></tr>
-{mix_rows}</table>
+<div class="tbl"><table><tr><th>Mix level</th><th>Effect</th></tr>
+{mix_rows}</table></div>
 <p class="muted">Both bridges add up to the same total. Shaded rows read differently at the two grains: when installer business grows inside a product line, the product-line bridge books the lower program price as a price cut.</p>
 
 <h2>3. What the driver finder flags</h2>
-<table class="wrap"><tr><th>Finding</th><th>Amount</th><th>What it means</th></tr>
+<div class="tbl"><table class="wrap"><tr><th>Finding</th><th>Amount</th><th>What it means</th></tr>
 <tr><td>Channel mix masked</td><td>{chan_mix}</td><td>Installer (DIFM) share grew inside product lines at Retailers A and B, hidden under a favorable product mix of {line_mix}.</td></tr>
 <tr><td>Price reattributed</td><td>{d_price}</td><td>Like-for-like price held up better than the product-line bridge shows ({m_price}): it books the installer shift inside its lines as a price cut. Surcharges held.</td></tr>
-<tr><td>Tariff cost</td><td>{tariff}</td><td>All of it on China-origin parts; surcharges recovered {recovered}.</td></tr></table>
+<tr><td>Tariff cost</td><td>{tariff}</td><td>All of it on China-origin parts; surcharges recovered {recovered}.</td></tr></table></div>
 
 <h2>4. Bad extracts stop the bridge</h2>
-<table class="wrap"><tr><th>Planted problem</th><th>Result</th><th>What the check says</th></tr>
-{traps}</table>
+<div class="tbl"><table class="wrap"><tr><th>Planted problem</th><th>Result</th><th>What the check says</th></tr>
+{traps}</table></div>
 
 <h2>5. Go-live gate</h2>
 <p>25 planted scenarios (8 routine drivers, 8 hidden drivers, 6 bad extracts, 3 clean controls), scored with <a href="https://github.com/pg2342-hub/golive-gate">golive-gate</a>. The gate: 24 of 25 overall, every hidden driver, every bad extract stopped, no false alarms, and zero critical failures (publishing on bad data, missing a planted data problem, or a bridge that does not tie).</p>
-<table><tr><th>Analysis</th><th>Cases passed</th><th>Gate</th><th>Report</th></tr>
-<tr><td>Tie-out + item-level bridge + driver finder</td><td>{g1}</td><td>{d1}</td><td><a href="gate/">every case and check</a></td></tr>
-<tr><td>Product-line workbook (ties to the ledger and stops if it does not; product line only, so it cannot see customer, channel, or origin; no data checks)</td><td>{g2}</td><td>{d2}</td><td><a href="gate-workbook/">every case and check</a></td></tr></table>
+<div class="tbl"><table><tr><th>Analysis</th><th>Cases passed</th><th>Gate</th><th>Report</th></tr>
+<tr><td>Tie-out + item-level bridge + driver finder</td><td>{g1}</td><td><span class="badge {d1c}">{d1}</span></td><td><a href="gate/">every case and check</a></td></tr>
+<tr><td>Product-line workbook (ties to the ledger and stops if it does not; product line only, so it cannot see customer, channel, or origin; no data checks)</td><td>{g2}</td><td><span class="badge {d2c}">{d2}</span></td><td><a href="gate-workbook/">every case and check</a></td></tr></table></div>
 <p class="muted">The workbook's misses are mostly structural: a product-line view cannot name a customer or a channel, and without data checks it cannot name a bad extract. The cases were written on fixed data seeds; on seven seeds they were not written with, the tie-out passes {sweep} cases. CI runs the tests, this gate, and that sweep on every push. Code: <a href="https://github.com/pg2342-hub/margin-bridge-tieout">github.com/pg2342-hub/margin-bridge-tieout</a>. Run it yourself: <code>pip install -e . &amp;&amp; golive run eval/golive.yml</code></p>
 </main></body></html>
 """

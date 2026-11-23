@@ -14,7 +14,7 @@
     ],
     "total_cost_usd": 0.0,
     "total_judge_cost_usd": 0.0,
-    "mean_latency_s": 0.038704
+    "mean_latency_s": 0.065894
   },
   "gate_result": {
     "decision": "go",
@@ -104,7 +104,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0424,
+          "latency_s": 0.0573,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -270,7 +270,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0404,
+          "latency_s": 0.054,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -443,7 +443,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0389,
+          "latency_s": 0.0542,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -616,7 +616,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0412,
+          "latency_s": 0.0691,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -789,7 +789,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0382,
+          "latency_s": 0.0932,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -962,7 +962,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.047,
+          "latency_s": 0.0878,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -1161,7 +1161,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0408,
+          "latency_s": 0.0851,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -1352,7 +1352,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0448,
+          "latency_s": 0.0901,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -1504,7 +1504,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0414,
+          "latency_s": 0.0876,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -1688,7 +1688,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0524,
+          "latency_s": 0.0892,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -1872,7 +1872,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0602,
+          "latency_s": 0.0976,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -2053,7 +2053,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0431,
+          "latency_s": 0.09,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -2278,7 +2278,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0481,
+          "latency_s": 0.0875,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -2446,7 +2446,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0424,
+          "latency_s": 0.0939,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -2627,7 +2627,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0421,
+          "latency_s": 0.0911,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -2839,7 +2839,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0421,
+          "latency_s": 0.0842,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -2999,7 +2999,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0207,
+          "latency_s": 0.0248,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -3059,7 +3059,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0232,
+          "latency_s": 0.0257,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -3119,7 +3119,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0212,
+          "latency_s": 0.0239,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -3179,7 +3179,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0215,
+          "latency_s": 0.0253,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -3287,7 +3287,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0196,
+          "latency_s": 0.0236,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -3347,7 +3347,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0214,
+          "latency_s": 0.0277,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -3407,7 +3407,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0436,
+          "latency_s": 0.0597,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -3551,7 +3551,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0452,
+          "latency_s": 0.0618,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -3695,7 +3695,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0458,
+          "latency_s": 0.0626,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {

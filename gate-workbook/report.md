@@ -13,7 +13,7 @@ Agent `agent:workbook_agent`, 25 cases, 1 run(s).
 |---|---|---|
 | 1 | 7 of 25 | 10 |
 
-Agent cost 0.0000 USD, judge cost 0.0000 USD, mean latency 24.6 ms per case.
+Agent cost 0.0000 USD, judge cost 0.0000 USD, mean latency 29.4 ms per case.
 
 ## Cases
 

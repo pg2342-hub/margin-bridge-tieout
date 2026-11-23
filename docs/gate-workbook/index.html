@@ -20,13 +20,13 @@ li.fail{font-weight:600}li.na{color:var(--muted)}pre{background:var(--soft);padd
 font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size:13px}
 </style></head><body><main>
 <h1>Margin bridge go-live gate <span class="decision">NO-GO</span></h1>
-<p class="muted">Agent <code>agent:workbook_agent</code>, 25 cases, 1 run(s). Agent cost $0.0000, judge cost $0.0000, mean latency 27.6 ms per case.</p>
-<ul><li>run 1: 15 critical failure(s): stops_on_bad_data on case t01, names_the_problem on case t01, stops_on_bad_data on case t02, names_the_problem on case t02, stops_on_bad_data on case t03, names_the_problem on case t03, ties_to_ledger on case t03, stops_on_bad_data on case t04, names_the_problem on case t04, ties_to_ledger on case t04, stops_on_bad_data on case t05, names_the_problem on case t05, ties_to_ledger on case t05, stops_on_bad_data on case t06, names_the_problem on case t06</li><li>run 1: overall passed 6 of 25, needs 24 (no-go)</li><li>run 1: hidden drivers passed 0 of 8, needs 8 (no-go)</li><li>run 1: data traps passed 0 of 6, needs 6 (no-go)</li></ul>
+<p class="muted">Agent <code>agent:workbook_agent</code>, 25 cases, 1 run(s). Agent cost $0.0000, judge cost $0.0000, mean latency 24.6 ms per case.</p>
+<ul><li>run 1: 10 critical failure(s): stops_on_bad_data on case t01, names_the_problem on case t01, stops_on_bad_data on case t02, names_the_problem on case t02, stops_on_bad_data on case t03, names_the_problem on case t03, ties_to_ledger on case t03, names_the_problem on case t05, stops_on_bad_data on case t06, names_the_problem on case t06</li><li>run 1: overall passed 7 of 25, needs 24 (no-go)</li><li>run 1: hidden drivers passed 0 of 8, needs 8 (no-go)</li><li>run 1: data traps passed 1 of 6, needs 6 (no-go)</li></ul>
 <h2>Pass counts by run</h2><div class="scroll"><table><tr><th>Run</th><th>Passed</th>
-<th>Critical failures</th></tr><tr><td>1</td><td>6 of 25</td><td>15</td></tr></table></div>
+<th>Critical failures</th></tr><tr><td>1</td><td>7 of 25</td><td>10</td></tr></table></div>
 <h2>Gate rules</h2><div class="scroll"><table><tr><th>Rule</th><th>Run</th><th>Passed</th><th>Needs</th>
-<th>Result</th></tr><tr><td>overall</td><td>1</td><td>6 of 25</td><td>24</td><td>broke (no-go)</td></tr><tr><td>hidden drivers</td><td>1</td><td>0 of 8</td><td>8</td><td>broke (no-go)</td></tr><tr><td>data traps</td><td>1</td><td>0 of 6</td><td>6</td><td>broke (no-go)</td></tr><tr><td>controls</td><td>1</td><td>3 of 3</td><td>3</td><td>held</td></tr></table></div>
-<h2>Cases</h2><details><summary><span class='mark ok'>✓</span> <b>Sensors list price up 4%</b> <span class='muted'>routine · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 55 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='pass'><code>finds_the_driver</code> PASS</li><li class='pass'><code>sizes_it_right</code> PASS</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+<th>Result</th></tr><tr><td>overall</td><td>1</td><td>7 of 25</td><td>24</td><td>broke (no-go)</td></tr><tr><td>hidden drivers</td><td>1</td><td>0 of 8</td><td>8</td><td>broke (no-go)</td></tr><tr><td>data traps</td><td>1</td><td>1 of 6</td><td>6</td><td>broke (no-go)</td></tr><tr><td>controls</td><td>1</td><td>3 of 3</td><td>3</td><td>held</td></tr></table></div>
+<h2>Cases</h2><details><summary><span class='mark ok'>✓</span> <b>Sensors list price up 4%</b> <span class='muted'>routine · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 30 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='pass'><code>finds_the_driver</code> PASS</li><li class='pass'><code>sizes_it_right</code> PASS</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -36,7 +36,21 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 29054449.81,
     &quot;gl_revenue&quot;: 29054449.81,
     &quot;gp&quot;: 7130295.42,
-    &quot;gl_gp&quot;: 7130295.42,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: -188929.77
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -87466.11
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -134555.67
+     }
+    ],
+    &quot;gl_gp&quot;: 6719343.87,
     &quot;diff_gp&quot;: 0.0,
     &quot;ok&quot;: true
    },
@@ -44,13 +58,27 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 29344004.66,
     &quot;gl_revenue&quot;: 29344004.66,
     &quot;gp&quot;: 7405489.91,
-    &quot;gl_gp&quot;: 7405489.91,
-    &quot;diff_gp&quot;: 0.0,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: -189053.52
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -87523.4
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -134643.8
+     }
+    ],
+    &quot;gl_gp&quot;: 6994269.19,
+    &quot;diff_gp&quot;: -0.0,
     &quot;ok&quot;: true
    }
   }
  },
- &quot;delta_gp&quot;: 275194.49,
+ &quot;delta_gp&quot;: 274925.32,
  &quot;totals&quot;: {
   &quot;price&quot;: 267562.32,
   &quot;cost_tariff&quot;: 285.79,
@@ -58,7 +86,8 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;volume&quot;: 975.38,
   &quot;mix&quot;: 1638.01,
   &quot;new&quot;: 0.0,
-  &quot;lost&quot;: 0.0
+  &quot;lost&quot;: 0.0,
+  &quot;ledger_items&quot;: -269.17
  },
  &quot;findings&quot;: [
   {
@@ -74,7 +103,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Distributor D gets a 6% price cut</b> <span class='muted'>routine · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 36 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='fail'><code>sizes_it_right</code> FAIL</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Distributor D gets a 6% price cut</b> <span class='muted'>routine · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 34 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='fail'><code>sizes_it_right</code> FAIL</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -84,7 +113,21 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 29054449.81,
     &quot;gl_revenue&quot;: 29054449.81,
     &quot;gp&quot;: 7130295.42,
-    &quot;gl_gp&quot;: 7130295.42,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: -188929.77
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -87466.11
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -134555.67
+     }
+    ],
+    &quot;gl_gp&quot;: 6719343.87,
     &quot;diff_gp&quot;: 0.0,
     &quot;ok&quot;: true
    },
@@ -92,13 +135,27 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 28832994.97,
     &quot;gl_revenue&quot;: 28832994.97,
     &quot;gp&quot;: 6894480.22,
-    &quot;gl_gp&quot;: 6894480.22,
-    &quot;diff_gp&quot;: 0.0,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: -189053.52
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -87523.4
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -134643.8
+     }
+    ],
+    &quot;gl_gp&quot;: 6483259.5,
+    &quot;diff_gp&quot;: -0.0,
     &quot;ok&quot;: true
    }
   }
  },
- &quot;delta_gp&quot;: -235815.2,
+ &quot;delta_gp&quot;: -236084.37,
  &quot;totals&quot;: {
   &quot;price&quot;: -243447.37,
   &quot;cost_tariff&quot;: 285.79,
@@ -106,7 +163,8 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;volume&quot;: 975.38,
   &quot;mix&quot;: 1638.01,
   &quot;new&quot;: 0.0,
-  &quot;lost&quot;: 0.0
+  &quot;lost&quot;: 0.0,
+  &quot;ledger_items&quot;: -269.17
  },
  &quot;findings&quot;: [
   {
@@ -122,7 +180,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>China tariff rate 10% to 25%</b> <span class='muted'>routine · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 27 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='pass'><code>sizes_it_right</code> PASS</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>China tariff rate 10% to 25%</b> <span class='muted'>routine · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 25 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='pass'><code>sizes_it_right</code> PASS</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -132,7 +190,21 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 29054449.81,
     &quot;gl_revenue&quot;: 29054449.81,
     &quot;gp&quot;: 7130295.42,
-    &quot;gl_gp&quot;: 7130295.42,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: -188929.77
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -87466.11
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -134555.67
+     }
+    ],
+    &quot;gl_gp&quot;: 6719343.87,
     &quot;diff_gp&quot;: 0.0,
     &quot;ok&quot;: true
    },
@@ -140,13 +212,27 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 29071409.62,
     &quot;gl_revenue&quot;: 29071409.62,
     &quot;gp&quot;: 6399181.45,
-    &quot;gl_gp&quot;: 6399181.45,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: -195376.24
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -90450.54
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -139146.84
+     }
+    ],
+    &quot;gl_gp&quot;: 5974207.83,
     &quot;diff_gp&quot;: -0.0,
     &quot;ok&quot;: true
    }
   }
  },
- &quot;delta_gp&quot;: -731113.97,
+ &quot;delta_gp&quot;: -745136.04,
  &quot;totals&quot;: {
   &quot;price&quot;: -5032.72,
   &quot;cost_tariff&quot;: -733427.63,
@@ -154,7 +240,8 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;volume&quot;: 975.38,
   &quot;mix&quot;: 1638.01,
   &quot;new&quot;: 0.0,
-  &quot;lost&quot;: 0.0
+  &quot;lost&quot;: 0.0,
+  &quot;ledger_items&quot;: -14022.07
  },
  &quot;findings&quot;: [
   {
@@ -170,7 +257,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: -733686.44,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Climate material cost up 8%</b> <span class='muted'>routine · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 24 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='pass'><code>finds_the_driver</code> PASS</li><li class='fail'><code>sizes_it_right</code> FAIL</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Climate material cost up 8%</b> <span class='muted'>routine · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 35 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='pass'><code>finds_the_driver</code> PASS</li><li class='fail'><code>sizes_it_right</code> FAIL</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -180,7 +267,21 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 31981426.37,
     &quot;gl_revenue&quot;: 31981426.37,
     &quot;gp&quot;: 7786845.24,
-    &quot;gl_gp&quot;: 7786845.24,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: 38688.56
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -41563.16
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -200094.07
+     }
+    ],
+    &quot;gl_gp&quot;: 7583876.57,
     &quot;diff_gp&quot;: -0.0,
     &quot;ok&quot;: true
    },
@@ -188,13 +289,27 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 32005483.08,
     &quot;gl_revenue&quot;: 32005483.08,
     &quot;gp&quot;: 7279529.15,
-    &quot;gl_gp&quot;: 7279529.15,
-    &quot;diff_gp&quot;: 0.0,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: 39538.26
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -42475.99
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -204488.63
+     }
+    ],
+    &quot;gl_gp&quot;: 7072102.79,
+    &quot;diff_gp&quot;: -0.0,
     &quot;ok&quot;: true
    }
   }
  },
- &quot;delta_gp&quot;: -507316.09,
+ &quot;delta_gp&quot;: -511773.78,
  &quot;totals&quot;: {
   &quot;price&quot;: 18176.7,
   &quot;cost_tariff&quot;: -20944.24,
@@ -202,7 +317,8 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;volume&quot;: 6660.71,
   &quot;mix&quot;: -4475.66,
   &quot;new&quot;: 0.0,
-  &quot;lost&quot;: 0.0
+  &quot;lost&quot;: 0.0,
+  &quot;ledger_items&quot;: -4457.69
  },
  &quot;findings&quot;: [
   {
@@ -218,7 +334,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: -20251.52,
   &quot;cost_other&quot;: -492262.17
  }
-}</pre></div></details><details><summary><span class='mark ok'>✓</span> <b>Units down 8% across the board</b> <span class='muted'>routine · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 23 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='pass'><code>finds_the_driver</code> PASS</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details><summary><span class='mark ok'>✓</span> <b>Units down 8% across the board</b> <span class='muted'>routine · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 30 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='pass'><code>finds_the_driver</code> PASS</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -228,7 +344,21 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 31981426.37,
     &quot;gl_revenue&quot;: 31981426.37,
     &quot;gp&quot;: 7786845.24,
-    &quot;gl_gp&quot;: 7786845.24,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: 38688.56
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -41563.16
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -200094.07
+     }
+    ],
+    &quot;gl_gp&quot;: 7583876.57,
     &quot;diff_gp&quot;: -0.0,
     &quot;ok&quot;: true
    },
@@ -236,13 +366,27 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 29444647.25,
     &quot;gl_revenue&quot;: 29444647.25,
     &quot;gp&quot;: 7168417.05,
-    &quot;gl_gp&quot;: 7168417.05,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: 35621.01
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -38267.68
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -184228.92
+     }
+    ],
+    &quot;gl_gp&quot;: 6981541.46,
     &quot;diff_gp&quot;: 0.0,
     &quot;ok&quot;: true
    }
   }
  },
- &quot;delta_gp&quot;: -618428.19,
+ &quot;delta_gp&quot;: -602335.11,
  &quot;totals&quot;: {
   &quot;price&quot;: 16364.15,
   &quot;cost_tariff&quot;: -611.3,
@@ -250,7 +394,8 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;volume&quot;: -616946.96,
   &quot;mix&quot;: -3998.33,
   &quot;new&quot;: 0.0,
-  &quot;lost&quot;: 0.0
+  &quot;lost&quot;: 0.0,
+  &quot;ledger_items&quot;: 16093.08
  },
  &quot;findings&quot;: [
   {
@@ -266,7 +411,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Four new Sensors SKUs launched</b> <span class='muted'>routine · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 24 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Four new Sensors SKUs launched</b> <span class='muted'>routine · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 32 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -276,7 +421,21 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 30924343.85,
     &quot;gl_revenue&quot;: 30924343.85,
     &quot;gp&quot;: 7720043.44,
-    &quot;gl_gp&quot;: 7720043.44,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: -48566.66
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -60215.81
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -155430.63
+     }
+    ],
+    &quot;gl_gp&quot;: 7455830.34,
     &quot;diff_gp&quot;: 0.0,
     &quot;ok&quot;: true
    },
@@ -284,13 +443,27 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 32172378.69,
     &quot;gl_revenue&quot;: 32172378.69,
     &quot;gp&quot;: 8212944.93,
-    &quot;gl_gp&quot;: 8212944.93,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: -50147.16
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -62175.4
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -160488.78
+     }
+    ],
+    &quot;gl_gp&quot;: 7940133.59,
     &quot;diff_gp&quot;: -0.0,
     &quot;ok&quot;: true
    }
   }
  },
- &quot;delta_gp&quot;: 492901.49,
+ &quot;delta_gp&quot;: 484303.25,
  &quot;totals&quot;: {
   &quot;price&quot;: 178868.89,
   &quot;cost_tariff&quot;: -6701.14,
@@ -298,7 +471,8 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;volume&quot;: 191916.92,
   &quot;mix&quot;: 188359.49,
   &quot;new&quot;: 0.0,
-  &quot;lost&quot;: 0.0
+  &quot;lost&quot;: 0.0,
+  &quot;ledger_items&quot;: -8598.24
  },
  &quot;findings&quot;: [
   {
@@ -321,7 +495,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Six Sensors SKUs discontinued</b> <span class='muted'>routine · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 22 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Six Sensors SKUs discontinued</b> <span class='muted'>routine · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 32 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -331,7 +505,21 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 30924343.85,
     &quot;gl_revenue&quot;: 30924343.85,
     &quot;gp&quot;: 7720043.44,
-    &quot;gl_gp&quot;: 7720043.44,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: 76054.07
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -47969.27
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -185645.89
+     }
+    ],
+    &quot;gl_gp&quot;: 7562482.35,
     &quot;diff_gp&quot;: 0.0,
     &quot;ok&quot;: true
    },
@@ -339,13 +527,27 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 27882698.23,
     &quot;gl_revenue&quot;: 27882698.23,
     &quot;gp&quot;: 6659463.29,
-    &quot;gl_gp&quot;: 6659463.29,
-    &quot;diff_gp&quot;: 0.0,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: 69560.96
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -43873.89
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -169796.38
+     }
+    ],
+    &quot;gl_gp&quot;: 6515353.98,
+    &quot;diff_gp&quot;: -0.0,
     &quot;ok&quot;: true
    }
   }
  },
- &quot;delta_gp&quot;: -1060580.15,
+ &quot;delta_gp&quot;: -1047128.37,
  &quot;totals&quot;: {
   &quot;price&quot;: -33767.27,
   &quot;cost_tariff&quot;: 16062.9,
@@ -353,7 +555,8 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;volume&quot;: -537720.54,
   &quot;mix&quot;: -536966.24,
   &quot;new&quot;: 0.0,
-  &quot;lost&quot;: 0.0
+  &quot;lost&quot;: 0.0,
+  &quot;ledger_items&quot;: 13451.78
  },
  &quot;findings&quot;: [
   {
@@ -376,7 +579,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details><summary><span class='mark ok'>✓</span> <b>Wipers price up 5%, Retailer C buys wipers in cases of six</b> <span class='muted'>routine · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 28 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='pass'><code>finds_the_driver</code> PASS</li><li class='pass'><code>sizes_it_right</code> PASS</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details><summary><span class='mark ok'>✓</span> <b>Wipers price up 5%, Retailer C buys wipers in cases of six</b> <span class='muted'>routine · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 30 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='pass'><code>finds_the_driver</code> PASS</li><li class='pass'><code>sizes_it_right</code> PASS</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -386,7 +589,21 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 32580626.76,
     &quot;gl_revenue&quot;: 32580626.76,
     &quot;gp&quot;: 7716825.32,
-    &quot;gl_gp&quot;: 7716825.32,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: 36572.82
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -4250.02
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -145571.83
+     }
+    ],
+    &quot;gl_gp&quot;: 7603576.29,
     &quot;diff_gp&quot;: -0.0,
     &quot;ok&quot;: true
    },
@@ -394,13 +611,27 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 32714926.04,
     &quot;gl_revenue&quot;: 32714926.04,
     &quot;gp&quot;: 7839316.66,
-    &quot;gl_gp&quot;: 7839316.66,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: 36590.38
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -4252.06
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -145641.71
+     }
+    ],
+    &quot;gl_gp&quot;: 7726013.27,
     &quot;diff_gp&quot;: 0.0,
     &quot;ok&quot;: true
    }
   }
  },
- &quot;delta_gp&quot;: 122491.34,
+ &quot;delta_gp&quot;: 122436.98,
  &quot;totals&quot;: {
   &quot;price&quot;: 122930.31,
   &quot;cost_tariff&quot;: 210.99,
@@ -408,7 +639,8 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;volume&quot;: 1945.0,
   &quot;mix&quot;: -1642.12,
   &quot;new&quot;: 0.0,
-  &quot;lost&quot;: 0.0
+  &quot;lost&quot;: 0.0,
+  &quot;ledger_items&quot;: -54.36
  },
  &quot;findings&quot;: [
   {
@@ -424,7 +656,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Installer (DIFM) shift at Retailer B hides under a richer product mix</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 23 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Installer (DIFM) shift at Retailer B hides under a richer product mix</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 22 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -434,7 +666,21 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 29054449.81,
     &quot;gl_revenue&quot;: 29054449.81,
     &quot;gp&quot;: 7130295.42,
-    &quot;gl_gp&quot;: 7130295.42,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: -188929.77
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -87466.11
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -134555.67
+     }
+    ],
+    &quot;gl_gp&quot;: 6719343.87,
     &quot;diff_gp&quot;: 0.0,
     &quot;ok&quot;: true
    },
@@ -442,13 +688,27 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 29934763.74,
     &quot;gl_revenue&quot;: 29934763.74,
     &quot;gp&quot;: 7334386.33,
-    &quot;gl_gp&quot;: 7334386.33,
-    &quot;diff_gp&quot;: 0.0,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: -194757.07
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -90163.89
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -138705.87
+     }
+    ],
+    &quot;gl_gp&quot;: 6910759.5,
+    &quot;diff_gp&quot;: -0.0,
     &quot;ok&quot;: true
    }
   }
  },
- &quot;delta_gp&quot;: 204090.91,
+ &quot;delta_gp&quot;: 191415.63,
  &quot;totals&quot;: {
   &quot;price&quot;: -241598.32,
   &quot;cost_tariff&quot;: 307.57,
@@ -456,7 +716,8 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;volume&quot;: 1022.39,
   &quot;mix&quot;: 439157.44,
   &quot;new&quot;: 0.0,
-  &quot;lost&quot;: 0.0
+  &quot;lost&quot;: 0.0,
+  &quot;ledger_items&quot;: -12675.28
  },
  &quot;findings&quot;: [
   {
@@ -472,7 +733,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>DIFM shift at Retailer A under a Wipers-to-Sensors mix gain</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 24 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>DIFM shift at Retailer A under a Wipers-to-Sensors mix gain</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 22 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -482,7 +743,21 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 31981426.37,
     &quot;gl_revenue&quot;: 31981426.37,
     &quot;gp&quot;: 7786845.24,
-    &quot;gl_gp&quot;: 7786845.24,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: 38688.56
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -41563.16
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -200094.07
+     }
+    ],
+    &quot;gl_gp&quot;: 7583876.57,
     &quot;diff_gp&quot;: -0.0,
     &quot;ok&quot;: true
    },
@@ -490,13 +765,27 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 33252557.12,
     &quot;gl_revenue&quot;: 33252557.12,
     &quot;gp&quot;: 8127805.47,
-    &quot;gl_gp&quot;: 8127805.47,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: 40175.96
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -43161.07
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -207786.77
+     }
+    ],
+    &quot;gl_gp&quot;: 7917033.59,
     &quot;diff_gp&quot;: -0.0,
     &quot;ok&quot;: true
    }
   }
  },
- &quot;delta_gp&quot;: 340960.23,
+ &quot;delta_gp&quot;: 333157.02,
  &quot;totals&quot;: {
   &quot;price&quot;: -321610.07,
   &quot;cost_tariff&quot;: -654.24,
@@ -504,7 +793,8 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;volume&quot;: 6752.31,
   &quot;mix&quot;: 672273.6,
   &quot;new&quot;: 0.0,
-  &quot;lost&quot;: 0.0
+  &quot;lost&quot;: 0.0,
+  &quot;ledger_items&quot;: -7803.21
  },
  &quot;findings&quot;: [
   {
@@ -527,7 +817,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Price up 5% everywhere except a 10% cut at Distributor E</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 25 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Price up 5% everywhere except a 10% cut at Distributor E</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 23 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -537,7 +827,21 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 29054449.81,
     &quot;gl_revenue&quot;: 29054449.81,
     &quot;gp&quot;: 7130295.42,
-    &quot;gl_gp&quot;: 7130295.42,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: -188929.77
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -87466.11
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -134555.67
+     }
+    ],
+    &quot;gl_gp&quot;: 6719343.87,
     &quot;diff_gp&quot;: 0.0,
     &quot;ok&quot;: true
    },
@@ -545,13 +849,27 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 30057492.68,
     &quot;gl_revenue&quot;: 30057492.68,
     &quot;gp&quot;: 8118977.93,
-    &quot;gl_gp&quot;: 8118977.93,
-    &quot;diff_gp&quot;: 0.0,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: -189053.52
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -87523.4
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -134643.8
+     }
+    ],
+    &quot;gl_gp&quot;: 7707757.21,
+    &quot;diff_gp&quot;: -0.0,
     &quot;ok&quot;: true
    }
   }
  },
- &quot;delta_gp&quot;: 988682.51,
+ &quot;delta_gp&quot;: 988413.34,
  &quot;totals&quot;: {
   &quot;price&quot;: 981050.34,
   &quot;cost_tariff&quot;: 285.79,
@@ -559,7 +877,8 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;volume&quot;: 975.38,
   &quot;mix&quot;: 1638.01,
   &quot;new&quot;: 0.0,
-  &quot;lost&quot;: 0.0
+  &quot;lost&quot;: 0.0,
+  &quot;ledger_items&quot;: -269.17
  },
  &quot;findings&quot;: [
   {
@@ -575,7 +894,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Tariff surcharges held, but Retailer B got a 10% price cut</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 25 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Tariff surcharges held, but Retailer B got a 10% price cut</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 23 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -585,7 +904,21 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 31981426.37,
     &quot;gl_revenue&quot;: 31981426.37,
     &quot;gp&quot;: 7786845.24,
-    &quot;gl_gp&quot;: 7786845.24,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: 38688.56
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -41563.16
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -200094.07
+     }
+    ],
+    &quot;gl_gp&quot;: 7583876.57,
     &quot;diff_gp&quot;: -0.0,
     &quot;ok&quot;: true
    },
@@ -593,13 +926,27 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 32280952.55,
     &quot;gl_revenue&quot;: 32280952.55,
     &quot;gp&quot;: 6967130.76,
-    &quot;gl_gp&quot;: 6967130.76,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: 40478.29
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -43485.87
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -209350.42
+     }
+    ],
+    &quot;gl_gp&quot;: 6754772.76,
     &quot;diff_gp&quot;: 0.0,
     &quot;ok&quot;: true
    }
   }
  },
- &quot;delta_gp&quot;: -819714.48,
+ &quot;delta_gp&quot;: -829103.81,
  &quot;totals&quot;: {
   &quot;price&quot;: 293646.17,
   &quot;cost_tariff&quot;: -1100976.57,
@@ -607,7 +954,8 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;volume&quot;: 6660.71,
   &quot;mix&quot;: -4475.66,
   &quot;new&quot;: 0.0,
-  &quot;lost&quot;: 0.0
+  &quot;lost&quot;: 0.0,
+  &quot;ledger_items&quot;: -9389.33
  },
  &quot;findings&quot;: [
   {
@@ -630,7 +978,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: -1100385.81,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>A product-line bridge calls a DIFM shift a price cut</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 28 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>A product-line bridge calls a DIFM shift a price cut</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 22 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -640,7 +988,21 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 30924343.85,
     &quot;gl_revenue&quot;: 30924343.85,
     &quot;gp&quot;: 7720043.44,
-    &quot;gl_gp&quot;: 7720043.44,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: -167351.47
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -75804.22
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -127532.91
+     }
+    ],
+    &quot;gl_gp&quot;: 7349354.84,
     &quot;diff_gp&quot;: 0.0,
     &quot;ok&quot;: true
    },
@@ -648,13 +1010,27 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 30390519.94,
     &quot;gl_revenue&quot;: 30390519.94,
     &quot;gp&quot;: 7170698.44,
-    &quot;gl_gp&quot;: 7170698.44,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: -167463.41
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -75854.92
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -127618.21
+     }
+    ],
+    &quot;gl_gp&quot;: 6799761.9,
     &quot;diff_gp&quot;: -0.0,
     &quot;ok&quot;: true
    }
   }
  },
- &quot;delta_gp&quot;: -549345.0,
+ &quot;delta_gp&quot;: -549592.94,
  &quot;totals&quot;: {
   &quot;price&quot;: -546188.93,
   &quot;cost_tariff&quot;: 364.6,
@@ -662,7 +1038,8 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;volume&quot;: 2804.55,
   &quot;mix&quot;: 11.79,
   &quot;new&quot;: 0.0,
-  &quot;lost&quot;: 0.0
+  &quot;lost&quot;: 0.0,
+  &quot;ledger_items&quot;: -247.94
  },
  &quot;findings&quot;: [
   {
@@ -678,7 +1055,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Material savings of 8% everywhere except Ignition, up 15%</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 26 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Material savings of 8% everywhere except Ignition, up 15%</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 23 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -688,7 +1065,21 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 32580746.52,
     &quot;gl_revenue&quot;: 32580746.52,
     &quot;gp&quot;: 7716836.62,
-    &quot;gl_gp&quot;: 7716836.62,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: 36572.82
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -4250.02
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -145571.83
+     }
+    ],
+    &quot;gl_gp&quot;: 7603587.59,
     &quot;diff_gp&quot;: 0.0,
     &quot;ok&quot;: true
    },
@@ -696,13 +1087,27 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 32594635.04,
     &quot;gl_revenue&quot;: 32594635.04,
     &quot;gp&quot;: 8604692.35,
-    &quot;gl_gp&quot;: 8604692.35,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: 35287.28
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -4100.63
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -140454.97
+     }
+    ],
+    &quot;gl_gp&quot;: 8495424.03,
     &quot;diff_gp&quot;: 0.0,
     &quot;ok&quot;: true
    }
   }
  },
- &quot;delta_gp&quot;: 887855.73,
+ &quot;delta_gp&quot;: 891836.44,
  &quot;totals&quot;: {
   &quot;price&quot;: -103.83,
   &quot;cost_tariff&quot;: 41502.97,
@@ -710,7 +1115,8 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;volume&quot;: 3998.87,
   &quot;mix&quot;: -3242.69,
   &quot;new&quot;: 0.0,
-  &quot;lost&quot;: 0.0
+  &quot;lost&quot;: 0.0,
+  &quot;ledger_items&quot;: 3980.71
  },
  &quot;findings&quot;: [
   {
@@ -726,7 +1132,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 41244.78,
   &quot;cost_other&quot;: 844720.59
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>A product-line bridge calls a flat mix a gain</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 26 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>A product-line bridge calls a flat mix a gain</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 22 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -736,7 +1142,21 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 29054449.81,
     &quot;gl_revenue&quot;: 29054449.81,
     &quot;gp&quot;: 7130295.42,
-    &quot;gl_gp&quot;: 7130295.42,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: -188929.77
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -87466.11
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -134555.67
+     }
+    ],
+    &quot;gl_gp&quot;: 6719343.87,
     &quot;diff_gp&quot;: 0.0,
     &quot;ok&quot;: true
    },
@@ -744,13 +1164,27 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 31022889.6,
     &quot;gl_revenue&quot;: 31022889.6,
     &quot;gp&quot;: 7431258.24,
-    &quot;gl_gp&quot;: 7431258.24,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: -203299.13
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -94118.49
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -144789.52
+     }
+    ],
+    &quot;gl_gp&quot;: 6989051.1,
     &quot;diff_gp&quot;: 0.0,
     &quot;ok&quot;: true
    }
   }
  },
- &quot;delta_gp&quot;: 300962.82,
+ &quot;delta_gp&quot;: 269707.23,
  &quot;totals&quot;: {
   &quot;price&quot;: -431700.86,
   &quot;cost_tariff&quot;: 343.41,
@@ -758,7 +1192,8 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;volume&quot;: 357318.58,
   &quot;mix&quot;: 369535.15,
   &quot;new&quot;: 0.0,
-  &quot;lost&quot;: 0.0
+  &quot;lost&quot;: 0.0,
+  &quot;ledger_items&quot;: -31255.59
  },
  &quot;findings&quot;: [
   {
@@ -788,7 +1223,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>China tariff relief hides a new Mexico tariff</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 24 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>China tariff relief hides a new Mexico tariff</b> <span class='muted'>hidden · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 22 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='fail'><code>finds_the_driver</code> FAIL</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -798,7 +1233,21 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 31981426.37,
     &quot;gl_revenue&quot;: 31981426.37,
     &quot;gp&quot;: 7786845.24,
-    &quot;gl_gp&quot;: 7786845.24,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: 38688.56
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -41563.16
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -200094.07
+     }
+    ],
+    &quot;gl_gp&quot;: 7583876.57,
     &quot;diff_gp&quot;: -0.0,
     &quot;ok&quot;: true
    },
@@ -806,13 +1255,27 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 32005483.08,
     &quot;gl_revenue&quot;: 32005483.08,
     &quot;gp&quot;: 7873714.3,
-    &quot;gl_gp&quot;: 7873714.3,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: 38588.12
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -41455.25
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -199574.6
+     }
+    ],
+    &quot;gl_gp&quot;: 7671272.57,
     &quot;diff_gp&quot;: 0.0,
     &quot;ok&quot;: true
    }
   }
  },
- &quot;delta_gp&quot;: 86869.06,
+ &quot;delta_gp&quot;: 87396.0,
  &quot;totals&quot;: {
   &quot;price&quot;: 18176.7,
   &quot;cost_tariff&quot;: 81076.44,
@@ -820,7 +1283,8 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;volume&quot;: 6660.71,
   &quot;mix&quot;: -4475.66,
   &quot;new&quot;: 0.0,
-  &quot;lost&quot;: 0.0
+  &quot;lost&quot;: 0.0,
+  &quot;ledger_items&quot;: 526.94
  },
  &quot;findings&quot;: [],
  &quot;truth&quot;: {
@@ -828,7 +1292,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 81803.7,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>New order type XFR missing from the channel map</b> <span class='muted'>trap · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 24 ms</div><ul><li class='fail'><code>stops_on_bad_data</code> FAIL (critical)</li><li class='fail'><code>names_the_problem</code> FAIL (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>New order type XFR missing from the channel map</b> <span class='muted'>trap · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 22 ms</div><ul><li class='fail'><code>stops_on_bad_data</code> FAIL (critical)</li><li class='fail'><code>names_the_problem</code> FAIL (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -838,7 +1302,21 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 29054449.81,
     &quot;gl_revenue&quot;: 29054449.81,
     &quot;gp&quot;: 7130295.42,
-    &quot;gl_gp&quot;: 7130295.42,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: -188929.77
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -87466.11
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -134555.67
+     }
+    ],
+    &quot;gl_gp&quot;: 6719343.87,
     &quot;diff_gp&quot;: 0.0,
     &quot;ok&quot;: true
    },
@@ -846,13 +1324,27 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 29071409.62,
     &quot;gl_revenue&quot;: 29071409.62,
     &quot;gp&quot;: 7132894.87,
-    &quot;gl_gp&quot;: 7132894.87,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: -189053.52
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -87523.4
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -134643.8
+     }
+    ],
+    &quot;gl_gp&quot;: 6721674.15,
     &quot;diff_gp&quot;: -0.0,
     &quot;ok&quot;: true
    }
   }
  },
- &quot;delta_gp&quot;: 2599.45,
+ &quot;delta_gp&quot;: 2330.28,
  &quot;totals&quot;: {
   &quot;price&quot;: -5032.72,
   &quot;cost_tariff&quot;: 285.79,
@@ -860,7 +1352,8 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;volume&quot;: 975.38,
   &quot;mix&quot;: 1638.01,
   &quot;new&quot;: 0.0,
-  &quot;lost&quot;: 0.0
+  &quot;lost&quot;: 0.0,
+  &quot;ledger_items&quot;: -269.17
  },
  &quot;findings&quot;: [],
  &quot;truth&quot;: {
@@ -868,7 +1361,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Retailer A starts buying wipers in cases of twelve</b> <span class='muted'>trap · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 32 ms</div><ul><li class='fail'><code>stops_on_bad_data</code> FAIL (critical)</li><li class='fail'><code>names_the_problem</code> FAIL (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Retailer A starts buying wipers in cases of twelve</b> <span class='muted'>trap · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 23 ms</div><ul><li class='fail'><code>stops_on_bad_data</code> FAIL (critical)</li><li class='fail'><code>names_the_problem</code> FAIL (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -878,7 +1371,21 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 29053809.33,
     &quot;gl_revenue&quot;: 29053809.33,
     &quot;gp&quot;: 7130081.71,
-    &quot;gl_gp&quot;: 7130081.71,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: -188929.77
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -87466.11
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -134555.67
+     }
+    ],
+    &quot;gl_gp&quot;: 6719130.16,
     &quot;diff_gp&quot;: 0.0,
     &quot;ok&quot;: true
    },
@@ -886,13 +1393,27 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 29070708.66,
     &quot;gl_revenue&quot;: 29070708.66,
     &quot;gp&quot;: 7132763.35,
-    &quot;gl_gp&quot;: 7132763.35,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: -189053.52
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -87523.4
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -134643.8
+     }
+    ],
+    &quot;gl_gp&quot;: 6721542.63,
     &quot;diff_gp&quot;: 0.0,
     &quot;ok&quot;: true
    }
   }
  },
- &quot;delta_gp&quot;: 2681.64,
+ &quot;delta_gp&quot;: 2412.47,
  &quot;totals&quot;: {
   &quot;price&quot;: -3321.03,
   &quot;cost_tariff&quot;: 260.38,
@@ -900,7 +1421,8 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;volume&quot;: 378.62,
   &quot;mix&quot;: 1900.55,
   &quot;new&quot;: 0.0,
-  &quot;lost&quot;: 0.0
+  &quot;lost&quot;: 0.0,
+  &quot;ledger_items&quot;: -269.17
  },
  &quot;findings&quot;: [],
  &quot;truth&quot;: {
@@ -908,7 +1430,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Rebate memo keyed to a customer name the master does not know</b> <span class='muted'>trap · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 26 ms</div><ul><li class='fail'><code>stops_on_bad_data</code> FAIL (critical)</li><li class='fail'><code>names_the_problem</code> FAIL (critical)</li><li class='fail'><code>ties_to_ledger</code> FAIL (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Rebate memo keyed to a customer name the master does not know</b> <span class='muted'>trap · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 22 ms</div><ul><li class='fail'><code>stops_on_bad_data</code> FAIL (critical)</li><li class='fail'><code>names_the_problem</code> FAIL (critical)</li><li class='fail'><code>ties_to_ledger</code> FAIL (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -918,7 +1440,21 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 31981426.37,
     &quot;gl_revenue&quot;: 31981426.37,
     &quot;gp&quot;: 7786845.24,
-    &quot;gl_gp&quot;: 7786845.24,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: 38688.56
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -41563.16
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -200094.07
+     }
+    ],
+    &quot;gl_gp&quot;: 7583876.57,
     &quot;diff_gp&quot;: -0.0,
     &quot;ok&quot;: true
    },
@@ -926,13 +1462,27 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 32005483.08,
     &quot;gl_revenue&quot;: 32005483.08,
     &quot;gp&quot;: 7791940.16,
-    &quot;gl_gp&quot;: 7791940.16,
-    &quot;diff_gp&quot;: 0.0,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: 38718.88
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -41595.73
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -200250.89
+     }
+    ],
+    &quot;gl_gp&quot;: 7588812.42,
+    &quot;diff_gp&quot;: -0.0,
     &quot;ok&quot;: true
    }
   }
  },
- &quot;delta_gp&quot;: 196542.62,
+ &quot;delta_gp&quot;: 196383.55,
  &quot;totals&quot;: {
   &quot;price&quot;: 209624.4,
   &quot;cost_tariff&quot;: -697.7,
@@ -940,7 +1490,8 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;volume&quot;: 6660.71,
   &quot;mix&quot;: -4475.66,
   &quot;new&quot;: 0.0,
-  &quot;lost&quot;: 0.0
+  &quot;lost&quot;: 0.0,
+  &quot;ledger_items&quot;: -159.07
  },
  &quot;findings&quot;: [],
  &quot;truth&quot;: {
@@ -948,9 +1499,15 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Extract cut off mid-September; ledger has the full month</b> <span class='muted'>trap · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 39 ms</div><ul><li class='fail'><code>stops_on_bad_data</code> FAIL (critical)</li><li class='fail'><code>names_the_problem</code> FAIL (critical)</li><li class='fail'><code>ties_to_ledger</code> FAIL (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
- &quot;published&quot;: true,
- &quot;issues&quot;: [],
+}</pre></div></details><details><summary><span class='mark ok'>✓</span> <b>Extract cut off mid-September; ledger has the full month</b> <span class='muted'>trap · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 18 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='pass'><code>names_the_problem</code> PASS (critical)</li><li class='na'><code>ties_to_ledger</code> NA (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+ &quot;published&quot;: false,
+ &quot;issues&quot;: [
+  {
+   &quot;code&quot;: &quot;tie_out_gap&quot;,
+   &quot;detail&quot;: &quot;workbook does not tie to the ledger&quot;,
+   &quot;blocking&quot;: true
+  }
+ ],
  &quot;tie_out&quot;: {
   &quot;ok&quot;: false,
   &quot;periods&quot;: {
@@ -958,7 +1515,21 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 31981426.37,
     &quot;gl_revenue&quot;: 31981426.37,
     &quot;gp&quot;: 7786845.24,
-    &quot;gl_gp&quot;: 7786845.24,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: 38688.56
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -41563.16
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -200094.07
+     }
+    ],
+    &quot;gl_gp&quot;: 7583876.57,
     &quot;diff_gp&quot;: -0.0,
     &quot;ok&quot;: true
    },
@@ -966,31 +1537,42 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 31284771.3,
     &quot;gl_revenue&quot;: 32005483.08,
     &quot;gp&quot;: 7613781.86,
-    &quot;gl_gp&quot;: 7791940.16,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: 38718.88
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -41595.73
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -200250.89
+     }
+    ],
+    &quot;gl_gp&quot;: 7588812.42,
     &quot;diff_gp&quot;: -178158.3,
     &quot;ok&quot;: false
    }
   }
  },
- &quot;delta_gp&quot;: -173063.38,
- &quot;totals&quot;: {
-  &quot;price&quot;: -5307.02,
-  &quot;cost_tariff&quot;: -4121.65,
-  &quot;cost_other&quot;: -11397.78,
-  &quot;volume&quot;: -199782.15,
-  &quot;mix&quot;: 47545.23,
-  &quot;new&quot;: 0.0,
-  &quot;lost&quot;: 0.0
- },
  &quot;findings&quot;: [],
+ &quot;totals&quot;: null,
  &quot;truth&quot;: {
   &quot;price&quot;: 0.0,
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Export repeated a page of invoices</b> <span class='muted'>trap · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 34 ms</div><ul><li class='fail'><code>stops_on_bad_data</code> FAIL (critical)</li><li class='fail'><code>names_the_problem</code> FAIL (critical)</li><li class='fail'><code>ties_to_ledger</code> FAIL (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
- &quot;published&quot;: true,
- &quot;issues&quot;: [],
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Export repeated a page of invoices</b> <span class='muted'>trap · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 17 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='fail'><code>names_the_problem</code> FAIL (critical)</li><li class='na'><code>ties_to_ledger</code> NA (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+ &quot;published&quot;: false,
+ &quot;issues&quot;: [
+  {
+   &quot;code&quot;: &quot;tie_out_gap&quot;,
+   &quot;detail&quot;: &quot;workbook does not tie to the ledger&quot;,
+   &quot;blocking&quot;: true
+  }
+ ],
  &quot;tie_out&quot;: {
   &quot;ok&quot;: false,
   &quot;periods&quot;: {
@@ -998,7 +1580,21 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 30924343.85,
     &quot;gl_revenue&quot;: 30924343.85,
     &quot;gp&quot;: 7720043.44,
-    &quot;gl_gp&quot;: 7720043.44,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: -167351.47
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -75804.22
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -127532.91
+     }
+    ],
+    &quot;gl_gp&quot;: 7349354.84,
     &quot;diff_gp&quot;: 0.0,
     &quot;ok&quot;: true
    },
@@ -1006,29 +1602,34 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 31171612.16,
     &quot;gl_revenue&quot;: 30944047.09,
     &quot;gp&quot;: 7783593.74,
-    &quot;gl_gp&quot;: 7726119.63,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: -167449.75
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -75848.73
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -127607.8
+     }
+    ],
+    &quot;gl_gp&quot;: 7355213.35,
     &quot;diff_gp&quot;: 57474.11,
     &quot;ok&quot;: false
    }
   }
  },
- &quot;delta_gp&quot;: 63550.3,
- &quot;totals&quot;: {
-  &quot;price&quot;: -7765.72,
-  &quot;cost_tariff&quot;: -2260.96,
-  &quot;cost_other&quot;: 17553.35,
-  &quot;volume&quot;: 72567.73,
-  &quot;mix&quot;: -16544.1,
-  &quot;new&quot;: 0.0,
-  &quot;lost&quot;: 0.0
- },
  &quot;findings&quot;: [],
+ &quot;totals&quot;: null,
  &quot;truth&quot;: {
   &quot;price&quot;: 0.0,
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Unmapped order type on top of a real DIFM shift</b> <span class='muted'>trap · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 24 ms</div><ul><li class='fail'><code>stops_on_bad_data</code> FAIL (critical)</li><li class='fail'><code>names_the_problem</code> FAIL (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
+}</pre></div></details><details open><summary><span class='mark bad'>✗</span> <b>Unmapped order type on top of a real DIFM shift</b> <span class='muted'>trap · 0 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: FAIL · 23 ms</div><ul><li class='fail'><code>stops_on_bad_data</code> FAIL (critical)</li><li class='fail'><code>names_the_problem</code> FAIL (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='na'><code>no_false_alarm</code> NA</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -1038,7 +1639,21 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 32580746.52,
     &quot;gl_revenue&quot;: 32580746.52,
     &quot;gp&quot;: 7716836.62,
-    &quot;gl_gp&quot;: 7716836.62,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: 36572.82
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -4250.02
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -145571.83
+     }
+    ],
+    &quot;gl_gp&quot;: 7603587.59,
     &quot;diff_gp&quot;: 0.0,
     &quot;ok&quot;: true
    },
@@ -1046,13 +1661,27 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 32338102.66,
     &quot;gl_revenue&quot;: 32338102.66,
     &quot;gp&quot;: 7461849.73,
-    &quot;gl_gp&quot;: 7461849.73,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: 36590.98
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -4252.13
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -145644.09
+     }
+    ],
+    &quot;gl_gp&quot;: 7348544.49,
     &quot;diff_gp&quot;: 0.0,
     &quot;ok&quot;: true
    }
   }
  },
- &quot;delta_gp&quot;: -254986.89,
+ &quot;delta_gp&quot;: -255043.1,
  &quot;totals&quot;: {
   &quot;price&quot;: -256865.15,
   &quot;cost_tariff&quot;: 267.27,
@@ -1060,7 +1689,8 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;volume&quot;: 3909.15,
   &quot;mix&quot;: -3119.78,
   &quot;new&quot;: 0.0,
-  &quot;lost&quot;: 0.0
+  &quot;lost&quot;: 0.0,
+  &quot;ledger_items&quot;: -56.21
  },
  &quot;findings&quot;: [
   {
@@ -1076,7 +1706,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details><summary><span class='mark ok'>✓</span> <b>Nothing planted (seed 7)</b> <span class='muted'>control · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 24 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='pass'><code>no_false_alarm</code> PASS</li></ul><pre>{
+}</pre></div></details><details><summary><span class='mark ok'>✓</span> <b>Nothing planted (seed 7)</b> <span class='muted'>control · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 22 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='pass'><code>no_false_alarm</code> PASS</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -1086,7 +1716,21 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 29054449.81,
     &quot;gl_revenue&quot;: 29054449.81,
     &quot;gp&quot;: 7130295.42,
-    &quot;gl_gp&quot;: 7130295.42,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: -188929.77
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -87466.11
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -134555.67
+     }
+    ],
+    &quot;gl_gp&quot;: 6719343.87,
     &quot;diff_gp&quot;: 0.0,
     &quot;ok&quot;: true
    },
@@ -1094,13 +1738,27 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 29071409.62,
     &quot;gl_revenue&quot;: 29071409.62,
     &quot;gp&quot;: 7132894.87,
-    &quot;gl_gp&quot;: 7132894.87,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: -189053.52
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -87523.4
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -134643.8
+     }
+    ],
+    &quot;gl_gp&quot;: 6721674.15,
     &quot;diff_gp&quot;: -0.0,
     &quot;ok&quot;: true
    }
   }
  },
- &quot;delta_gp&quot;: 2599.45,
+ &quot;delta_gp&quot;: 2330.28,
  &quot;totals&quot;: {
   &quot;price&quot;: -5032.72,
   &quot;cost_tariff&quot;: 285.79,
@@ -1108,7 +1766,8 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;volume&quot;: 975.38,
   &quot;mix&quot;: 1638.01,
   &quot;new&quot;: 0.0,
-  &quot;lost&quot;: 0.0
+  &quot;lost&quot;: 0.0,
+  &quot;ledger_items&quot;: -269.17
  },
  &quot;findings&quot;: [],
  &quot;truth&quot;: {
@@ -1116,7 +1775,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details><summary><span class='mark ok'>✓</span> <b>Nothing planted (seed 31)</b> <span class='muted'>control · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 21 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='pass'><code>no_false_alarm</code> PASS</li></ul><pre>{
+}</pre></div></details><details><summary><span class='mark ok'>✓</span> <b>Nothing planted (seed 31)</b> <span class='muted'>control · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 22 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='pass'><code>no_false_alarm</code> PASS</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -1126,7 +1785,21 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 32492405.65,
     &quot;gl_revenue&quot;: 32492405.65,
     &quot;gp&quot;: 8060723.58,
-    &quot;gl_gp&quot;: 8060723.58,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: -25152.14
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -62192.03
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -214527.78
+     }
+    ],
+    &quot;gl_gp&quot;: 7758851.63,
     &quot;diff_gp&quot;: 0.0,
     &quot;ok&quot;: true
    },
@@ -1134,13 +1807,27 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 32471054.4,
     &quot;gl_revenue&quot;: 32471054.4,
     &quot;gp&quot;: 8058567.72,
-    &quot;gl_gp&quot;: 8058567.72,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: -25132.38
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -62143.16
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -214359.23
+     }
+    ],
+    &quot;gl_gp&quot;: 7756932.95,
     &quot;diff_gp&quot;: 0.0,
     &quot;ok&quot;: true
    }
   }
  },
- &quot;delta_gp&quot;: -2155.86,
+ &quot;delta_gp&quot;: -1918.68,
  &quot;totals&quot;: {
   &quot;price&quot;: -5616.87,
   &quot;cost_tariff&quot;: 718.3,
@@ -1148,7 +1835,8 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;volume&quot;: 3394.89,
   &quot;mix&quot;: -4113.89,
   &quot;new&quot;: 0.0,
-  &quot;lost&quot;: 0.0
+  &quot;lost&quot;: 0.0,
+  &quot;ledger_items&quot;: 237.18
  },
  &quot;findings&quot;: [],
  &quot;truth&quot;: {
@@ -1156,7 +1844,7 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;cost_tariff&quot;: 0.0,
   &quot;cost_other&quot;: 0.0
  }
-}</pre></div></details><details><summary><span class='mark ok'>✓</span> <b>Units up 2%, nothing else</b> <span class='muted'>control · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 24 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='pass'><code>no_false_alarm</code> PASS</li></ul><pre>{
+}</pre></div></details><details><summary><span class='mark ok'>✓</span> <b>Units up 2%, nothing else</b> <span class='muted'>control · 1 of 1 runs</span></summary><div class='run'><div class='runhead'>Run 1: pass · 22 ms</div><ul><li class='pass'><code>stops_on_bad_data</code> PASS (critical)</li><li class='na'><code>names_the_problem</code> NA (critical)</li><li class='pass'><code>ties_to_ledger</code> PASS (critical)</li><li class='na'><code>finds_the_driver</code> NA</li><li class='na'><code>sizes_it_right</code> NA</li><li class='pass'><code>no_false_alarm</code> PASS</li></ul><pre>{
  &quot;published&quot;: true,
  &quot;issues&quot;: [],
  &quot;tie_out&quot;: {
@@ -1166,7 +1854,21 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 30973353.38,
     &quot;gl_revenue&quot;: 30973353.38,
     &quot;gp&quot;: 7724454.93,
-    &quot;gl_gp&quot;: 7724454.93,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: -67595.83
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -102558.1
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -173060.69
+     }
+    ],
+    &quot;gl_gp&quot;: 7381240.31,
     &quot;diff_gp&quot;: 0.0,
     &quot;ok&quot;: true
    },
@@ -1174,13 +1876,27 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
     &quot;revenue&quot;: 31620743.19,
     &quot;gl_revenue&quot;: 31620743.19,
     &quot;gp&quot;: 7888043.74,
-    &quot;gl_gp&quot;: 7888043.74,
+    &quot;ledger_items&quot;: [
+     {
+      &quot;name&quot;: &quot;purchase price and manufacturing variances&quot;,
+      &quot;amount&quot;: -69002.48
+     },
+     {
+      &quot;name&quot;: &quot;inventory and obsolescence reserve change&quot;,
+      &quot;amount&quot;: -104692.29
+     },
+     {
+      &quot;name&quot;: &quot;inbound freight not in standard cost&quot;,
+      &quot;amount&quot;: -176662.02
+     }
+    ],
+    &quot;gl_gp&quot;: 7537686.95,
     &quot;diff_gp&quot;: -0.0,
     &quot;ok&quot;: true
    }
   }
  },
- &quot;delta_gp&quot;: 163588.81,
+ &quot;delta_gp&quot;: 156446.64,
  &quot;totals&quot;: {
   &quot;price&quot;: 423.54,
   &quot;cost_tariff&quot;: -83.02,
@@ -1188,7 +1904,8 @@ font-size:12px;margin:4px 0}code{font-size:13px}footer{margin-top:40px;font-size
   &quot;volume&quot;: 162189.88,
   &quot;mix&quot;: 983.89,
   &quot;new&quot;: 0.0,
-  &quot;lost&quot;: 0.0
+  &quot;lost&quot;: 0.0,
+  &quot;ledger_items&quot;: -7142.17
  },
  &quot;findings&quot;: [],
  &quot;truth&quot;: {

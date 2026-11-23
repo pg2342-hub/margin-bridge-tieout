@@ -49,6 +49,11 @@ CUSTOMER_WEIGHT = {
 DIFM_PRICE_FACTOR = 0.88  # program pricing for installer (do-it-for-me) business
 ORDER_CODES = {"DIY": ["RTL", "WEB"], "DIFM": ["PGM", "COM"]}
 SKUS_PER_LINE = 20
+LEDGER_ITEMS = [  # (name, share of standard COGS, low and high)
+    ("purchase price and manufacturing variances", -0.004, 0.012),
+    ("inventory and obsolescence reserve change", 0.0, 0.006),
+    ("inbound freight not in standard cost", 0.004, 0.009),
+]
 MONTHS = {"PY": ["2025-07", "2025-08", "2025-09"], "CY": ["2026-07", "2026-08", "2026-09"]}
 
 
@@ -69,6 +74,7 @@ class Extract:
     rebates: list[dict]
     gl: dict  # period -> {"revenue": x, "cogs": y}
     skus: dict[str, Sku]
+    ledger_items: list[dict] = field(default_factory=list)  # COGS entries that post only at the ledger
     truth: dict = field(default_factory=dict)
 
 
@@ -236,7 +242,20 @@ def build(scenario: dict | None = None) -> Extract:
             rev -= amt
         gl[period] = {"revenue": round(rev, 2), "cogs": round(cogs, 2)}
 
-    ext = Extract(lines=lines, rebates=rebates, gl=gl, skus=skus, truth={k: round(v, 2) for k, v in truth.items()})
+    # Entries that hit COGS at the ledger but never touch an invoice line. Finance names and sizes
+    # these when it reconciles; the tie-out accepts them only by name.
+    ledger_items = []
+    shares = {name: rng.uniform(lo, hi) for name, lo, hi in LEDGER_ITEMS}  # same rate both quarters
+    for period in ("PY", "CY"):
+        base = gl[period]["cogs"]
+        for name, _lo, _hi in LEDGER_ITEMS:
+            amt = round(base * shares[name], 2)
+            ledger_items.append({"period": period, "name": name, "amount": amt})
+            gl[period]["cogs"] = round(gl[period]["cogs"] + amt, 2)
+
+    ext = Extract(
+        lines=lines, rebates=rebates, gl=gl, skus=skus, ledger_items=ledger_items, truth={k: round(v, 2) for k, v in truth.items()}
+    )
     for trap in scenario.get("traps", []):
         _apply_trap(ext, trap, rng)
     return ext
@@ -284,7 +303,8 @@ def _restate_gl(ext: Extract) -> None:
     for period in ("PY", "CY"):
         rows = [r for r in ext.lines if r["period"] == period]
         reb = sum(m["amount"] for m in ext.rebates if m["period"] == period)
+        led = sum(i["amount"] for i in ext.ledger_items if i["period"] == period)
         ext.gl[period] = {
             "revenue": round(sum(r["gross"] for r in rows) - reb, 2),
-            "cogs": round(sum(r["cost_material"] + r["cost_tariff"] + r["cost_other"] for r in rows), 2),
+            "cogs": round(sum(r["cost_material"] + r["cost_tariff"] + r["cost_other"] for r in rows) + led, 2),
         }

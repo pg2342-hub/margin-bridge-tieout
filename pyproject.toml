@@ -3,7 +3,7 @@ name = "margin-bridge-tieout"
 version = "0.1.0"
 description = "Rebuild a margin bridge from ERP lines, tie it to the ledger, and find the driver a favorable total hides."
 requires-python = ">=3.9"
-dependencies = ["PyYAML>=6.0", "golive-gate>=0.1.0"]
+dependencies = ["PyYAML>=6.0", "golive-gate>=0.1.1"]
 
 [project.optional-dependencies]
 dev = ["pytest>=7", "ruff>=0.5"]

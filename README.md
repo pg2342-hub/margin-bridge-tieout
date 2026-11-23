@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/pg2342-hub/margin-bridge-tieout/actions/workflows/ci.yml/badge.svg)](https://github.com/pg2342-hub/margin-bridge-tieout/actions/workflows/ci.yml)
 
-Demo page: https://pg2342-hub.github.io/margin-bridge-tieout/ (the showcase quarter, both bridges, every finding and both gate reports; no install needed)
+Demo page: https://pg2342-hub.github.io/margin-bridge-tieout/ (the showcase quarter, both bridges, every finding, and both gate reports; no install needed)
 
 Rebuild a quarter's gross-profit bridge from ERP invoice lines, tie it to the ledger, and find the driver a favorable total hides.
 
@@ -11,9 +11,9 @@ A product-line bridge is how most month-end workbooks explain margin: price, vol
 ## What it does
 
 1. **Data checks** against one definitions file finance owns (`bridge/definitions.yml`): every order type maps to a channel, every unit of measure converts to eaches, every rebate memo names a customer in the master, no invoice line appears twice. Any failure stops the bridge and says why.
-2. **Tie-out**: extract revenue and gross profit against the general ledger, each quarter, within $1. Rebates post as separate customer-level memos, so they are allocated to lines by gross sales within each customer and month.
-3. **Bridge** at any grain: price (net of rebates, tariff surcharges included), tariff cost, other cost, volume, mix, new and lost items. The effects add up to the change in gross profit exactly.
-4. **Driver finder**: the largest member behind each driver, any member moving against its driver's total ("masked"), any driver that reads differently at the product-line grain ("reattributed"), and mix between the members of each dimension (product line, customer, channel, country of origin). Materiality is $100K of gross profit.
+2. **Tie-out**: extract revenue against the general ledger within $1, and gross profit within $1 after named, sized items that post only at the ledger (variances, reserves, freight). Anything left unexplained stops the bridge. Rebates post as separate customer-level memos, so they are allocated to lines by gross sales within each customer and month.
+3. **Bridge** at any grain: price (net of rebates, tariff surcharges included), tariff cost, other cost, volume, mix, new and lost items, plus the ledger-only items. The effects add up to the ledger's change in gross profit exactly. Mix is also split in nested levels that add up (product line, then channel within product line, then customer, then SKU), so a drag inside a product line cannot hide behind a gain between lines.
+4. **Driver finder**: the largest member behind each driver, any member moving against its driver's total ("masked"), any driver that reads differently at the product-line grain ("reattributed"), and any nested mix level moving against product mix. Materiality is $100K of gross profit.
 
 ## The eval
 
@@ -30,10 +30,11 @@ The gate: 24 of 25 overall, every hidden and trap case, every control, and zero 
 
 ```
 golive run eval/golive.yml                                # tie-out + item bridge: GO, 25 of 25
-golive run eval/golive.yml --agent agent:workbook_agent   # product-line workbook: NO-GO, 6 of 25
+golive run eval/golive.yml --agent agent:workbook_agent   # product-line workbook: NO-GO, 7 of 25
+python scripts/seed_sweep.py                              # the 25 cases on 7 seeds they were not written with: 172 of 175
 ```
 
-The workbook baseline is a careful one: it allocates rebates the same way and ties its totals, but it bridges by product line and has no data checks.
+The workbook baseline allocates rebates the same way and stops when it does not tie to the ledger, but it bridges by product line only and has no data checks. Most of its misses are structural, which is the point: a product-line view cannot name a customer, a channel, or a bad extract. The 25 cases were written on fixed data seeds, so the seed sweep checks they are not tuned to them.
 
 ## Run it
 
@@ -44,10 +45,10 @@ golive run eval/golive.yml
 python scripts/build_demo.py   # rebuilds docs/ for GitHub Pages
 ```
 
-CI runs ruff, the tests and the gate on every push, and fails if the workbook baseline ever passes.
+CI runs ruff, the tests, the gate, and the seed sweep on every push, and fails if the workbook baseline ever passes.
 
 ## Limits
 
-- All data is synthetic. Customers, SKUs, prices, tariffs and the ledger are made up; the shape (invoice lines, separate rebate memos, order type codes, case packs) follows a typical ERP export.
+- All data is synthetic. Customers, SKUs, prices, tariffs, and the ledger are made up; the shape (invoice lines, separate rebate memos, order type codes, case packs, ledger-only COGS entries) follows a typical ERP export. In this data, installer (DIFM) orders are coded separately; a real supplier may only see the channel through its customer type.
 - Volume and mix use one common method (each continuing item grows at the total rate; mix is share gained or lost at its own prior margin). Other conventions split volume and mix differently but give the same price and cost effects.
 - No model calls. This is the deterministic layer an analysis agent's numbers should tie back to.

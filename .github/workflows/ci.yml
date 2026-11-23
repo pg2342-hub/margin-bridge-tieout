@@ -36,6 +36,8 @@ jobs:
           if golive run eval/golive.yml --agent agent:workbook_agent --out workbook-report; then
             echo "the workbook passed the gate, so the eval is too easy"; exit 1
           fi
+      - name: Seed sweep (the cases on seeds they were not written with)
+        run: python scripts/seed_sweep.py
       - name: Job summary
         if: always()
         run: cat golive-report/report.md >> "$GITHUB_STEP_SUMMARY"

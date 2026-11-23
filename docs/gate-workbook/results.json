@@ -7,28 +7,28 @@
     "by_run": [
       {
         "run": 1,
-        "passed": 6,
+        "passed": 7,
         "total": 25,
-        "critical": 15
+        "critical": 10
       }
     ],
     "total_cost_usd": 0.0,
     "total_judge_cost_usd": 0.0,
-    "mean_latency_s": 0.027556
+    "mean_latency_s": 0.024638
   },
   "gate_result": {
     "decision": "no-go",
     "reasons": [
-      "run 1: 15 critical failure(s): stops_on_bad_data on case t01, names_the_problem on case t01, stops_on_bad_data on case t02, names_the_problem on case t02, stops_on_bad_data on case t03, names_the_problem on case t03, ties_to_ledger on case t03, stops_on_bad_data on case t04, names_the_problem on case t04, ties_to_ledger on case t04, stops_on_bad_data on case t05, names_the_problem on case t05, ties_to_ledger on case t05, stops_on_bad_data on case t06, names_the_problem on case t06",
-      "run 1: overall passed 6 of 25, needs 24 (no-go)",
+      "run 1: 10 critical failure(s): stops_on_bad_data on case t01, names_the_problem on case t01, stops_on_bad_data on case t02, names_the_problem on case t02, stops_on_bad_data on case t03, names_the_problem on case t03, ties_to_ledger on case t03, names_the_problem on case t05, stops_on_bad_data on case t06, names_the_problem on case t06",
+      "run 1: overall passed 7 of 25, needs 24 (no-go)",
       "run 1: hidden drivers passed 0 of 8, needs 8 (no-go)",
-      "run 1: data traps passed 0 of 6, needs 6 (no-go)"
+      "run 1: data traps passed 1 of 6, needs 6 (no-go)"
     ],
     "rules": [
       {
         "name": "overall",
         "run": 1,
-        "passed": 6,
+        "passed": 7,
         "total": 25,
         "required": 24,
         "held": false,
@@ -46,7 +46,7 @@
       {
         "name": "data traps",
         "run": 1,
-        "passed": 0,
+        "passed": 1,
         "total": 6,
         "required": 6,
         "held": false,
@@ -93,28 +93,8 @@
           "check": "ties_to_ledger"
         },
         {
-          "case": "t04",
-          "check": "stops_on_bad_data"
-        },
-        {
-          "case": "t04",
-          "check": "names_the_problem"
-        },
-        {
-          "case": "t04",
-          "check": "ties_to_ledger"
-        },
-        {
-          "case": "t05",
-          "check": "stops_on_bad_data"
-        },
-        {
           "case": "t05",
           "check": "names_the_problem"
-        },
-        {
-          "case": "t05",
-          "check": "ties_to_ledger"
         },
         {
           "case": "t06",
@@ -170,7 +150,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0551,
+          "latency_s": 0.0304,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -209,7 +189,21 @@
                   "revenue": 29054449.81,
                   "gl_revenue": 29054449.81,
                   "gp": 7130295.42,
-                  "gl_gp": 7130295.42,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -188929.77
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87466.11
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134555.67
+                    }
+                  ],
+                  "gl_gp": 6719343.87,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -217,13 +211,27 @@
                   "revenue": 29344004.66,
                   "gl_revenue": 29344004.66,
                   "gp": 7405489.91,
-                  "gl_gp": 7405489.91,
-                  "diff_gp": 0.0,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -189053.52
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87523.4
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134643.8
+                    }
+                  ],
+                  "gl_gp": 6994269.19,
+                  "diff_gp": -0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": 275194.49,
+            "delta_gp": 274925.32,
             "totals": {
               "price": 267562.32,
               "cost_tariff": 285.79,
@@ -231,7 +239,8 @@
               "volume": 975.38,
               "mix": 1638.01,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -269.17
             },
             "findings": [
               {
@@ -264,7 +273,7 @@
             "sizes_it_right"
           ],
           "error": "",
-          "latency_s": 0.0356,
+          "latency_s": 0.0338,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -303,7 +312,21 @@
                   "revenue": 29054449.81,
                   "gl_revenue": 29054449.81,
                   "gp": 7130295.42,
-                  "gl_gp": 7130295.42,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -188929.77
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87466.11
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134555.67
+                    }
+                  ],
+                  "gl_gp": 6719343.87,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -311,13 +334,27 @@
                   "revenue": 28832994.97,
                   "gl_revenue": 28832994.97,
                   "gp": 6894480.22,
-                  "gl_gp": 6894480.22,
-                  "diff_gp": 0.0,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -189053.52
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87523.4
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134643.8
+                    }
+                  ],
+                  "gl_gp": 6483259.5,
+                  "diff_gp": -0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": -235815.2,
+            "delta_gp": -236084.37,
             "totals": {
               "price": -243447.37,
               "cost_tariff": 285.79,
@@ -325,7 +362,8 @@
               "volume": 975.38,
               "mix": 1638.01,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -269.17
             },
             "findings": [
               {
@@ -357,7 +395,7 @@
             "finds_the_driver"
           ],
           "error": "",
-          "latency_s": 0.0274,
+          "latency_s": 0.0254,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -396,7 +434,21 @@
                   "revenue": 29054449.81,
                   "gl_revenue": 29054449.81,
                   "gp": 7130295.42,
-                  "gl_gp": 7130295.42,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -188929.77
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87466.11
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134555.67
+                    }
+                  ],
+                  "gl_gp": 6719343.87,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -404,13 +456,27 @@
                   "revenue": 29071409.62,
                   "gl_revenue": 29071409.62,
                   "gp": 6399181.45,
-                  "gl_gp": 6399181.45,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -195376.24
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -90450.54
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -139146.84
+                    }
+                  ],
+                  "gl_gp": 5974207.83,
                   "diff_gp": -0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": -731113.97,
+            "delta_gp": -745136.04,
             "totals": {
               "price": -5032.72,
               "cost_tariff": -733427.63,
@@ -418,7 +484,8 @@
               "volume": 975.38,
               "mix": 1638.01,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -14022.07
             },
             "findings": [
               {
@@ -450,7 +517,7 @@
             "sizes_it_right"
           ],
           "error": "",
-          "latency_s": 0.0244,
+          "latency_s": 0.0353,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -489,7 +556,21 @@
                   "revenue": 31981426.37,
                   "gl_revenue": 31981426.37,
                   "gp": 7786845.24,
-                  "gl_gp": 7786845.24,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 38688.56
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -41563.16
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -200094.07
+                    }
+                  ],
+                  "gl_gp": 7583876.57,
                   "diff_gp": -0.0,
                   "ok": true
                 },
@@ -497,13 +578,27 @@
                   "revenue": 32005483.08,
                   "gl_revenue": 32005483.08,
                   "gp": 7279529.15,
-                  "gl_gp": 7279529.15,
-                  "diff_gp": 0.0,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 39538.26
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -42475.99
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -204488.63
+                    }
+                  ],
+                  "gl_gp": 7072102.79,
+                  "diff_gp": -0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": -507316.09,
+            "delta_gp": -511773.78,
             "totals": {
               "price": 18176.7,
               "cost_tariff": -20944.24,
@@ -511,7 +606,8 @@
               "volume": 6660.71,
               "mix": -4475.66,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -4457.69
             },
             "findings": [
               {
@@ -541,7 +637,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0234,
+          "latency_s": 0.0302,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -580,7 +676,21 @@
                   "revenue": 31981426.37,
                   "gl_revenue": 31981426.37,
                   "gp": 7786845.24,
-                  "gl_gp": 7786845.24,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 38688.56
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -41563.16
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -200094.07
+                    }
+                  ],
+                  "gl_gp": 7583876.57,
                   "diff_gp": -0.0,
                   "ok": true
                 },
@@ -588,13 +698,27 @@
                   "revenue": 29444647.25,
                   "gl_revenue": 29444647.25,
                   "gp": 7168417.05,
-                  "gl_gp": 7168417.05,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 35621.01
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -38267.68
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -184228.92
+                    }
+                  ],
+                  "gl_gp": 6981541.46,
                   "diff_gp": 0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": -618428.19,
+            "delta_gp": -602335.11,
             "totals": {
               "price": 16364.15,
               "cost_tariff": -611.3,
@@ -602,7 +726,8 @@
               "volume": -616946.96,
               "mix": -3998.33,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": 16093.08
             },
             "findings": [
               {
@@ -634,7 +759,7 @@
             "finds_the_driver"
           ],
           "error": "",
-          "latency_s": 0.0236,
+          "latency_s": 0.0319,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -673,7 +798,21 @@
                   "revenue": 30924343.85,
                   "gl_revenue": 30924343.85,
                   "gp": 7720043.44,
-                  "gl_gp": 7720043.44,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -48566.66
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -60215.81
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -155430.63
+                    }
+                  ],
+                  "gl_gp": 7455830.34,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -681,13 +820,27 @@
                   "revenue": 32172378.69,
                   "gl_revenue": 32172378.69,
                   "gp": 8212944.93,
-                  "gl_gp": 8212944.93,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -50147.16
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -62175.4
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -160488.78
+                    }
+                  ],
+                  "gl_gp": 7940133.59,
                   "diff_gp": -0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": 492901.49,
+            "delta_gp": 484303.25,
             "totals": {
               "price": 178868.89,
               "cost_tariff": -6701.14,
@@ -695,7 +848,8 @@
               "volume": 191916.92,
               "mix": 188359.49,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -8598.24
             },
             "findings": [
               {
@@ -734,7 +888,7 @@
             "finds_the_driver"
           ],
           "error": "",
-          "latency_s": 0.0225,
+          "latency_s": 0.0318,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -773,7 +927,21 @@
                   "revenue": 30924343.85,
                   "gl_revenue": 30924343.85,
                   "gp": 7720043.44,
-                  "gl_gp": 7720043.44,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 76054.07
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -47969.27
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -185645.89
+                    }
+                  ],
+                  "gl_gp": 7562482.35,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -781,13 +949,27 @@
                   "revenue": 27882698.23,
                   "gl_revenue": 27882698.23,
                   "gp": 6659463.29,
-                  "gl_gp": 6659463.29,
-                  "diff_gp": 0.0,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 69560.96
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -43873.89
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -169796.38
+                    }
+                  ],
+                  "gl_gp": 6515353.98,
+                  "diff_gp": -0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": -1060580.15,
+            "delta_gp": -1047128.37,
             "totals": {
               "price": -33767.27,
               "cost_tariff": 16062.9,
@@ -795,7 +977,8 @@
               "volume": -537720.54,
               "mix": -536966.24,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": 13451.78
             },
             "findings": [
               {
@@ -832,7 +1015,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0277,
+          "latency_s": 0.0301,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -871,7 +1054,21 @@
                   "revenue": 32580626.76,
                   "gl_revenue": 32580626.76,
                   "gp": 7716825.32,
-                  "gl_gp": 7716825.32,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 36572.82
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -4250.02
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -145571.83
+                    }
+                  ],
+                  "gl_gp": 7603576.29,
                   "diff_gp": -0.0,
                   "ok": true
                 },
@@ -879,13 +1076,27 @@
                   "revenue": 32714926.04,
                   "gl_revenue": 32714926.04,
                   "gp": 7839316.66,
-                  "gl_gp": 7839316.66,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 36590.38
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -4252.06
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -145641.71
+                    }
+                  ],
+                  "gl_gp": 7726013.27,
                   "diff_gp": 0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": 122491.34,
+            "delta_gp": 122436.98,
             "totals": {
               "price": 122930.31,
               "cost_tariff": 210.99,
@@ -893,7 +1104,8 @@
               "volume": 1945.0,
               "mix": -1642.12,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -54.36
             },
             "findings": [
               {
@@ -925,7 +1137,7 @@
             "finds_the_driver"
           ],
           "error": "",
-          "latency_s": 0.0231,
+          "latency_s": 0.0223,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -964,7 +1176,21 @@
                   "revenue": 29054449.81,
                   "gl_revenue": 29054449.81,
                   "gp": 7130295.42,
-                  "gl_gp": 7130295.42,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -188929.77
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87466.11
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134555.67
+                    }
+                  ],
+                  "gl_gp": 6719343.87,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -972,13 +1198,27 @@
                   "revenue": 29934763.74,
                   "gl_revenue": 29934763.74,
                   "gp": 7334386.33,
-                  "gl_gp": 7334386.33,
-                  "diff_gp": 0.0,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -194757.07
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -90163.89
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -138705.87
+                    }
+                  ],
+                  "gl_gp": 6910759.5,
+                  "diff_gp": -0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": 204090.91,
+            "delta_gp": 191415.63,
             "totals": {
               "price": -241598.32,
               "cost_tariff": 307.57,
@@ -986,7 +1226,8 @@
               "volume": 1022.39,
               "mix": 439157.44,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -12675.28
             },
             "findings": [
               {
@@ -1018,7 +1259,7 @@
             "finds_the_driver"
           ],
           "error": "",
-          "latency_s": 0.0238,
+          "latency_s": 0.022,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -1057,7 +1298,21 @@
                   "revenue": 31981426.37,
                   "gl_revenue": 31981426.37,
                   "gp": 7786845.24,
-                  "gl_gp": 7786845.24,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 38688.56
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -41563.16
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -200094.07
+                    }
+                  ],
+                  "gl_gp": 7583876.57,
                   "diff_gp": -0.0,
                   "ok": true
                 },
@@ -1065,13 +1320,27 @@
                   "revenue": 33252557.12,
                   "gl_revenue": 33252557.12,
                   "gp": 8127805.47,
-                  "gl_gp": 8127805.47,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 40175.96
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -43161.07
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -207786.77
+                    }
+                  ],
+                  "gl_gp": 7917033.59,
                   "diff_gp": -0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": 340960.23,
+            "delta_gp": 333157.02,
             "totals": {
               "price": -321610.07,
               "cost_tariff": -654.24,
@@ -1079,7 +1348,8 @@
               "volume": 6752.31,
               "mix": 672273.6,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -7803.21
             },
             "findings": [
               {
@@ -1118,7 +1388,7 @@
             "finds_the_driver"
           ],
           "error": "",
-          "latency_s": 0.0253,
+          "latency_s": 0.0227,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -1157,7 +1427,21 @@
                   "revenue": 29054449.81,
                   "gl_revenue": 29054449.81,
                   "gp": 7130295.42,
-                  "gl_gp": 7130295.42,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -188929.77
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87466.11
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134555.67
+                    }
+                  ],
+                  "gl_gp": 6719343.87,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -1165,13 +1449,27 @@
                   "revenue": 30057492.68,
                   "gl_revenue": 30057492.68,
                   "gp": 8118977.93,
-                  "gl_gp": 8118977.93,
-                  "diff_gp": 0.0,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -189053.52
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87523.4
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134643.8
+                    }
+                  ],
+                  "gl_gp": 7707757.21,
+                  "diff_gp": -0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": 988682.51,
+            "delta_gp": 988413.34,
             "totals": {
               "price": 981050.34,
               "cost_tariff": 285.79,
@@ -1179,7 +1477,8 @@
               "volume": 975.38,
               "mix": 1638.01,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -269.17
             },
             "findings": [
               {
@@ -1211,7 +1510,7 @@
             "finds_the_driver"
           ],
           "error": "",
-          "latency_s": 0.0253,
+          "latency_s": 0.0232,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -1250,7 +1549,21 @@
                   "revenue": 31981426.37,
                   "gl_revenue": 31981426.37,
                   "gp": 7786845.24,
-                  "gl_gp": 7786845.24,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 38688.56
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -41563.16
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -200094.07
+                    }
+                  ],
+                  "gl_gp": 7583876.57,
                   "diff_gp": -0.0,
                   "ok": true
                 },
@@ -1258,13 +1571,27 @@
                   "revenue": 32280952.55,
                   "gl_revenue": 32280952.55,
                   "gp": 6967130.76,
-                  "gl_gp": 6967130.76,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 40478.29
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -43485.87
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -209350.42
+                    }
+                  ],
+                  "gl_gp": 6754772.76,
                   "diff_gp": 0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": -819714.48,
+            "delta_gp": -829103.81,
             "totals": {
               "price": 293646.17,
               "cost_tariff": -1100976.57,
@@ -1272,7 +1599,8 @@
               "volume": 6660.71,
               "mix": -4475.66,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -9389.33
             },
             "findings": [
               {
@@ -1311,7 +1639,7 @@
             "finds_the_driver"
           ],
           "error": "",
-          "latency_s": 0.0278,
+          "latency_s": 0.0218,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -1350,7 +1678,21 @@
                   "revenue": 30924343.85,
                   "gl_revenue": 30924343.85,
                   "gp": 7720043.44,
-                  "gl_gp": 7720043.44,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -167351.47
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -75804.22
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -127532.91
+                    }
+                  ],
+                  "gl_gp": 7349354.84,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -1358,13 +1700,27 @@
                   "revenue": 30390519.94,
                   "gl_revenue": 30390519.94,
                   "gp": 7170698.44,
-                  "gl_gp": 7170698.44,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -167463.41
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -75854.92
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -127618.21
+                    }
+                  ],
+                  "gl_gp": 6799761.9,
                   "diff_gp": -0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": -549345.0,
+            "delta_gp": -549592.94,
             "totals": {
               "price": -546188.93,
               "cost_tariff": 364.6,
@@ -1372,7 +1728,8 @@
               "volume": 2804.55,
               "mix": 11.79,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -247.94
             },
             "findings": [
               {
@@ -1404,7 +1761,7 @@
             "finds_the_driver"
           ],
           "error": "",
-          "latency_s": 0.0264,
+          "latency_s": 0.0226,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -1443,7 +1800,21 @@
                   "revenue": 32580746.52,
                   "gl_revenue": 32580746.52,
                   "gp": 7716836.62,
-                  "gl_gp": 7716836.62,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 36572.82
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -4250.02
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -145571.83
+                    }
+                  ],
+                  "gl_gp": 7603587.59,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -1451,13 +1822,27 @@
                   "revenue": 32594635.04,
                   "gl_revenue": 32594635.04,
                   "gp": 8604692.35,
-                  "gl_gp": 8604692.35,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 35287.28
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -4100.63
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -140454.97
+                    }
+                  ],
+                  "gl_gp": 8495424.03,
                   "diff_gp": 0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": 887855.73,
+            "delta_gp": 891836.44,
             "totals": {
               "price": -103.83,
               "cost_tariff": 41502.97,
@@ -1465,7 +1850,8 @@
               "volume": 3998.87,
               "mix": -3242.69,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": 3980.71
             },
             "findings": [
               {
@@ -1497,7 +1883,7 @@
             "finds_the_driver"
           ],
           "error": "",
-          "latency_s": 0.0262,
+          "latency_s": 0.0221,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -1536,7 +1922,21 @@
                   "revenue": 29054449.81,
                   "gl_revenue": 29054449.81,
                   "gp": 7130295.42,
-                  "gl_gp": 7130295.42,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -188929.77
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87466.11
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134555.67
+                    }
+                  ],
+                  "gl_gp": 6719343.87,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -1544,13 +1944,27 @@
                   "revenue": 31022889.6,
                   "gl_revenue": 31022889.6,
                   "gp": 7431258.24,
-                  "gl_gp": 7431258.24,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -203299.13
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -94118.49
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -144789.52
+                    }
+                  ],
+                  "gl_gp": 6989051.1,
                   "diff_gp": 0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": 300962.82,
+            "delta_gp": 269707.23,
             "totals": {
               "price": -431700.86,
               "cost_tariff": 343.41,
@@ -1558,7 +1972,8 @@
               "volume": 357318.58,
               "mix": 369535.15,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -31255.59
             },
             "findings": [
               {
@@ -1604,7 +2019,7 @@
             "finds_the_driver"
           ],
           "error": "",
-          "latency_s": 0.0238,
+          "latency_s": 0.0215,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -1643,7 +2058,21 @@
                   "revenue": 31981426.37,
                   "gl_revenue": 31981426.37,
                   "gp": 7786845.24,
-                  "gl_gp": 7786845.24,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 38688.56
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -41563.16
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -200094.07
+                    }
+                  ],
+                  "gl_gp": 7583876.57,
                   "diff_gp": -0.0,
                   "ok": true
                 },
@@ -1651,13 +2080,27 @@
                   "revenue": 32005483.08,
                   "gl_revenue": 32005483.08,
                   "gp": 7873714.3,
-                  "gl_gp": 7873714.3,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 38588.12
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -41455.25
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -199574.6
+                    }
+                  ],
+                  "gl_gp": 7671272.57,
                   "diff_gp": 0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": 86869.06,
+            "delta_gp": 87396.0,
             "totals": {
               "price": 18176.7,
               "cost_tariff": 81076.44,
@@ -1665,7 +2108,8 @@
               "volume": 6660.71,
               "mix": -4475.66,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": 526.94
             },
             "findings": [],
             "truth": {
@@ -1690,7 +2134,7 @@
             "names_the_problem"
           ],
           "error": "",
-          "latency_s": 0.0237,
+          "latency_s": 0.0218,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -1729,7 +2173,21 @@
                   "revenue": 29054449.81,
                   "gl_revenue": 29054449.81,
                   "gp": 7130295.42,
-                  "gl_gp": 7130295.42,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -188929.77
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87466.11
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134555.67
+                    }
+                  ],
+                  "gl_gp": 6719343.87,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -1737,13 +2195,27 @@
                   "revenue": 29071409.62,
                   "gl_revenue": 29071409.62,
                   "gp": 7132894.87,
-                  "gl_gp": 7132894.87,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -189053.52
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87523.4
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134643.8
+                    }
+                  ],
+                  "gl_gp": 6721674.15,
                   "diff_gp": -0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": 2599.45,
+            "delta_gp": 2330.28,
             "totals": {
               "price": -5032.72,
               "cost_tariff": 285.79,
@@ -1751,7 +2223,8 @@
               "volume": 975.38,
               "mix": 1638.01,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -269.17
             },
             "findings": [],
             "truth": {
@@ -1776,7 +2249,7 @@
             "names_the_problem"
           ],
           "error": "",
-          "latency_s": 0.0325,
+          "latency_s": 0.0227,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -1815,7 +2288,21 @@
                   "revenue": 29053809.33,
                   "gl_revenue": 29053809.33,
                   "gp": 7130081.71,
-                  "gl_gp": 7130081.71,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -188929.77
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87466.11
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134555.67
+                    }
+                  ],
+                  "gl_gp": 6719130.16,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -1823,13 +2310,27 @@
                   "revenue": 29070708.66,
                   "gl_revenue": 29070708.66,
                   "gp": 7132763.35,
-                  "gl_gp": 7132763.35,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -189053.52
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87523.4
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134643.8
+                    }
+                  ],
+                  "gl_gp": 6721542.63,
                   "diff_gp": 0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": 2681.64,
+            "delta_gp": 2412.47,
             "totals": {
               "price": -3321.03,
               "cost_tariff": 260.38,
@@ -1837,7 +2338,8 @@
               "volume": 378.62,
               "mix": 1900.55,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -269.17
             },
             "findings": [],
             "truth": {
@@ -1863,7 +2365,7 @@
             "ties_to_ledger"
           ],
           "error": "",
-          "latency_s": 0.0259,
+          "latency_s": 0.0222,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -1902,7 +2404,21 @@
                   "revenue": 31981426.37,
                   "gl_revenue": 31981426.37,
                   "gp": 7786845.24,
-                  "gl_gp": 7786845.24,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 38688.56
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -41563.16
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -200094.07
+                    }
+                  ],
+                  "gl_gp": 7583876.57,
                   "diff_gp": -0.0,
                   "ok": true
                 },
@@ -1910,13 +2426,27 @@
                   "revenue": 32005483.08,
                   "gl_revenue": 32005483.08,
                   "gp": 7791940.16,
-                  "gl_gp": 7791940.16,
-                  "diff_gp": 0.0,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 38718.88
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -41595.73
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -200250.89
+                    }
+                  ],
+                  "gl_gp": 7588812.42,
+                  "diff_gp": -0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": 196542.62,
+            "delta_gp": 196383.55,
             "totals": {
               "price": 209624.4,
               "cost_tariff": -697.7,
@@ -1924,7 +2454,8 @@
               "volume": 6660.71,
               "mix": -4475.66,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -159.07
             },
             "findings": [],
             "truth": {
@@ -1943,27 +2474,23 @@
       "runs": [
         {
           "run": 1,
-          "passed": false,
-          "failed_checks": [
-            "stops_on_bad_data",
-            "names_the_problem",
-            "ties_to_ledger"
-          ],
+          "passed": true,
+          "failed_checks": [],
           "error": "",
-          "latency_s": 0.0386,
+          "latency_s": 0.0177,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
             "stops_on_bad_data": {
-              "result": "fail",
+              "result": "pass",
               "reason": ""
             },
             "names_the_problem": {
-              "result": "fail",
+              "result": "pass",
               "reason": ""
             },
             "ties_to_ledger": {
-              "result": "fail",
+              "result": "na",
               "reason": ""
             },
             "finds_the_driver": {
@@ -1980,8 +2507,14 @@
             }
           },
           "output": {
-            "published": true,
-            "issues": [],
+            "published": false,
+            "issues": [
+              {
+                "code": "tie_out_gap",
+                "detail": "workbook does not tie to the ledger",
+                "blocking": true
+              }
+            ],
             "tie_out": {
               "ok": false,
               "periods": {
@@ -1989,7 +2522,21 @@
                   "revenue": 31981426.37,
                   "gl_revenue": 31981426.37,
                   "gp": 7786845.24,
-                  "gl_gp": 7786845.24,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 38688.56
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -41563.16
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -200094.07
+                    }
+                  ],
+                  "gl_gp": 7583876.57,
                   "diff_gp": -0.0,
                   "ok": true
                 },
@@ -1997,23 +2544,28 @@
                   "revenue": 31284771.3,
                   "gl_revenue": 32005483.08,
                   "gp": 7613781.86,
-                  "gl_gp": 7791940.16,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 38718.88
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -41595.73
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -200250.89
+                    }
+                  ],
+                  "gl_gp": 7588812.42,
                   "diff_gp": -178158.3,
                   "ok": false
                 }
               }
             },
-            "delta_gp": -173063.38,
-            "totals": {
-              "price": -5307.02,
-              "cost_tariff": -4121.65,
-              "cost_other": -11397.78,
-              "volume": -199782.15,
-              "mix": 47545.23,
-              "new": 0.0,
-              "lost": 0.0
-            },
             "findings": [],
+            "totals": null,
             "truth": {
               "price": 0.0,
               "cost_tariff": 0.0,
@@ -2032,17 +2584,15 @@
           "run": 1,
           "passed": false,
           "failed_checks": [
-            "stops_on_bad_data",
-            "names_the_problem",
-            "ties_to_ledger"
+            "names_the_problem"
           ],
           "error": "",
-          "latency_s": 0.0336,
+          "latency_s": 0.017,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
             "stops_on_bad_data": {
-              "result": "fail",
+              "result": "pass",
               "reason": ""
             },
             "names_the_problem": {
@@ -2050,7 +2600,7 @@
               "reason": ""
             },
             "ties_to_ledger": {
-              "result": "fail",
+              "result": "na",
               "reason": ""
             },
             "finds_the_driver": {
@@ -2067,8 +2617,14 @@
             }
           },
           "output": {
-            "published": true,
-            "issues": [],
+            "published": false,
+            "issues": [
+              {
+                "code": "tie_out_gap",
+                "detail": "workbook does not tie to the ledger",
+                "blocking": true
+              }
+            ],
             "tie_out": {
               "ok": false,
               "periods": {
@@ -2076,7 +2632,21 @@
                   "revenue": 30924343.85,
                   "gl_revenue": 30924343.85,
                   "gp": 7720043.44,
-                  "gl_gp": 7720043.44,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -167351.47
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -75804.22
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -127532.91
+                    }
+                  ],
+                  "gl_gp": 7349354.84,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -2084,23 +2654,28 @@
                   "revenue": 31171612.16,
                   "gl_revenue": 30944047.09,
                   "gp": 7783593.74,
-                  "gl_gp": 7726119.63,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -167449.75
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -75848.73
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -127607.8
+                    }
+                  ],
+                  "gl_gp": 7355213.35,
                   "diff_gp": 57474.11,
                   "ok": false
                 }
               }
             },
-            "delta_gp": 63550.3,
-            "totals": {
-              "price": -7765.72,
-              "cost_tariff": -2260.96,
-              "cost_other": 17553.35,
-              "volume": 72567.73,
-              "mix": -16544.1,
-              "new": 0.0,
-              "lost": 0.0
-            },
             "findings": [],
+            "totals": null,
             "truth": {
               "price": 0.0,
               "cost_tariff": 0.0,
@@ -2123,7 +2698,7 @@
             "names_the_problem"
           ],
           "error": "",
-          "latency_s": 0.0244,
+          "latency_s": 0.0226,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -2162,7 +2737,21 @@
                   "revenue": 32580746.52,
                   "gl_revenue": 32580746.52,
                   "gp": 7716836.62,
-                  "gl_gp": 7716836.62,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 36572.82
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -4250.02
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -145571.83
+                    }
+                  ],
+                  "gl_gp": 7603587.59,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -2170,13 +2759,27 @@
                   "revenue": 32338102.66,
                   "gl_revenue": 32338102.66,
                   "gp": 7461849.73,
-                  "gl_gp": 7461849.73,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 36590.98
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -4252.13
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -145644.09
+                    }
+                  ],
+                  "gl_gp": 7348544.49,
                   "diff_gp": 0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": -254986.89,
+            "delta_gp": -255043.1,
             "totals": {
               "price": -256865.15,
               "cost_tariff": 267.27,
@@ -2184,7 +2787,8 @@
               "volume": 3909.15,
               "mix": -3119.78,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -56.21
             },
             "findings": [
               {
@@ -2214,7 +2818,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0237,
+          "latency_s": 0.0216,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -2253,7 +2857,21 @@
                   "revenue": 29054449.81,
                   "gl_revenue": 29054449.81,
                   "gp": 7130295.42,
-                  "gl_gp": 7130295.42,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -188929.77
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87466.11
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134555.67
+                    }
+                  ],
+                  "gl_gp": 6719343.87,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -2261,13 +2879,27 @@
                   "revenue": 29071409.62,
                   "gl_revenue": 29071409.62,
                   "gp": 7132894.87,
-                  "gl_gp": 7132894.87,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -189053.52
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87523.4
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134643.8
+                    }
+                  ],
+                  "gl_gp": 6721674.15,
                   "diff_gp": -0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": 2599.45,
+            "delta_gp": 2330.28,
             "totals": {
               "price": -5032.72,
               "cost_tariff": 285.79,
@@ -2275,7 +2907,8 @@
               "volume": 975.38,
               "mix": 1638.01,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -269.17
             },
             "findings": [],
             "truth": {
@@ -2297,7 +2930,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0214,
+          "latency_s": 0.0217,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -2336,7 +2969,21 @@
                   "revenue": 32492405.65,
                   "gl_revenue": 32492405.65,
                   "gp": 8060723.58,
-                  "gl_gp": 8060723.58,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -25152.14
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -62192.03
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -214527.78
+                    }
+                  ],
+                  "gl_gp": 7758851.63,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -2344,13 +2991,27 @@
                   "revenue": 32471054.4,
                   "gl_revenue": 32471054.4,
                   "gp": 8058567.72,
-                  "gl_gp": 8058567.72,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -25132.38
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -62143.16
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -214359.23
+                    }
+                  ],
+                  "gl_gp": 7756932.95,
                   "diff_gp": 0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": -2155.86,
+            "delta_gp": -1918.68,
             "totals": {
               "price": -5616.87,
               "cost_tariff": 718.3,
@@ -2358,7 +3019,8 @@
               "volume": 3394.89,
               "mix": -4113.89,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": 237.18
             },
             "findings": [],
             "truth": {
@@ -2380,7 +3042,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0237,
+          "latency_s": 0.0216,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -2419,7 +3081,21 @@
                   "revenue": 30973353.38,
                   "gl_revenue": 30973353.38,
                   "gp": 7724454.93,
-                  "gl_gp": 7724454.93,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -67595.83
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -102558.1
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -173060.69
+                    }
+                  ],
+                  "gl_gp": 7381240.31,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -2427,13 +3103,27 @@
                   "revenue": 31620743.19,
                   "gl_revenue": 31620743.19,
                   "gp": 7888043.74,
-                  "gl_gp": 7888043.74,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -69002.48
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -104692.29
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -176662.02
+                    }
+                  ],
+                  "gl_gp": 7537686.95,
                   "diff_gp": -0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": 163588.81,
+            "delta_gp": 156446.64,
             "totals": {
               "price": 423.54,
               "cost_tariff": -83.02,
@@ -2441,7 +3131,8 @@
               "volume": 162189.88,
               "mix": 983.89,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -7142.17
             },
             "findings": [],
             "truth": {

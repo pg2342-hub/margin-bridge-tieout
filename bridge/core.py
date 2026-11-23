@@ -22,7 +22,14 @@ LABELS = {
     "mix": "Mix",
     "new": "New items",
     "lost": "Lost items",
+    "ledger_items": "Ledger-only items (variances, reserves, freight)",
 }
+MIX_LEVELS = (  # nested mix: each level is the mix it adds on top of the coarser one
+    ("line", "product mix", lambda a: (a["line"],)),
+    ("channel", "channel mix within product lines", lambda a: (a["line"], a["channel"])),
+    ("customer", "customer mix within product line and channel", lambda a: (a["line"], a["channel"], a["customer"])),
+    ("sku", "SKU mix within the rest", lambda a: (a["line"], a["channel"], a["customer"], a["sku"])),
+)
 
 
 def load_definitions(path: Path | str = DEFS_PATH) -> dict:
@@ -80,21 +87,28 @@ def data_checks(ext, defs: dict) -> list[dict]:
 
 
 def tie_out(ext, defs: dict) -> dict:
-    """Extract totals against the ledger, each period. Gross profit is revenue less COGS."""
+    """Extract against the ledger, each period. Revenue must tie within tolerance. Gross profit must
+    tie within tolerance after the named ledger-only items (COGS entries that never touch an invoice
+    line, such as variances, reserves and freight); anything left over is unexplained and blocks."""
     tol = defs["tie_out_tolerance"]
     out = {"ok": True, "periods": {}}
     for period in ("PY", "CY"):
         rows = [r for r in ext.lines if r["period"] == period]
         rev = sum(r["gross"] for r in rows) - sum(m["amount"] for m in ext.rebates if m["period"] == period)
         cogs = sum(r["cost_material"] + r["cost_tariff"] + r["cost_other"] for r in rows)
+        named = [i for i in ext.ledger_items if i["period"] == period]
+        led = sum(i["amount"] for i in named)
         gl = ext.gl[period]
-        d_rev, d_gp = rev - gl["revenue"], (rev - cogs) - (gl["revenue"] - gl["cogs"])
+        gl_gp = gl["revenue"] - gl["cogs"]
+        d_rev = rev - gl["revenue"]
+        d_gp = (rev - cogs - led) - gl_gp
         ok = abs(d_rev) <= tol and abs(d_gp) <= tol
         out["periods"][period] = {
             "revenue": round(rev, 2),
             "gl_revenue": gl["revenue"],
             "gp": round(rev - cogs, 2),
-            "gl_gp": round(gl["revenue"] - gl["cogs"], 2),
+            "ledger_items": [{"name": i["name"], "amount": round(-i["amount"], 2)} for i in named],
+            "gl_gp": round(gl_gp, 2),
             "diff_gp": round(d_gp, 2),
             "ok": ok,
         }
@@ -205,6 +219,19 @@ def mix_between(items: dict, ext, dim: str) -> dict:
     return out
 
 
+def nested_mix(items: dict, ext) -> list[tuple[str, str, float]]:
+    """Mix split into levels that add up: product mix, then channel within product line, then customer,
+    then SKU. Each level is the bridge's mix at that grain minus the mix at the coarser grain, so the
+    levels sum to the item-level mix exactly. Price moves the other way: whatever a coarser grain books
+    as price, because of mix inside a group, shows up here as mix."""
+    out, prev = [], 0.0
+    for name, label, key in MIX_LEVELS:
+        m = bridge(items, lambda k, key=key: key(attributes(ext, k)))["totals"]["mix"]
+        out.append((name, label, m - prev))
+        prev = m
+    return out
+
+
 # ---------------------------------------------------------------- findings
 
 
@@ -235,28 +262,24 @@ def find_drivers(items: dict, ext, defs: dict, deep: dict, mgmt: dict) -> list[d
             for m, v in r.items():
                 if abs(v) >= mat and v * tot < 0 and abs(v) >= 0.25 * abs(tot):
                     f.append({"kind": "masked", "driver": d, "dimension": dim, "member": m, "amount": round(v, 0), "under": round(tot, 0)})
-    mix_by = {dim: mix_between(items, ext, dim) for dim in DIMENSIONS}
-    for dim, r in mix_by.items():
-        tot = sum(r.values())
-        if abs(tot) >= mat:
-            # the member whose share moved the most dollars
-            top = max(r, key=lambda m: abs(r[m]))
-            f.append({"kind": "top", "driver": "mix", "dimension": dim, "member": top, "amount": round(tot, 0)})
-    signs = {dim: sum(r.values()) for dim, r in mix_by.items()}
-    for dim, v in signs.items():
-        for other, w in signs.items():
-            if dim != other and abs(v) >= mat and abs(w) >= mat and v * w < 0:
-                f.append(
-                    {
-                        "kind": "masked",
-                        "driver": "mix",
-                        "dimension": dim,
-                        "member": max(mix_by[dim], key=lambda m: abs(mix_by[dim][m])),
-                        "amount": round(v, 0),
-                        "under": round(w, 0),
-                        "under_dimension": other,
-                    }
-                )
+    levels = nested_mix(items, ext)
+    for name, _label, v in levels:
+        if abs(v) >= mat:
+            f.append({"kind": "top", "driver": "mix", "dimension": name, "member": None, "amount": round(v, 0)})
+    product = levels[0][2]
+    for name, _label, v in levels[1:]:
+        if abs(v) >= mat and abs(product) >= mat and v * product < 0:
+            f.append(
+                {
+                    "kind": "masked",
+                    "driver": "mix",
+                    "dimension": name,
+                    "member": None,
+                    "amount": round(v, 0),
+                    "under": round(product, 0),
+                    "under_dimension": "line",
+                }
+            )
     for d in ("price", "volume", "mix"):
         gap = mgmt["totals"][d] - deep["totals"][d]
         if abs(gap) >= mat:
@@ -303,22 +326,36 @@ def analyze(ext, defs: dict | None = None) -> dict:
     mgmt = bridge(items, lambda k: attributes(ext, k)["line"])
     for b in (deep, mgmt):
         assert abs(sum(b["totals"].values()) - b["delta"]) < 0.01, "bridge does not add up"
+    led = _ledger_delta(ext)
     return {
         "published": True,
         "issues": issues,
         "tie_out": tie,
-        "delta_gp": round(deep["delta"], 2),
-        "totals": {d: round(v, 2) for d, v in deep["totals"].items()},
-        "management_totals": {d: round(v, 2) for d, v in mgmt["totals"].items()},
+        "delta_gp": round(deep["delta"] + led, 2),
+        "totals": {d: round(v, 2) for d, v in deep["totals"].items()} | {"ledger_items": round(led, 2)},
+        "management_totals": {d: round(v, 2) for d, v in mgmt["totals"].items()} | {"ledger_items": round(led, 2)},
+        "mix_levels": [{"level": n, "label": lab, "amount": round(v, 2)} for n, lab, v in nested_mix(items, ext)],
         "findings": find_drivers(items, ext, defs, deep, mgmt),
     }
 
 
+def _ledger_delta(ext) -> float:
+    """Change in gross profit from ledger-only COGS items (a cost increase lowers gross profit)."""
+    return -(
+        sum(i["amount"] for i in ext.ledger_items if i["period"] == "CY")
+        - sum(i["amount"] for i in ext.ledger_items if i["period"] == "PY")
+    )
+
+
 def management_view(ext, defs: dict | None = None) -> dict:
-    """What a careful month-end workbook does: ties totals to the ledger and bridges by product
-    line. It has no data checks, so unknown codes fall into DIY and units stay as sold, and it
-    publishes whatever the tie-out says."""
+    """A month-end workbook: allocates rebates the same way, ties to the ledger (and stops if it does
+    not tie), and bridges by product line only. It has no data checks, so an unknown order type falls
+    into DIY and units stay as sold, and it cannot see customer, channel, or origin."""
     defs = defs or load_definitions()
+    tie = tie_out(ext, defs)
+    if not tie["ok"]:
+        issue = {"code": "tie_out_gap", "detail": "workbook does not tie to the ledger", "blocking": True}
+        return {"published": False, "issues": [issue], "tie_out": tie, "findings": [], "totals": None}
     cmap = defaultdict(lambda: "DIY") | defs["channel_map"]
     loose = defs | {"channel_map": cmap, "uom_to_each": defaultdict(lambda: 1)}
     items = normalise(ext, loose)
@@ -332,11 +369,12 @@ def management_view(ext, defs: dict | None = None) -> dict:
                 f.append({"kind": "top", "driver": d, "dimension": "line", "member": top, "amount": round(r[top], 0)})
     if abs(mgmt["totals"]["mix"]) >= defs["materiality"]:
         f.append({"kind": "top", "driver": "mix", "dimension": "line", "member": None, "amount": round(mgmt["totals"]["mix"], 0)})
+    led = _ledger_delta(ext)
     return {
         "published": True,
         "issues": [],
-        "tie_out": tie_out(ext, defs),
-        "delta_gp": round(mgmt["delta"], 2),
-        "totals": {d: round(v, 2) for d, v in mgmt["totals"].items()},
+        "tie_out": tie,
+        "delta_gp": round(mgmt["delta"] + led, 2),
+        "totals": {d: round(v, 2) for d, v in mgmt["totals"].items()} | {"ledger_items": round(led, 2)},
         "findings": f,
     }

@@ -69,9 +69,19 @@ def test_bad_extracts_stop_the_bridge(trap, code):
     assert out["findings"] == []
 
 
-def test_workbook_publishes_bad_data():
-    out = management_view(build({"seed": 11, "traps": [{"type": "missing_lines", "n": 60}]}))
-    assert out["published"] and not out["tie_out"]["ok"]
+def test_workbook_stops_on_a_gap_but_not_on_bad_codes():
+    gap = management_view(build({"seed": 11, "traps": [{"type": "missing_lines", "n": 60}]}))
+    assert not gap["published"]
+    codes = management_view(build({"seed": 11, "traps": [{"type": "unmapped_order_code"}]}))
+    assert codes["published"]  # the unknown code falls into DIY, and the totals still tie
+
+
+def test_tie_out_needs_named_ledger_items():
+    ext = build({"seed": 7})
+    assert analyze(ext)["tie_out"]["ok"]
+    ext.ledger_items = ext.ledger_items[1:]  # drop one named item: the gap is now unexplained
+    out = analyze(ext)
+    assert not out["published"] and "tie_out_gap" in {i["code"] for i in out["issues"]}
 
 
 def test_showcase_story():
@@ -81,3 +91,12 @@ def test_showcase_story():
     assert ("reattributed", "price", "line") in kinds
     assert out["totals"]["price"] > out["management_totals"]["price"]
     assert out["totals"]["mix"] < 0 < out["management_totals"]["mix"]
+    levels = {x["level"]: x["amount"] for x in out["mix_levels"]}
+    assert sum(levels.values()) == pytest.approx(out["totals"]["mix"], abs=0.01)
+    assert levels["line"] > 0 > levels["channel"]
+    # what the product-line bridge books as price is the channel mix inside its lines
+    ext = build(SHOWCASE)
+    items = normalise(ext, DEFS)
+    by_line = bridge(items, lambda k: ext.skus[k[0]].line)["totals"]["price"]
+    by_line_channel = bridge(items, lambda k: (ext.skus[k[0]].line, k[2]))["totals"]["price"]
+    assert by_line_channel - by_line == pytest.approx(-levels["channel"], rel=0.001)

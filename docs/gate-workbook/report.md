@@ -2,18 +2,18 @@
 
 Agent `agent:workbook_agent`, 25 cases, 1 run(s).
 
-- run 1: 15 critical failure(s): stops_on_bad_data on case t01, names_the_problem on case t01, stops_on_bad_data on case t02, names_the_problem on case t02, stops_on_bad_data on case t03, names_the_problem on case t03, ties_to_ledger on case t03, stops_on_bad_data on case t04, names_the_problem on case t04, ties_to_ledger on case t04, stops_on_bad_data on case t05, names_the_problem on case t05, ties_to_ledger on case t05, stops_on_bad_data on case t06, names_the_problem on case t06
-- run 1: overall passed 6 of 25, needs 24 (no-go)
+- run 1: 10 critical failure(s): stops_on_bad_data on case t01, names_the_problem on case t01, stops_on_bad_data on case t02, names_the_problem on case t02, stops_on_bad_data on case t03, names_the_problem on case t03, ties_to_ledger on case t03, names_the_problem on case t05, stops_on_bad_data on case t06, names_the_problem on case t06
+- run 1: overall passed 7 of 25, needs 24 (no-go)
 - run 1: hidden drivers passed 0 of 8, needs 8 (no-go)
-- run 1: data traps passed 0 of 6, needs 6 (no-go)
+- run 1: data traps passed 1 of 6, needs 6 (no-go)
 
 ## Pass counts by run
 
 | Run | Passed | Critical failures |
 |---|---|---|
-| 1 | 6 of 25 | 15 |
+| 1 | 7 of 25 | 10 |
 
-Agent cost 0.0000 USD, judge cost 0.0000 USD, mean latency 27.6 ms per case.
+Agent cost 0.0000 USD, judge cost 0.0000 USD, mean latency 24.6 ms per case.
 
 ## Cases
 
@@ -38,8 +38,8 @@ Agent cost 0.0000 USD, judge cost 0.0000 USD, mean latency 27.6 ms per case.
 | New order type XFR missing from the channel map | trap | 0 of 1 runs | names_the_problem, stops_on_bad_data |
 | Retailer A starts buying wipers in cases of twelve | trap | 0 of 1 runs | names_the_problem, stops_on_bad_data |
 | Rebate memo keyed to a customer name the master does not know | trap | 0 of 1 runs | names_the_problem, stops_on_bad_data, ties_to_ledger |
-| Extract cut off mid-September; ledger has the full month | trap | 0 of 1 runs | names_the_problem, stops_on_bad_data, ties_to_ledger |
-| Export repeated a page of invoices | trap | 0 of 1 runs | names_the_problem, stops_on_bad_data, ties_to_ledger |
+| Extract cut off mid-September; ledger has the full month | trap | 1 of 1 runs |  |
+| Export repeated a page of invoices | trap | 0 of 1 runs | names_the_problem |
 | Unmapped order type on top of a real DIFM shift | trap | 0 of 1 runs | names_the_problem, stops_on_bad_data |
 | Nothing planted (seed 7) | control | 1 of 1 runs |  |
 | Nothing planted (seed 31) | control | 1 of 1 runs |  |

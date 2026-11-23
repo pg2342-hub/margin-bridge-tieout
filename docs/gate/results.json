@@ -14,7 +14,7 @@
     ],
     "total_cost_usd": 0.0,
     "total_judge_cost_usd": 0.0,
-    "mean_latency_s": 0.035725
+    "mean_latency_s": 0.038704
   },
   "gate_result": {
     "decision": "go",
@@ -104,7 +104,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0371,
+          "latency_s": 0.0424,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -143,7 +143,21 @@
                   "revenue": 29054449.81,
                   "gl_revenue": 29054449.81,
                   "gp": 7130295.42,
-                  "gl_gp": 7130295.42,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -188929.77
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87466.11
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134555.67
+                    }
+                  ],
+                  "gl_gp": 6719343.87,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -151,13 +165,27 @@
                   "revenue": 29344004.66,
                   "gl_revenue": 29344004.66,
                   "gp": 7405489.91,
-                  "gl_gp": 7405489.91,
-                  "diff_gp": 0.0,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -189053.52
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87523.4
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134643.8
+                    }
+                  ],
+                  "gl_gp": 6994269.19,
+                  "diff_gp": -0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": 275194.49,
+            "delta_gp": 274925.32,
             "totals": {
               "price": 272594.86,
               "cost_tariff": 0.21,
@@ -165,7 +193,8 @@
               "volume": 975.38,
               "mix": 1624.11,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -269.17
             },
             "management_totals": {
               "price": 267562.32,
@@ -174,8 +203,31 @@
               "volume": 975.38,
               "mix": 1638.01,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -269.17
             },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": 1638.01
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": 2224.88
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": -350.7
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": -1888.07
+              }
+            ],
             "findings": [
               {
                 "kind": "top",
@@ -218,7 +270,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0352,
+          "latency_s": 0.0404,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -257,7 +309,21 @@
                   "revenue": 29054449.81,
                   "gl_revenue": 29054449.81,
                   "gp": 7130295.42,
-                  "gl_gp": 7130295.42,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -188929.77
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87466.11
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134555.67
+                    }
+                  ],
+                  "gl_gp": 6719343.87,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -265,13 +331,27 @@
                   "revenue": 28832994.97,
                   "gl_revenue": 28832994.97,
                   "gp": 6894480.22,
-                  "gl_gp": 6894480.22,
-                  "diff_gp": 0.0,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -189053.52
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87523.4
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134643.8
+                    }
+                  ],
+                  "gl_gp": 6483259.5,
+                  "diff_gp": -0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": -235815.2,
+            "delta_gp": -236084.37,
             "totals": {
               "price": -238414.83,
               "cost_tariff": 0.21,
@@ -279,7 +359,8 @@
               "volume": 975.38,
               "mix": 1624.11,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -269.17
             },
             "management_totals": {
               "price": -243447.37,
@@ -288,8 +369,31 @@
               "volume": 975.38,
               "mix": 1638.01,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -269.17
             },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": 1638.01
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": 2224.88
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": -350.7
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": -1888.07
+              }
+            ],
             "findings": [
               {
                 "kind": "top",
@@ -339,7 +443,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0341,
+          "latency_s": 0.0389,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -378,7 +482,21 @@
                   "revenue": 29054449.81,
                   "gl_revenue": 29054449.81,
                   "gp": 7130295.42,
-                  "gl_gp": 7130295.42,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -188929.77
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87466.11
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134555.67
+                    }
+                  ],
+                  "gl_gp": 6719343.87,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -386,13 +504,27 @@
                   "revenue": 29071409.62,
                   "gl_revenue": 29071409.62,
                   "gp": 6399181.45,
-                  "gl_gp": 6399181.45,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -195376.24
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -90450.54
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -139146.84
+                    }
+                  ],
+                  "gl_gp": 5974207.83,
                   "diff_gp": -0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": -731113.97,
+            "delta_gp": -745136.04,
             "totals": {
               "price": -0.18,
               "cost_tariff": -733713.21,
@@ -400,7 +532,8 @@
               "volume": 975.38,
               "mix": 1624.11,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -14022.07
             },
             "management_totals": {
               "price": -5032.72,
@@ -409,8 +542,31 @@
               "volume": 975.38,
               "mix": 1638.01,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -14022.07
             },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": 1638.01
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": 2224.88
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": -350.7
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": -1888.07
+              }
+            ],
             "findings": [
               {
                 "kind": "top",
@@ -460,7 +616,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0351,
+          "latency_s": 0.0412,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -499,7 +655,21 @@
                   "revenue": 31981426.37,
                   "gl_revenue": 31981426.37,
                   "gp": 7786845.24,
-                  "gl_gp": 7786845.24,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 38688.56
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -41563.16
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -200094.07
+                    }
+                  ],
+                  "gl_gp": 7583876.57,
                   "diff_gp": -0.0,
                   "ok": true
                 },
@@ -507,13 +677,27 @@
                   "revenue": 32005483.08,
                   "gl_revenue": 32005483.08,
                   "gp": 7279529.15,
-                  "gl_gp": 7279529.15,
-                  "diff_gp": 0.0,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 39538.26
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -42475.99
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -204488.63
+                    }
+                  ],
+                  "gl_gp": 7072102.79,
+                  "diff_gp": -0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": -507316.09,
+            "delta_gp": -511773.78,
             "totals": {
               "price": -0.15,
               "cost_tariff": -20246.6,
@@ -521,7 +705,8 @@
               "volume": 6660.71,
               "mix": -1565.53,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -4457.69
             },
             "management_totals": {
               "price": 18176.7,
@@ -530,8 +715,31 @@
               "volume": 6660.71,
               "mix": -4475.66,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -4457.69
             },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": -4475.66
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": -36.12
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": -328.99
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": 3275.24
+              }
+            ],
             "findings": [
               {
                 "kind": "top",
@@ -581,7 +789,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0355,
+          "latency_s": 0.0382,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -620,7 +828,21 @@
                   "revenue": 31981426.37,
                   "gl_revenue": 31981426.37,
                   "gp": 7786845.24,
-                  "gl_gp": 7786845.24,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 38688.56
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -41563.16
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -200094.07
+                    }
+                  ],
+                  "gl_gp": 7583876.57,
                   "diff_gp": -0.0,
                   "ok": true
                 },
@@ -628,13 +850,27 @@
                   "revenue": 29444647.25,
                   "gl_revenue": 29444647.25,
                   "gp": 7168417.05,
-                  "gl_gp": 7168417.05,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 35621.01
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -38267.68
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -184228.92
+                    }
+                  ],
+                  "gl_gp": 6981541.46,
                   "diff_gp": 0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": -618428.19,
+            "delta_gp": -602335.11,
             "totals": {
               "price": -0.13,
               "cost_tariff": -0.03,
@@ -642,7 +878,8 @@
               "volume": -616946.96,
               "mix": -1481.21,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": 16093.08
             },
             "management_totals": {
               "price": 16364.15,
@@ -651,8 +888,31 @@
               "volume": -616946.96,
               "mix": -3998.33,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": 16093.08
             },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": -3998.33
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": -51.33
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": -302.76
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": 2871.21
+              }
+            ],
             "findings": [
               {
                 "kind": "top",
@@ -702,7 +962,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0355,
+          "latency_s": 0.047,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -741,7 +1001,21 @@
                   "revenue": 30924343.85,
                   "gl_revenue": 30924343.85,
                   "gp": 7720043.44,
-                  "gl_gp": 7720043.44,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -48566.66
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -60215.81
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -155430.63
+                    }
+                  ],
+                  "gl_gp": 7455830.34,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -749,13 +1023,27 @@
                   "revenue": 32172378.69,
                   "gl_revenue": 32172378.69,
                   "gp": 8212944.93,
-                  "gl_gp": 8212944.93,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -50147.16
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -62175.4
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -160488.78
+                    }
+                  ],
+                  "gl_gp": 7940133.59,
                   "diff_gp": -0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": 492901.49,
+            "delta_gp": 484303.25,
             "totals": {
               "price": -0.11,
               "cost_tariff": -0.03,
@@ -763,7 +1051,8 @@
               "volume": 2233.25,
               "mix": 3548.34,
               "new": 487120.14,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -8598.24
             },
             "management_totals": {
               "price": 178868.89,
@@ -772,9 +1061,41 @@
               "volume": 191916.92,
               "mix": 188359.49,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -8598.24
             },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": 188359.49
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": -1245.5
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": -297.58
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": -183268.07
+              }
+            ],
             "findings": [
+              {
+                "kind": "masked",
+                "driver": "mix",
+                "dimension": "sku",
+                "member": null,
+                "amount": -183268.0,
+                "under": 188359.0,
+                "under_dimension": "line"
+              },
               {
                 "kind": "reattributed",
                 "driver": "mix",
@@ -810,8 +1131,15 @@
                 "kind": "top",
                 "driver": "mix",
                 "dimension": "line",
-                "member": "Sensors",
+                "member": null,
                 "amount": 188359.0
+              },
+              {
+                "kind": "top",
+                "driver": "mix",
+                "dimension": "sku",
+                "member": null,
+                "amount": -183268.0
               }
             ],
             "truth": {
@@ -833,7 +1161,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0351,
+          "latency_s": 0.0408,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -872,7 +1200,21 @@
                   "revenue": 30924343.85,
                   "gl_revenue": 30924343.85,
                   "gp": 7720043.44,
-                  "gl_gp": 7720043.44,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 76054.07
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -47969.27
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -185645.89
+                    }
+                  ],
+                  "gl_gp": 7562482.35,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -880,13 +1222,27 @@
                   "revenue": 27882698.23,
                   "gl_revenue": 27882698.23,
                   "gp": 6659463.29,
-                  "gl_gp": 6659463.29,
-                  "diff_gp": 0.0,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 69560.96
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -43873.89
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -169796.38
+                    }
+                  ],
+                  "gl_gp": 6515353.98,
+                  "diff_gp": -0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": -1060580.15,
+            "delta_gp": -1047128.37,
             "totals": {
               "price": -0.28,
               "cost_tariff": 0.03,
@@ -894,7 +1250,8 @@
               "volume": 3332.6,
               "mix": 4290.59,
               "new": 0.0,
-              "lost": -1068202.79
+              "lost": -1068202.79,
+              "ledger_items": 13451.78
             },
             "management_totals": {
               "price": -33767.27,
@@ -903,9 +1260,41 @@
               "volume": -537720.54,
               "mix": -536966.24,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": 13451.78
             },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": -536966.24
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": -136.99
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": -505.33
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": 541899.15
+              }
+            ],
             "findings": [
+              {
+                "kind": "masked",
+                "driver": "mix",
+                "dimension": "sku",
+                "member": null,
+                "amount": 541899.0,
+                "under": -536966.0,
+                "under_dimension": "line"
+              },
               {
                 "kind": "reattributed",
                 "driver": "mix",
@@ -932,8 +1321,15 @@
               {
                 "kind": "top",
                 "driver": "mix",
+                "dimension": "sku",
+                "member": null,
+                "amount": 541899.0
+              },
+              {
+                "kind": "top",
+                "driver": "mix",
                 "dimension": "line",
-                "member": "Sensors",
+                "member": null,
                 "amount": -536966.0
               }
             ],
@@ -956,7 +1352,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0379,
+          "latency_s": 0.0448,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -995,7 +1391,21 @@
                   "revenue": 32580626.76,
                   "gl_revenue": 32580626.76,
                   "gp": 7716825.32,
-                  "gl_gp": 7716825.32,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 36572.82
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -4250.02
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -145571.83
+                    }
+                  ],
+                  "gl_gp": 7603576.29,
                   "diff_gp": -0.0,
                   "ok": true
                 },
@@ -1003,13 +1413,27 @@
                   "revenue": 32714926.04,
                   "gl_revenue": 32714926.04,
                   "gp": 7839316.66,
-                  "gl_gp": 7839316.66,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 36590.38
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -4252.06
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -145641.71
+                    }
+                  ],
+                  "gl_gp": 7726013.27,
                   "diff_gp": 0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": 122491.34,
+            "delta_gp": 122436.98,
             "totals": {
               "price": 120556.65,
               "cost_tariff": -0.02,
@@ -1017,7 +1441,8 @@
               "volume": 3601.54,
               "mix": -1667.09,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -54.36
             },
             "management_totals": {
               "price": 120820.59,
@@ -1026,8 +1451,31 @@
               "volume": 3601.54,
               "mix": -2934.1,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -54.36
             },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": -2934.1
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": 1021.22
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": 68.85
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": 176.94
+              }
+            ],
             "findings": [
               {
                 "kind": "top",
@@ -1056,7 +1504,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.036,
+          "latency_s": 0.0414,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -1095,7 +1543,21 @@
                   "revenue": 29054449.81,
                   "gl_revenue": 29054449.81,
                   "gp": 7130295.42,
-                  "gl_gp": 7130295.42,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -188929.77
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87466.11
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134555.67
+                    }
+                  ],
+                  "gl_gp": 6719343.87,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -1103,13 +1565,27 @@
                   "revenue": 29934763.74,
                   "gl_revenue": 29934763.74,
                   "gp": 7334386.33,
-                  "gl_gp": 7334386.33,
-                  "diff_gp": 0.0,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -194757.07
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -90163.89
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -138705.87
+                    }
+                  ],
+                  "gl_gp": 6910759.5,
+                  "diff_gp": -0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": 204090.91,
+            "delta_gp": 191415.63,
             "totals": {
               "price": -0.35,
               "cost_tariff": 0.38,
@@ -1117,7 +1593,8 @@
               "volume": 1022.39,
               "mix": 203068.25,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -12675.28
             },
             "management_totals": {
               "price": -241598.32,
@@ -1126,24 +1603,38 @@
               "volume": 1022.39,
               "mix": 439157.44,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -12675.28
             },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": 439157.44
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": -261749.32
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": 27860.6
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": -2200.46
+              }
+            ],
             "findings": [
               {
                 "kind": "masked",
                 "driver": "mix",
-                "dimension": "line",
-                "member": "Sensors",
-                "amount": 439157.0,
-                "under": -145149.0,
-                "under_dimension": "channel"
-              },
-              {
-                "kind": "masked",
-                "driver": "mix",
                 "dimension": "channel",
-                "member": "DIFM",
-                "amount": -145149.0,
+                "member": null,
+                "amount": -261749.0,
                 "under": 439157.0,
                 "under_dimension": "line"
               },
@@ -1167,15 +1658,15 @@
                 "kind": "top",
                 "driver": "mix",
                 "dimension": "line",
-                "member": "Sensors",
+                "member": null,
                 "amount": 439157.0
               },
               {
                 "kind": "top",
                 "driver": "mix",
                 "dimension": "channel",
-                "member": "DIFM",
-                "amount": -145149.0
+                "member": null,
+                "amount": -261749.0
               }
             ],
             "truth": {
@@ -1197,7 +1688,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0363,
+          "latency_s": 0.0524,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -1236,7 +1727,21 @@
                   "revenue": 31981426.37,
                   "gl_revenue": 31981426.37,
                   "gp": 7786845.24,
-                  "gl_gp": 7786845.24,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 38688.56
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -41563.16
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -200094.07
+                    }
+                  ],
+                  "gl_gp": 7583876.57,
                   "diff_gp": -0.0,
                   "ok": true
                 },
@@ -1244,13 +1749,27 @@
                   "revenue": 33252557.12,
                   "gl_revenue": 33252557.12,
                   "gp": 8127805.47,
-                  "gl_gp": 8127805.47,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 40175.96
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -43161.07
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -207786.77
+                    }
+                  ],
+                  "gl_gp": 7917033.59,
                   "diff_gp": -0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": 340960.23,
+            "delta_gp": 333157.02,
             "totals": {
               "price": -0.15,
               "cost_tariff": -0.03,
@@ -1258,7 +1777,8 @@
               "volume": 6752.31,
               "mix": 334207.72,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -7803.21
             },
             "management_totals": {
               "price": -321610.07,
@@ -1267,24 +1787,38 @@
               "volume": 6752.31,
               "mix": 672273.6,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -7803.21
             },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": 672273.6
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": -375341.01
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": 32370.33
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": 4904.81
+              }
+            ],
             "findings": [
               {
                 "kind": "masked",
                 "driver": "mix",
-                "dimension": "line",
-                "member": "Sensors",
-                "amount": 672274.0,
-                "under": -221160.0,
-                "under_dimension": "channel"
-              },
-              {
-                "kind": "masked",
-                "driver": "mix",
                 "dimension": "channel",
-                "member": "DIFM",
-                "amount": -221160.0,
+                "member": null,
+                "amount": -375341.0,
                 "under": 672274.0,
                 "under_dimension": "line"
               },
@@ -1308,15 +1842,15 @@
                 "kind": "top",
                 "driver": "mix",
                 "dimension": "line",
-                "member": "Sensors",
+                "member": null,
                 "amount": 672274.0
               },
               {
                 "kind": "top",
                 "driver": "mix",
                 "dimension": "channel",
-                "member": "DIFM",
-                "amount": -221160.0
+                "member": null,
+                "amount": -375341.0
               }
             ],
             "truth": {
@@ -1338,7 +1872,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0364,
+          "latency_s": 0.0602,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -1377,7 +1911,21 @@
                   "revenue": 29054449.81,
                   "gl_revenue": 29054449.81,
                   "gp": 7130295.42,
-                  "gl_gp": 7130295.42,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -188929.77
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87466.11
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134555.67
+                    }
+                  ],
+                  "gl_gp": 6719343.87,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -1385,13 +1933,27 @@
                   "revenue": 30057492.68,
                   "gl_revenue": 30057492.68,
                   "gp": 8118977.93,
-                  "gl_gp": 8118977.93,
-                  "diff_gp": 0.0,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -189053.52
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87523.4
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134643.8
+                    }
+                  ],
+                  "gl_gp": 7707757.21,
+                  "diff_gp": -0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": 988682.51,
+            "delta_gp": 988413.34,
             "totals": {
               "price": 986082.88,
               "cost_tariff": 0.21,
@@ -1399,7 +1961,8 @@
               "volume": 975.38,
               "mix": 1624.11,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -269.17
             },
             "management_totals": {
               "price": 981050.34,
@@ -1408,8 +1971,31 @@
               "volume": 975.38,
               "mix": 1638.01,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -269.17
             },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": 1638.01
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": 2224.88
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": -350.7
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": -1888.07
+              }
+            ],
             "findings": [
               {
                 "kind": "masked",
@@ -1467,7 +2053,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0373,
+          "latency_s": 0.0431,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -1506,7 +2092,21 @@
                   "revenue": 31981426.37,
                   "gl_revenue": 31981426.37,
                   "gp": 7786845.24,
-                  "gl_gp": 7786845.24,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 38688.56
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -41563.16
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -200094.07
+                    }
+                  ],
+                  "gl_gp": 7583876.57,
                   "diff_gp": -0.0,
                   "ok": true
                 },
@@ -1514,13 +2114,27 @@
                   "revenue": 32280952.55,
                   "gl_revenue": 32280952.55,
                   "gp": 6967130.76,
-                  "gl_gp": 6967130.76,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 40478.29
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -43485.87
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -209350.42
+                    }
+                  ],
+                  "gl_gp": 6754772.76,
                   "diff_gp": 0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": -819714.48,
+            "delta_gp": -829103.81,
             "totals": {
               "price": 275469.32,
               "cost_tariff": -1100278.93,
@@ -1528,7 +2142,8 @@
               "volume": 6660.71,
               "mix": -1565.53,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -9389.33
             },
             "management_totals": {
               "price": 293646.17,
@@ -1537,8 +2152,31 @@
               "volume": 6660.71,
               "mix": -4475.66,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -9389.33
             },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": -4475.66
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": -36.12
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": -328.99
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": 3275.24
+              }
+            ],
             "findings": [
               {
                 "kind": "masked",
@@ -1640,7 +2278,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0365,
+          "latency_s": 0.0481,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -1679,7 +2317,21 @@
                   "revenue": 30924343.85,
                   "gl_revenue": 30924343.85,
                   "gp": 7720043.44,
-                  "gl_gp": 7720043.44,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -167351.47
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -75804.22
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -127532.91
+                    }
+                  ],
+                  "gl_gp": 7349354.84,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -1687,13 +2339,27 @@
                   "revenue": 30390519.94,
                   "gl_revenue": 30390519.94,
                   "gp": 7170698.44,
-                  "gl_gp": 7170698.44,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -167463.41
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -75854.92
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -127618.21
+                    }
+                  ],
+                  "gl_gp": 6799761.9,
                   "diff_gp": -0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": -549345.0,
+            "delta_gp": -549592.94,
             "totals": {
               "price": -0.05,
               "cost_tariff": -0.09,
@@ -1701,7 +2367,8 @@
               "volume": 2804.55,
               "mix": -552149.16,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -247.94
             },
             "management_totals": {
               "price": -546188.93,
@@ -1710,8 +2377,31 @@
               "volume": 2804.55,
               "mix": 11.79,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -247.94
             },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": 11.79
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": -615873.14
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": 60251.04
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": 3461.15
+              }
+            ],
             "findings": [
               {
                 "kind": "reattributed",
@@ -1733,8 +2423,8 @@
                 "kind": "top",
                 "driver": "mix",
                 "dimension": "channel",
-                "member": "DIFM",
-                "amount": -360693.0
+                "member": null,
+                "amount": -615873.0
               }
             ],
             "truth": {
@@ -1756,7 +2446,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0367,
+          "latency_s": 0.0424,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -1795,7 +2485,21 @@
                   "revenue": 32580746.52,
                   "gl_revenue": 32580746.52,
                   "gp": 7716836.62,
-                  "gl_gp": 7716836.62,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 36572.82
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -4250.02
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -145571.83
+                    }
+                  ],
+                  "gl_gp": 7603587.59,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -1803,13 +2507,27 @@
                   "revenue": 32594635.04,
                   "gl_revenue": 32594635.04,
                   "gp": 8604692.35,
-                  "gl_gp": 8604692.35,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 35287.28
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -4100.63
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -140454.97
+                    }
+                  ],
+                  "gl_gp": 8495424.03,
                   "diff_gp": 0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": 887855.73,
+            "delta_gp": 891836.44,
             "totals": {
               "price": -0.13,
               "cost_tariff": 41240.5,
@@ -1817,7 +2535,8 @@
               "volume": 3998.87,
               "mix": -2046.2,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": 3980.71
             },
             "management_totals": {
               "price": -103.83,
@@ -1826,8 +2545,31 @@
               "volume": 3998.87,
               "mix": -3242.69,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": 3980.71
             },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": -3242.69
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": 989.82
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": 80.36
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": 126.32
+              }
+            ],
             "findings": [
               {
                 "kind": "masked",
@@ -1885,7 +2627,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0688,
+          "latency_s": 0.0421,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -1924,7 +2666,21 @@
                   "revenue": 29054449.81,
                   "gl_revenue": 29054449.81,
                   "gp": 7130295.42,
-                  "gl_gp": 7130295.42,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -188929.77
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87466.11
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134555.67
+                    }
+                  ],
+                  "gl_gp": 6719343.87,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -1932,13 +2688,27 @@
                   "revenue": 31022889.6,
                   "gl_revenue": 31022889.6,
                   "gp": 7431258.24,
-                  "gl_gp": 7431258.24,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -203299.13
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -94118.49
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -144789.52
+                    }
+                  ],
+                  "gl_gp": 6989051.1,
                   "diff_gp": 0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": 300962.82,
+            "delta_gp": 269707.23,
             "totals": {
               "price": -0.22,
               "cost_tariff": 0.15,
@@ -1946,7 +2716,8 @@
               "volume": 357318.58,
               "mix": -56355.68,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -31255.59
             },
             "management_totals": {
               "price": -431700.86,
@@ -1955,24 +2726,38 @@
               "volume": 357318.58,
               "mix": 369535.15,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -31255.59
             },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": 369535.15
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": -468448.21
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": 44595.18
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": -2037.8
+              }
+            ],
             "findings": [
               {
                 "kind": "masked",
                 "driver": "mix",
-                "dimension": "line",
-                "member": "Sensors",
-                "amount": 369535.0,
-                "under": -254729.0,
-                "under_dimension": "channel"
-              },
-              {
-                "kind": "masked",
-                "driver": "mix",
                 "dimension": "channel",
-                "member": "DIFM",
-                "amount": -254729.0,
+                "member": null,
+                "amount": -468448.0,
                 "under": 369535.0,
                 "under_dimension": "line"
               },
@@ -1995,16 +2780,16 @@
               {
                 "kind": "top",
                 "driver": "mix",
-                "dimension": "line",
-                "member": "Sensors",
-                "amount": 369535.0
+                "dimension": "channel",
+                "member": null,
+                "amount": -468448.0
               },
               {
                 "kind": "top",
                 "driver": "mix",
-                "dimension": "channel",
-                "member": "DIFM",
-                "amount": -254729.0
+                "dimension": "line",
+                "member": null,
+                "amount": 369535.0
               },
               {
                 "kind": "top",
@@ -2054,7 +2839,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0389,
+          "latency_s": 0.0421,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -2093,7 +2878,21 @@
                   "revenue": 31981426.37,
                   "gl_revenue": 31981426.37,
                   "gp": 7786845.24,
-                  "gl_gp": 7786845.24,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 38688.56
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -41563.16
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -200094.07
+                    }
+                  ],
+                  "gl_gp": 7583876.57,
                   "diff_gp": -0.0,
                   "ok": true
                 },
@@ -2101,13 +2900,27 @@
                   "revenue": 32005483.08,
                   "gl_revenue": 32005483.08,
                   "gp": 7873714.3,
-                  "gl_gp": 7873714.3,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 38588.12
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -41455.25
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -199574.6
+                    }
+                  ],
+                  "gl_gp": 7671272.57,
                   "diff_gp": 0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": 86869.06,
+            "delta_gp": 87396.0,
             "totals": {
               "price": -0.15,
               "cost_tariff": 81774.08,
@@ -2115,7 +2928,8 @@
               "volume": 6660.71,
               "mix": -1565.53,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": 526.94
             },
             "management_totals": {
               "price": 18176.7,
@@ -2124,8 +2938,31 @@
               "volume": 6660.71,
               "mix": -4475.66,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": 526.94
             },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": -4475.66
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": -36.12
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": -328.99
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": 3275.24
+              }
+            ],
             "findings": [
               {
                 "kind": "masked",
@@ -2162,7 +2999,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0195,
+          "latency_s": 0.0207,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -2196,7 +3033,7 @@
             "issues": [
               {
                 "code": "unmapped_order_code",
-                "detail": "order type XFR on 40 lines ($451,436) has no channel",
+                "detail": "order type XFR on 40 lines ($491,980) has no channel",
                 "blocking": true
               }
             ],
@@ -2222,7 +3059,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0222,
+          "latency_s": 0.0232,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -2282,7 +3119,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0198,
+          "latency_s": 0.0212,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -2342,7 +3179,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0219,
+          "latency_s": 0.0215,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -2387,7 +3224,21 @@
                   "revenue": 31981426.37,
                   "gl_revenue": 31981426.37,
                   "gp": 7786845.24,
-                  "gl_gp": 7786845.24,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 38688.56
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -41563.16
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -200094.07
+                    }
+                  ],
+                  "gl_gp": 7583876.57,
                   "diff_gp": -0.0,
                   "ok": true
                 },
@@ -2395,7 +3246,21 @@
                   "revenue": 31284771.3,
                   "gl_revenue": 32005483.08,
                   "gp": 7613781.86,
-                  "gl_gp": 7791940.16,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 38718.88
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -41595.73
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -200250.89
+                    }
+                  ],
+                  "gl_gp": 7588812.42,
                   "diff_gp": -178158.3,
                   "ok": false
                 }
@@ -2422,7 +3287,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0199,
+          "latency_s": 0.0196,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -2482,7 +3347,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.021,
+          "latency_s": 0.0214,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -2516,7 +3381,7 @@
             "issues": [
               {
                 "code": "unmapped_order_code",
-                "detail": "order type XFR on 40 lines ($634,173) has no channel",
+                "detail": "order type XFR on 40 lines ($638,967) has no channel",
                 "blocking": true
               }
             ],
@@ -2542,7 +3407,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0362,
+          "latency_s": 0.0436,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -2581,7 +3446,21 @@
                   "revenue": 29054449.81,
                   "gl_revenue": 29054449.81,
                   "gp": 7130295.42,
-                  "gl_gp": 7130295.42,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -188929.77
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87466.11
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134555.67
+                    }
+                  ],
+                  "gl_gp": 6719343.87,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -2589,13 +3468,27 @@
                   "revenue": 29071409.62,
                   "gl_revenue": 29071409.62,
                   "gp": 7132894.87,
-                  "gl_gp": 7132894.87,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -189053.52
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87523.4
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134643.8
+                    }
+                  ],
+                  "gl_gp": 6721674.15,
                   "diff_gp": -0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": 2599.45,
+            "delta_gp": 2330.28,
             "totals": {
               "price": -0.18,
               "cost_tariff": 0.21,
@@ -2603,7 +3496,8 @@
               "volume": 975.38,
               "mix": 1624.11,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -269.17
             },
             "management_totals": {
               "price": -5032.72,
@@ -2612,8 +3506,31 @@
               "volume": 975.38,
               "mix": 1638.01,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -269.17
             },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": 1638.01
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": 2224.88
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": -350.7
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": -1888.07
+              }
+            ],
             "findings": [],
             "truth": {
               "price": 0.0,
@@ -2634,7 +3551,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0507,
+          "latency_s": 0.0452,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -2673,7 +3590,21 @@
                   "revenue": 32492405.65,
                   "gl_revenue": 32492405.65,
                   "gp": 8060723.58,
-                  "gl_gp": 8060723.58,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -25152.14
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -62192.03
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -214527.78
+                    }
+                  ],
+                  "gl_gp": 7758851.63,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -2681,13 +3612,27 @@
                   "revenue": 32471054.4,
                   "gl_revenue": 32471054.4,
                   "gp": 8058567.72,
-                  "gl_gp": 8058567.72,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -25132.38
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -62143.16
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -214359.23
+                    }
+                  ],
+                  "gl_gp": 7756932.95,
                   "diff_gp": 0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": -2155.86,
+            "delta_gp": -1918.68,
             "totals": {
               "price": -0.19,
               "cost_tariff": -0.15,
@@ -2695,7 +3640,8 @@
               "volume": 3394.89,
               "mix": -5550.79,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": 237.18
             },
             "management_totals": {
               "price": -5616.87,
@@ -2704,8 +3650,31 @@
               "volume": 3394.89,
               "mix": -4113.89,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": 237.18
             },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": -4113.89
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": 1000.69
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": -575.55
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": -1862.03
+              }
+            ],
             "findings": [],
             "truth": {
               "price": 0.0,
@@ -2726,7 +3695,7 @@
           "passed": true,
           "failed_checks": [],
           "error": "",
-          "latency_s": 0.0694,
+          "latency_s": 0.0458,
           "cost_usd": 0.0,
           "judge_cost_usd": 0.0,
           "verdicts": {
@@ -2765,7 +3734,21 @@
                   "revenue": 30973353.38,
                   "gl_revenue": 30973353.38,
                   "gp": 7724454.93,
-                  "gl_gp": 7724454.93,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -67595.83
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -102558.1
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -173060.69
+                    }
+                  ],
+                  "gl_gp": 7381240.31,
                   "diff_gp": 0.0,
                   "ok": true
                 },
@@ -2773,13 +3756,27 @@
                   "revenue": 31620743.19,
                   "gl_revenue": 31620743.19,
                   "gp": 7888043.74,
-                  "gl_gp": 7888043.74,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -69002.48
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -104692.29
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -176662.02
+                    }
+                  ],
+                  "gl_gp": 7537686.95,
                   "diff_gp": -0.0,
                   "ok": true
                 }
               }
             },
-            "delta_gp": 163588.81,
+            "delta_gp": 156446.64,
             "totals": {
               "price": 0.41,
               "cost_tariff": 0.11,
@@ -2787,7 +3784,8 @@
               "volume": 162189.88,
               "mix": 1398.38,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -7142.17
             },
             "management_totals": {
               "price": 423.54,
@@ -2796,8 +3794,31 @@
               "volume": 162189.88,
               "mix": 983.89,
               "new": 0.0,
-              "lost": 0.0
+              "lost": 0.0,
+              "ledger_items": -7142.17
             },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": 983.89
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": 186.28
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": 162.01
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": 66.2
+              }
+            ],
             "findings": [
               {
                 "kind": "top",

@@ -1,0 +1,3841 @@
+{
+  "agent": "agent:tieout_agent",
+  "gate": "Margin bridge go-live gate",
+  "runs": 1,
+  "decision": "go",
+  "summary": {
+    "by_run": [
+      {
+        "run": 1,
+        "passed": 25,
+        "total": 25,
+        "critical": 0
+      }
+    ],
+    "total_cost_usd": 0.0,
+    "total_judge_cost_usd": 0.0,
+    "mean_latency_s": 0.038704
+  },
+  "gate_result": {
+    "decision": "go",
+    "reasons": [
+      "every rule held on all 1 run(s), no critical failures"
+    ],
+    "rules": [
+      {
+        "name": "overall",
+        "run": 1,
+        "passed": 25,
+        "total": 25,
+        "required": 24,
+        "held": true,
+        "on_fail": "no-go"
+      },
+      {
+        "name": "hidden drivers",
+        "run": 1,
+        "passed": 8,
+        "total": 8,
+        "required": 8,
+        "held": true,
+        "on_fail": "no-go"
+      },
+      {
+        "name": "data traps",
+        "run": 1,
+        "passed": 6,
+        "total": 6,
+        "required": 6,
+        "held": true,
+        "on_fail": "no-go"
+      },
+      {
+        "name": "controls",
+        "run": 1,
+        "passed": 3,
+        "total": 3,
+        "required": 3,
+        "held": true,
+        "on_fail": "no-go"
+      }
+    ],
+    "critical_failures": {}
+  },
+  "checks": [
+    {
+      "id": "stops_on_bad_data",
+      "text": "A data problem stops the bridge; clean data publishes one.",
+      "critical": true
+    },
+    {
+      "id": "names_the_problem",
+      "text": "The analysis names the planted data problem.",
+      "critical": true
+    },
+    {
+      "id": "ties_to_ledger",
+      "text": "A published bridge ties to the ledger, and its effects add up to the ledger's change in gross profit.",
+      "critical": true
+    },
+    {
+      "id": "finds_the_driver",
+      "text": "The planted driver is in the findings, with the right sign; a hidden one is in the top 3.",
+      "critical": false
+    },
+    {
+      "id": "sizes_it_right",
+      "text": "The bridge's effect for the planted driver is within 2% of the planted dollars.",
+      "critical": false
+    },
+    {
+      "id": "no_false_alarm",
+      "text": "With nothing planted, there are no data issues and no masked or reattributed findings.",
+      "critical": false
+    }
+  ],
+  "cases": [
+    {
+      "id": "r01",
+      "group": "routine",
+      "title": "Sensors list price up 4%",
+      "runs": [
+        {
+          "run": 1,
+          "passed": true,
+          "failed_checks": [],
+          "error": "",
+          "latency_s": 0.0424,
+          "cost_usd": 0.0,
+          "judge_cost_usd": 0.0,
+          "verdicts": {
+            "stops_on_bad_data": {
+              "result": "pass",
+              "reason": ""
+            },
+            "names_the_problem": {
+              "result": "na",
+              "reason": ""
+            },
+            "ties_to_ledger": {
+              "result": "pass",
+              "reason": ""
+            },
+            "finds_the_driver": {
+              "result": "pass",
+              "reason": ""
+            },
+            "sizes_it_right": {
+              "result": "pass",
+              "reason": ""
+            },
+            "no_false_alarm": {
+              "result": "na",
+              "reason": ""
+            }
+          },
+          "output": {
+            "published": true,
+            "issues": [],
+            "tie_out": {
+              "ok": true,
+              "periods": {
+                "PY": {
+                  "revenue": 29054449.81,
+                  "gl_revenue": 29054449.81,
+                  "gp": 7130295.42,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -188929.77
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87466.11
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134555.67
+                    }
+                  ],
+                  "gl_gp": 6719343.87,
+                  "diff_gp": 0.0,
+                  "ok": true
+                },
+                "CY": {
+                  "revenue": 29344004.66,
+                  "gl_revenue": 29344004.66,
+                  "gp": 7405489.91,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -189053.52
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87523.4
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134643.8
+                    }
+                  ],
+                  "gl_gp": 6994269.19,
+                  "diff_gp": -0.0,
+                  "ok": true
+                }
+              }
+            },
+            "delta_gp": 274925.32,
+            "totals": {
+              "price": 272594.86,
+              "cost_tariff": 0.21,
+              "cost_other": -0.07,
+              "volume": 975.38,
+              "mix": 1624.11,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": -269.17
+            },
+            "management_totals": {
+              "price": 267562.32,
+              "cost_tariff": 285.79,
+              "cost_other": 4732.99,
+              "volume": 975.38,
+              "mix": 1638.01,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": -269.17
+            },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": 1638.01
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": 2224.88
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": -350.7
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": -1888.07
+              }
+            ],
+            "findings": [
+              {
+                "kind": "top",
+                "driver": "price",
+                "dimension": "line",
+                "member": "Sensors",
+                "amount": 272595.0
+              },
+              {
+                "kind": "top",
+                "driver": "price",
+                "dimension": "origin",
+                "member": "China",
+                "amount": 173101.0
+              },
+              {
+                "kind": "top",
+                "driver": "price",
+                "dimension": "channel",
+                "member": "DIY",
+                "amount": 150080.0
+              }
+            ],
+            "truth": {
+              "price": 272621.25,
+              "cost_tariff": 0.0,
+              "cost_other": 0.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "r02",
+      "group": "routine",
+      "title": "Distributor D gets a 6% price cut",
+      "runs": [
+        {
+          "run": 1,
+          "passed": true,
+          "failed_checks": [],
+          "error": "",
+          "latency_s": 0.0404,
+          "cost_usd": 0.0,
+          "judge_cost_usd": 0.0,
+          "verdicts": {
+            "stops_on_bad_data": {
+              "result": "pass",
+              "reason": ""
+            },
+            "names_the_problem": {
+              "result": "na",
+              "reason": ""
+            },
+            "ties_to_ledger": {
+              "result": "pass",
+              "reason": ""
+            },
+            "finds_the_driver": {
+              "result": "pass",
+              "reason": ""
+            },
+            "sizes_it_right": {
+              "result": "pass",
+              "reason": ""
+            },
+            "no_false_alarm": {
+              "result": "na",
+              "reason": ""
+            }
+          },
+          "output": {
+            "published": true,
+            "issues": [],
+            "tie_out": {
+              "ok": true,
+              "periods": {
+                "PY": {
+                  "revenue": 29054449.81,
+                  "gl_revenue": 29054449.81,
+                  "gp": 7130295.42,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -188929.77
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87466.11
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134555.67
+                    }
+                  ],
+                  "gl_gp": 6719343.87,
+                  "diff_gp": 0.0,
+                  "ok": true
+                },
+                "CY": {
+                  "revenue": 28832994.97,
+                  "gl_revenue": 28832994.97,
+                  "gp": 6894480.22,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -189053.52
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87523.4
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134643.8
+                    }
+                  ],
+                  "gl_gp": 6483259.5,
+                  "diff_gp": -0.0,
+                  "ok": true
+                }
+              }
+            },
+            "delta_gp": -236084.37,
+            "totals": {
+              "price": -238414.83,
+              "cost_tariff": 0.21,
+              "cost_other": -0.07,
+              "volume": 975.38,
+              "mix": 1624.11,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": -269.17
+            },
+            "management_totals": {
+              "price": -243447.37,
+              "cost_tariff": 285.79,
+              "cost_other": 4732.99,
+              "volume": 975.38,
+              "mix": 1638.01,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": -269.17
+            },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": 1638.01
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": 2224.88
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": -350.7
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": -1888.07
+              }
+            ],
+            "findings": [
+              {
+                "kind": "top",
+                "driver": "price",
+                "dimension": "customer",
+                "member": "Distributor D",
+                "amount": -238415.0
+              },
+              {
+                "kind": "top",
+                "driver": "price",
+                "dimension": "channel",
+                "member": "DIFM",
+                "amount": -238415.0
+              },
+              {
+                "kind": "top",
+                "driver": "price",
+                "dimension": "line",
+                "member": "Climate",
+                "amount": -111048.0
+              },
+              {
+                "kind": "top",
+                "driver": "price",
+                "dimension": "origin",
+                "member": "Mexico",
+                "amount": -102640.0
+              }
+            ],
+            "truth": {
+              "price": -238414.94,
+              "cost_tariff": 0.0,
+              "cost_other": 0.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "r03",
+      "group": "routine",
+      "title": "China tariff rate 10% to 25%",
+      "runs": [
+        {
+          "run": 1,
+          "passed": true,
+          "failed_checks": [],
+          "error": "",
+          "latency_s": 0.0389,
+          "cost_usd": 0.0,
+          "judge_cost_usd": 0.0,
+          "verdicts": {
+            "stops_on_bad_data": {
+              "result": "pass",
+              "reason": ""
+            },
+            "names_the_problem": {
+              "result": "na",
+              "reason": ""
+            },
+            "ties_to_ledger": {
+              "result": "pass",
+              "reason": ""
+            },
+            "finds_the_driver": {
+              "result": "pass",
+              "reason": ""
+            },
+            "sizes_it_right": {
+              "result": "pass",
+              "reason": ""
+            },
+            "no_false_alarm": {
+              "result": "na",
+              "reason": ""
+            }
+          },
+          "output": {
+            "published": true,
+            "issues": [],
+            "tie_out": {
+              "ok": true,
+              "periods": {
+                "PY": {
+                  "revenue": 29054449.81,
+                  "gl_revenue": 29054449.81,
+                  "gp": 7130295.42,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -188929.77
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87466.11
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134555.67
+                    }
+                  ],
+                  "gl_gp": 6719343.87,
+                  "diff_gp": 0.0,
+                  "ok": true
+                },
+                "CY": {
+                  "revenue": 29071409.62,
+                  "gl_revenue": 29071409.62,
+                  "gp": 6399181.45,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -195376.24
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -90450.54
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -139146.84
+                    }
+                  ],
+                  "gl_gp": 5974207.83,
+                  "diff_gp": -0.0,
+                  "ok": true
+                }
+              }
+            },
+            "delta_gp": -745136.04,
+            "totals": {
+              "price": -0.18,
+              "cost_tariff": -733713.21,
+              "cost_other": -0.07,
+              "volume": 975.38,
+              "mix": 1624.11,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": -14022.07
+            },
+            "management_totals": {
+              "price": -5032.72,
+              "cost_tariff": -733427.63,
+              "cost_other": 4732.99,
+              "volume": 975.38,
+              "mix": 1638.01,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": -14022.07
+            },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": 1638.01
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": 2224.88
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": -350.7
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": -1888.07
+              }
+            ],
+            "findings": [
+              {
+                "kind": "top",
+                "driver": "cost_tariff",
+                "dimension": "origin",
+                "member": "China",
+                "amount": -733713.0
+              },
+              {
+                "kind": "top",
+                "driver": "cost_tariff",
+                "dimension": "channel",
+                "member": "DIY",
+                "amount": -373081.0
+              },
+              {
+                "kind": "top",
+                "driver": "cost_tariff",
+                "dimension": "line",
+                "member": "Sensors",
+                "amount": -247103.0
+              },
+              {
+                "kind": "top",
+                "driver": "cost_tariff",
+                "dimension": "customer",
+                "member": "Retailer A",
+                "amount": -217901.0
+              }
+            ],
+            "truth": {
+              "price": 0.0,
+              "cost_tariff": -733686.44,
+              "cost_other": 0.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "r04",
+      "group": "routine",
+      "title": "Climate material cost up 8%",
+      "runs": [
+        {
+          "run": 1,
+          "passed": true,
+          "failed_checks": [],
+          "error": "",
+          "latency_s": 0.0412,
+          "cost_usd": 0.0,
+          "judge_cost_usd": 0.0,
+          "verdicts": {
+            "stops_on_bad_data": {
+              "result": "pass",
+              "reason": ""
+            },
+            "names_the_problem": {
+              "result": "na",
+              "reason": ""
+            },
+            "ties_to_ledger": {
+              "result": "pass",
+              "reason": ""
+            },
+            "finds_the_driver": {
+              "result": "pass",
+              "reason": ""
+            },
+            "sizes_it_right": {
+              "result": "pass",
+              "reason": ""
+            },
+            "no_false_alarm": {
+              "result": "na",
+              "reason": ""
+            }
+          },
+          "output": {
+            "published": true,
+            "issues": [],
+            "tie_out": {
+              "ok": true,
+              "periods": {
+                "PY": {
+                  "revenue": 31981426.37,
+                  "gl_revenue": 31981426.37,
+                  "gp": 7786845.24,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 38688.56
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -41563.16
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -200094.07
+                    }
+                  ],
+                  "gl_gp": 7583876.57,
+                  "diff_gp": -0.0,
+                  "ok": true
+                },
+                "CY": {
+                  "revenue": 32005483.08,
+                  "gl_revenue": 32005483.08,
+                  "gp": 7279529.15,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 39538.26
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -42475.99
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -204488.63
+                    }
+                  ],
+                  "gl_gp": 7072102.79,
+                  "diff_gp": -0.0,
+                  "ok": true
+                }
+              }
+            },
+            "delta_gp": -511773.78,
+            "totals": {
+              "price": -0.15,
+              "cost_tariff": -20246.6,
+              "cost_other": -492164.53,
+              "volume": 6660.71,
+              "mix": -1565.53,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": -4457.69
+            },
+            "management_totals": {
+              "price": 18176.7,
+              "cost_tariff": -20944.24,
+              "cost_other": -506733.61,
+              "volume": 6660.71,
+              "mix": -4475.66,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": -4457.69
+            },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": -4475.66
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": -36.12
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": -328.99
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": 3275.24
+              }
+            ],
+            "findings": [
+              {
+                "kind": "top",
+                "driver": "cost_other",
+                "dimension": "line",
+                "member": "Climate",
+                "amount": -492164.0
+              },
+              {
+                "kind": "top",
+                "driver": "cost_other",
+                "dimension": "channel",
+                "member": "DIFM",
+                "amount": -297088.0
+              },
+              {
+                "kind": "top",
+                "driver": "cost_other",
+                "dimension": "origin",
+                "member": "Mexico",
+                "amount": -228755.0
+              },
+              {
+                "kind": "top",
+                "driver": "cost_other",
+                "dimension": "customer",
+                "member": "Retailer A",
+                "amount": -168572.0
+              }
+            ],
+            "truth": {
+              "price": 0.0,
+              "cost_tariff": -20251.52,
+              "cost_other": -492262.17
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "r05",
+      "group": "routine",
+      "title": "Units down 8% across the board",
+      "runs": [
+        {
+          "run": 1,
+          "passed": true,
+          "failed_checks": [],
+          "error": "",
+          "latency_s": 0.0382,
+          "cost_usd": 0.0,
+          "judge_cost_usd": 0.0,
+          "verdicts": {
+            "stops_on_bad_data": {
+              "result": "pass",
+              "reason": ""
+            },
+            "names_the_problem": {
+              "result": "na",
+              "reason": ""
+            },
+            "ties_to_ledger": {
+              "result": "pass",
+              "reason": ""
+            },
+            "finds_the_driver": {
+              "result": "pass",
+              "reason": ""
+            },
+            "sizes_it_right": {
+              "result": "na",
+              "reason": ""
+            },
+            "no_false_alarm": {
+              "result": "na",
+              "reason": ""
+            }
+          },
+          "output": {
+            "published": true,
+            "issues": [],
+            "tie_out": {
+              "ok": true,
+              "periods": {
+                "PY": {
+                  "revenue": 31981426.37,
+                  "gl_revenue": 31981426.37,
+                  "gp": 7786845.24,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 38688.56
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -41563.16
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -200094.07
+                    }
+                  ],
+                  "gl_gp": 7583876.57,
+                  "diff_gp": -0.0,
+                  "ok": true
+                },
+                "CY": {
+                  "revenue": 29444647.25,
+                  "gl_revenue": 29444647.25,
+                  "gp": 7168417.05,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 35621.01
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -38267.68
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -184228.92
+                    }
+                  ],
+                  "gl_gp": 6981541.46,
+                  "diff_gp": 0.0,
+                  "ok": true
+                }
+              }
+            },
+            "delta_gp": -602335.11,
+            "totals": {
+              "price": -0.13,
+              "cost_tariff": -0.03,
+              "cost_other": 0.14,
+              "volume": -616946.96,
+              "mix": -1481.21,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": 16093.08
+            },
+            "management_totals": {
+              "price": 16364.15,
+              "cost_tariff": -611.3,
+              "cost_other": -13235.76,
+              "volume": -616946.96,
+              "mix": -3998.33,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": 16093.08
+            },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": -3998.33
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": -51.33
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": -302.76
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": 2871.21
+              }
+            ],
+            "findings": [
+              {
+                "kind": "top",
+                "driver": "volume",
+                "dimension": "channel",
+                "member": "DIY",
+                "amount": -392043.0
+              },
+              {
+                "kind": "top",
+                "driver": "volume",
+                "dimension": "line",
+                "member": "Sensors",
+                "amount": -237745.0
+              },
+              {
+                "kind": "top",
+                "driver": "volume",
+                "dimension": "origin",
+                "member": "Mexico",
+                "amount": -236296.0
+              },
+              {
+                "kind": "top",
+                "driver": "volume",
+                "dimension": "customer",
+                "member": "Retailer A",
+                "amount": -204366.0
+              }
+            ],
+            "truth": {
+              "price": 0.0,
+              "cost_tariff": 0.0,
+              "cost_other": 0.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "r06",
+      "group": "routine",
+      "title": "Four new Sensors SKUs launched",
+      "runs": [
+        {
+          "run": 1,
+          "passed": true,
+          "failed_checks": [],
+          "error": "",
+          "latency_s": 0.047,
+          "cost_usd": 0.0,
+          "judge_cost_usd": 0.0,
+          "verdicts": {
+            "stops_on_bad_data": {
+              "result": "pass",
+              "reason": ""
+            },
+            "names_the_problem": {
+              "result": "na",
+              "reason": ""
+            },
+            "ties_to_ledger": {
+              "result": "pass",
+              "reason": ""
+            },
+            "finds_the_driver": {
+              "result": "pass",
+              "reason": ""
+            },
+            "sizes_it_right": {
+              "result": "na",
+              "reason": ""
+            },
+            "no_false_alarm": {
+              "result": "na",
+              "reason": ""
+            }
+          },
+          "output": {
+            "published": true,
+            "issues": [],
+            "tie_out": {
+              "ok": true,
+              "periods": {
+                "PY": {
+                  "revenue": 30924343.85,
+                  "gl_revenue": 30924343.85,
+                  "gp": 7720043.44,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -48566.66
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -60215.81
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -155430.63
+                    }
+                  ],
+                  "gl_gp": 7455830.34,
+                  "diff_gp": 0.0,
+                  "ok": true
+                },
+                "CY": {
+                  "revenue": 32172378.69,
+                  "gl_revenue": 32172378.69,
+                  "gp": 8212944.93,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -50147.16
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -62175.4
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -160488.78
+                    }
+                  ],
+                  "gl_gp": 7940133.59,
+                  "diff_gp": -0.0,
+                  "ok": true
+                }
+              }
+            },
+            "delta_gp": 484303.25,
+            "totals": {
+              "price": -0.11,
+              "cost_tariff": -0.03,
+              "cost_other": -0.11,
+              "volume": 2233.25,
+              "mix": 3548.34,
+              "new": 487120.14,
+              "lost": 0.0,
+              "ledger_items": -8598.24
+            },
+            "management_totals": {
+              "price": 178868.89,
+              "cost_tariff": -6701.14,
+              "cost_other": -59542.66,
+              "volume": 191916.92,
+              "mix": 188359.49,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": -8598.24
+            },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": 188359.49
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": -1245.5
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": -297.58
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": -183268.07
+              }
+            ],
+            "findings": [
+              {
+                "kind": "masked",
+                "driver": "mix",
+                "dimension": "sku",
+                "member": null,
+                "amount": -183268.0,
+                "under": 188359.0,
+                "under_dimension": "line"
+              },
+              {
+                "kind": "reattributed",
+                "driver": "mix",
+                "dimension": "line",
+                "member": null,
+                "amount": 3548.0,
+                "management": 188359.0
+              },
+              {
+                "kind": "reattributed",
+                "driver": "volume",
+                "dimension": "line",
+                "member": null,
+                "amount": 2233.0,
+                "management": 191917.0
+              },
+              {
+                "kind": "reattributed",
+                "driver": "price",
+                "dimension": "line",
+                "member": null,
+                "amount": -0.0,
+                "management": 178869.0
+              },
+              {
+                "kind": "top",
+                "driver": "new",
+                "dimension": "line",
+                "member": "Sensors",
+                "amount": 487120.0
+              },
+              {
+                "kind": "top",
+                "driver": "mix",
+                "dimension": "line",
+                "member": null,
+                "amount": 188359.0
+              },
+              {
+                "kind": "top",
+                "driver": "mix",
+                "dimension": "sku",
+                "member": null,
+                "amount": -183268.0
+              }
+            ],
+            "truth": {
+              "price": 0.0,
+              "cost_tariff": 0.0,
+              "cost_other": 0.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "r07",
+      "group": "routine",
+      "title": "Six Sensors SKUs discontinued",
+      "runs": [
+        {
+          "run": 1,
+          "passed": true,
+          "failed_checks": [],
+          "error": "",
+          "latency_s": 0.0408,
+          "cost_usd": 0.0,
+          "judge_cost_usd": 0.0,
+          "verdicts": {
+            "stops_on_bad_data": {
+              "result": "pass",
+              "reason": ""
+            },
+            "names_the_problem": {
+              "result": "na",
+              "reason": ""
+            },
+            "ties_to_ledger": {
+              "result": "pass",
+              "reason": ""
+            },
+            "finds_the_driver": {
+              "result": "pass",
+              "reason": ""
+            },
+            "sizes_it_right": {
+              "result": "na",
+              "reason": ""
+            },
+            "no_false_alarm": {
+              "result": "na",
+              "reason": ""
+            }
+          },
+          "output": {
+            "published": true,
+            "issues": [],
+            "tie_out": {
+              "ok": true,
+              "periods": {
+                "PY": {
+                  "revenue": 30924343.85,
+                  "gl_revenue": 30924343.85,
+                  "gp": 7720043.44,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 76054.07
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -47969.27
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -185645.89
+                    }
+                  ],
+                  "gl_gp": 7562482.35,
+                  "diff_gp": 0.0,
+                  "ok": true
+                },
+                "CY": {
+                  "revenue": 27882698.23,
+                  "gl_revenue": 27882698.23,
+                  "gp": 6659463.29,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 69560.96
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -43873.89
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -169796.38
+                    }
+                  ],
+                  "gl_gp": 6515353.98,
+                  "diff_gp": -0.0,
+                  "ok": true
+                }
+              }
+            },
+            "delta_gp": -1047128.37,
+            "totals": {
+              "price": -0.28,
+              "cost_tariff": 0.03,
+              "cost_other": -0.31,
+              "volume": 3332.6,
+              "mix": 4290.59,
+              "new": 0.0,
+              "lost": -1068202.79,
+              "ledger_items": 13451.78
+            },
+            "management_totals": {
+              "price": -33767.27,
+              "cost_tariff": 16062.9,
+              "cost_other": 31811.01,
+              "volume": -537720.54,
+              "mix": -536966.24,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": 13451.78
+            },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": -536966.24
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": -136.99
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": -505.33
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": 541899.15
+              }
+            ],
+            "findings": [
+              {
+                "kind": "masked",
+                "driver": "mix",
+                "dimension": "sku",
+                "member": null,
+                "amount": 541899.0,
+                "under": -536966.0,
+                "under_dimension": "line"
+              },
+              {
+                "kind": "reattributed",
+                "driver": "mix",
+                "dimension": "line",
+                "member": null,
+                "amount": 4291.0,
+                "management": -536966.0
+              },
+              {
+                "kind": "reattributed",
+                "driver": "volume",
+                "dimension": "line",
+                "member": null,
+                "amount": 3333.0,
+                "management": -537721.0
+              },
+              {
+                "kind": "top",
+                "driver": "lost",
+                "dimension": "line",
+                "member": "Sensors",
+                "amount": -1068203.0
+              },
+              {
+                "kind": "top",
+                "driver": "mix",
+                "dimension": "sku",
+                "member": null,
+                "amount": 541899.0
+              },
+              {
+                "kind": "top",
+                "driver": "mix",
+                "dimension": "line",
+                "member": null,
+                "amount": -536966.0
+              }
+            ],
+            "truth": {
+              "price": 0.0,
+              "cost_tariff": 0.0,
+              "cost_other": 0.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "r08",
+      "group": "routine",
+      "title": "Wipers price up 5%, Retailer C buys wipers in cases of six",
+      "runs": [
+        {
+          "run": 1,
+          "passed": true,
+          "failed_checks": [],
+          "error": "",
+          "latency_s": 0.0448,
+          "cost_usd": 0.0,
+          "judge_cost_usd": 0.0,
+          "verdicts": {
+            "stops_on_bad_data": {
+              "result": "pass",
+              "reason": ""
+            },
+            "names_the_problem": {
+              "result": "na",
+              "reason": ""
+            },
+            "ties_to_ledger": {
+              "result": "pass",
+              "reason": ""
+            },
+            "finds_the_driver": {
+              "result": "pass",
+              "reason": ""
+            },
+            "sizes_it_right": {
+              "result": "pass",
+              "reason": ""
+            },
+            "no_false_alarm": {
+              "result": "na",
+              "reason": ""
+            }
+          },
+          "output": {
+            "published": true,
+            "issues": [],
+            "tie_out": {
+              "ok": true,
+              "periods": {
+                "PY": {
+                  "revenue": 32580626.76,
+                  "gl_revenue": 32580626.76,
+                  "gp": 7716825.32,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 36572.82
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -4250.02
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -145571.83
+                    }
+                  ],
+                  "gl_gp": 7603576.29,
+                  "diff_gp": -0.0,
+                  "ok": true
+                },
+                "CY": {
+                  "revenue": 32714926.04,
+                  "gl_revenue": 32714926.04,
+                  "gp": 7839316.66,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 36590.38
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -4252.06
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -145641.71
+                    }
+                  ],
+                  "gl_gp": 7726013.27,
+                  "diff_gp": 0.0,
+                  "ok": true
+                }
+              }
+            },
+            "delta_gp": 122436.98,
+            "totals": {
+              "price": 120556.65,
+              "cost_tariff": -0.02,
+              "cost_other": 0.27,
+              "volume": 3601.54,
+              "mix": -1667.09,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": -54.36
+            },
+            "management_totals": {
+              "price": 120820.59,
+              "cost_tariff": 259.21,
+              "cost_other": 744.11,
+              "volume": 3601.54,
+              "mix": -2934.1,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": -54.36
+            },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": -2934.1
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": 1021.22
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": 68.85
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": 176.94
+              }
+            ],
+            "findings": [
+              {
+                "kind": "top",
+                "driver": "price",
+                "dimension": "line",
+                "member": "Wipers",
+                "amount": 120562.0
+              }
+            ],
+            "truth": {
+              "price": 120582.43,
+              "cost_tariff": 0.0,
+              "cost_other": 0.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "h01",
+      "group": "hidden",
+      "title": "Installer (DIFM) shift at Retailer B hides under a richer product mix",
+      "runs": [
+        {
+          "run": 1,
+          "passed": true,
+          "failed_checks": [],
+          "error": "",
+          "latency_s": 0.0414,
+          "cost_usd": 0.0,
+          "judge_cost_usd": 0.0,
+          "verdicts": {
+            "stops_on_bad_data": {
+              "result": "pass",
+              "reason": ""
+            },
+            "names_the_problem": {
+              "result": "na",
+              "reason": ""
+            },
+            "ties_to_ledger": {
+              "result": "pass",
+              "reason": ""
+            },
+            "finds_the_driver": {
+              "result": "pass",
+              "reason": ""
+            },
+            "sizes_it_right": {
+              "result": "na",
+              "reason": ""
+            },
+            "no_false_alarm": {
+              "result": "na",
+              "reason": ""
+            }
+          },
+          "output": {
+            "published": true,
+            "issues": [],
+            "tie_out": {
+              "ok": true,
+              "periods": {
+                "PY": {
+                  "revenue": 29054449.81,
+                  "gl_revenue": 29054449.81,
+                  "gp": 7130295.42,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -188929.77
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87466.11
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134555.67
+                    }
+                  ],
+                  "gl_gp": 6719343.87,
+                  "diff_gp": 0.0,
+                  "ok": true
+                },
+                "CY": {
+                  "revenue": 29934763.74,
+                  "gl_revenue": 29934763.74,
+                  "gp": 7334386.33,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -194757.07
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -90163.89
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -138705.87
+                    }
+                  ],
+                  "gl_gp": 6910759.5,
+                  "diff_gp": -0.0,
+                  "ok": true
+                }
+              }
+            },
+            "delta_gp": 191415.63,
+            "totals": {
+              "price": -0.35,
+              "cost_tariff": 0.38,
+              "cost_other": 0.25,
+              "volume": 1022.39,
+              "mix": 203068.25,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": -12675.28
+            },
+            "management_totals": {
+              "price": -241598.32,
+              "cost_tariff": 307.57,
+              "cost_other": 5201.84,
+              "volume": 1022.39,
+              "mix": 439157.44,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": -12675.28
+            },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": 439157.44
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": -261749.32
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": 27860.6
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": -2200.46
+              }
+            ],
+            "findings": [
+              {
+                "kind": "masked",
+                "driver": "mix",
+                "dimension": "channel",
+                "member": null,
+                "amount": -261749.0,
+                "under": 439157.0,
+                "under_dimension": "line"
+              },
+              {
+                "kind": "reattributed",
+                "driver": "mix",
+                "dimension": "line",
+                "member": null,
+                "amount": 203068.0,
+                "management": 439157.0
+              },
+              {
+                "kind": "reattributed",
+                "driver": "price",
+                "dimension": "line",
+                "member": null,
+                "amount": -0.0,
+                "management": -241598.0
+              },
+              {
+                "kind": "top",
+                "driver": "mix",
+                "dimension": "line",
+                "member": null,
+                "amount": 439157.0
+              },
+              {
+                "kind": "top",
+                "driver": "mix",
+                "dimension": "channel",
+                "member": null,
+                "amount": -261749.0
+              }
+            ],
+            "truth": {
+              "price": 0.0,
+              "cost_tariff": 0.0,
+              "cost_other": 0.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "h02",
+      "group": "hidden",
+      "title": "DIFM shift at Retailer A under a Wipers-to-Sensors mix gain",
+      "runs": [
+        {
+          "run": 1,
+          "passed": true,
+          "failed_checks": [],
+          "error": "",
+          "latency_s": 0.0524,
+          "cost_usd": 0.0,
+          "judge_cost_usd": 0.0,
+          "verdicts": {
+            "stops_on_bad_data": {
+              "result": "pass",
+              "reason": ""
+            },
+            "names_the_problem": {
+              "result": "na",
+              "reason": ""
+            },
+            "ties_to_ledger": {
+              "result": "pass",
+              "reason": ""
+            },
+            "finds_the_driver": {
+              "result": "pass",
+              "reason": ""
+            },
+            "sizes_it_right": {
+              "result": "na",
+              "reason": ""
+            },
+            "no_false_alarm": {
+              "result": "na",
+              "reason": ""
+            }
+          },
+          "output": {
+            "published": true,
+            "issues": [],
+            "tie_out": {
+              "ok": true,
+              "periods": {
+                "PY": {
+                  "revenue": 31981426.37,
+                  "gl_revenue": 31981426.37,
+                  "gp": 7786845.24,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 38688.56
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -41563.16
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -200094.07
+                    }
+                  ],
+                  "gl_gp": 7583876.57,
+                  "diff_gp": -0.0,
+                  "ok": true
+                },
+                "CY": {
+                  "revenue": 33252557.12,
+                  "gl_revenue": 33252557.12,
+                  "gp": 8127805.47,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 40175.96
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -43161.07
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -207786.77
+                    }
+                  ],
+                  "gl_gp": 7917033.59,
+                  "diff_gp": -0.0,
+                  "ok": true
+                }
+              }
+            },
+            "delta_gp": 333157.02,
+            "totals": {
+              "price": -0.15,
+              "cost_tariff": -0.03,
+              "cost_other": 0.37,
+              "volume": 6752.31,
+              "mix": 334207.72,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": -7803.21
+            },
+            "management_totals": {
+              "price": -321610.07,
+              "cost_tariff": -654.24,
+              "cost_other": -15801.37,
+              "volume": 6752.31,
+              "mix": 672273.6,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": -7803.21
+            },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": 672273.6
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": -375341.01
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": 32370.33
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": 4904.81
+              }
+            ],
+            "findings": [
+              {
+                "kind": "masked",
+                "driver": "mix",
+                "dimension": "channel",
+                "member": null,
+                "amount": -375341.0,
+                "under": 672274.0,
+                "under_dimension": "line"
+              },
+              {
+                "kind": "reattributed",
+                "driver": "mix",
+                "dimension": "line",
+                "member": null,
+                "amount": 334208.0,
+                "management": 672274.0
+              },
+              {
+                "kind": "reattributed",
+                "driver": "price",
+                "dimension": "line",
+                "member": null,
+                "amount": -0.0,
+                "management": -321610.0
+              },
+              {
+                "kind": "top",
+                "driver": "mix",
+                "dimension": "line",
+                "member": null,
+                "amount": 672274.0
+              },
+              {
+                "kind": "top",
+                "driver": "mix",
+                "dimension": "channel",
+                "member": null,
+                "amount": -375341.0
+              }
+            ],
+            "truth": {
+              "price": 0.0,
+              "cost_tariff": 0.0,
+              "cost_other": 0.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "h03",
+      "group": "hidden",
+      "title": "Price up 5% everywhere except a 10% cut at Distributor E",
+      "runs": [
+        {
+          "run": 1,
+          "passed": true,
+          "failed_checks": [],
+          "error": "",
+          "latency_s": 0.0602,
+          "cost_usd": 0.0,
+          "judge_cost_usd": 0.0,
+          "verdicts": {
+            "stops_on_bad_data": {
+              "result": "pass",
+              "reason": ""
+            },
+            "names_the_problem": {
+              "result": "na",
+              "reason": ""
+            },
+            "ties_to_ledger": {
+              "result": "pass",
+              "reason": ""
+            },
+            "finds_the_driver": {
+              "result": "pass",
+              "reason": ""
+            },
+            "sizes_it_right": {
+              "result": "na",
+              "reason": ""
+            },
+            "no_false_alarm": {
+              "result": "na",
+              "reason": ""
+            }
+          },
+          "output": {
+            "published": true,
+            "issues": [],
+            "tie_out": {
+              "ok": true,
+              "periods": {
+                "PY": {
+                  "revenue": 29054449.81,
+                  "gl_revenue": 29054449.81,
+                  "gp": 7130295.42,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -188929.77
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87466.11
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134555.67
+                    }
+                  ],
+                  "gl_gp": 6719343.87,
+                  "diff_gp": 0.0,
+                  "ok": true
+                },
+                "CY": {
+                  "revenue": 30057492.68,
+                  "gl_revenue": 30057492.68,
+                  "gp": 8118977.93,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -189053.52
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87523.4
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134643.8
+                    }
+                  ],
+                  "gl_gp": 7707757.21,
+                  "diff_gp": -0.0,
+                  "ok": true
+                }
+              }
+            },
+            "delta_gp": 988413.34,
+            "totals": {
+              "price": 986082.88,
+              "cost_tariff": 0.21,
+              "cost_other": -0.07,
+              "volume": 975.38,
+              "mix": 1624.11,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": -269.17
+            },
+            "management_totals": {
+              "price": 981050.34,
+              "cost_tariff": 285.79,
+              "cost_other": 4732.99,
+              "volume": 975.38,
+              "mix": 1638.01,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": -269.17
+            },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": 1638.01
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": 2224.88
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": -350.7
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": -1888.07
+              }
+            ],
+            "findings": [
+              {
+                "kind": "masked",
+                "driver": "price",
+                "dimension": "customer",
+                "member": "Distributor E",
+                "amount": -311814.0,
+                "under": 986083.0
+              },
+              {
+                "kind": "top",
+                "driver": "price",
+                "dimension": "channel",
+                "member": "DIY",
+                "amount": 753621.0
+              },
+              {
+                "kind": "top",
+                "driver": "price",
+                "dimension": "customer",
+                "member": "Retailer A",
+                "amount": 458244.0
+              },
+              {
+                "kind": "top",
+                "driver": "price",
+                "dimension": "origin",
+                "member": "China",
+                "amount": 404092.0
+              },
+              {
+                "kind": "top",
+                "driver": "price",
+                "dimension": "line",
+                "member": "Climate",
+                "amount": 295552.0
+              }
+            ],
+            "truth": {
+              "price": 986077.28,
+              "cost_tariff": 0.0,
+              "cost_other": 0.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "h04",
+      "group": "hidden",
+      "title": "Tariff surcharges held, but Retailer B got a 10% price cut",
+      "runs": [
+        {
+          "run": 1,
+          "passed": true,
+          "failed_checks": [],
+          "error": "",
+          "latency_s": 0.0431,
+          "cost_usd": 0.0,
+          "judge_cost_usd": 0.0,
+          "verdicts": {
+            "stops_on_bad_data": {
+              "result": "pass",
+              "reason": ""
+            },
+            "names_the_problem": {
+              "result": "na",
+              "reason": ""
+            },
+            "ties_to_ledger": {
+              "result": "pass",
+              "reason": ""
+            },
+            "finds_the_driver": {
+              "result": "pass",
+              "reason": ""
+            },
+            "sizes_it_right": {
+              "result": "na",
+              "reason": ""
+            },
+            "no_false_alarm": {
+              "result": "na",
+              "reason": ""
+            }
+          },
+          "output": {
+            "published": true,
+            "issues": [],
+            "tie_out": {
+              "ok": true,
+              "periods": {
+                "PY": {
+                  "revenue": 31981426.37,
+                  "gl_revenue": 31981426.37,
+                  "gp": 7786845.24,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 38688.56
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -41563.16
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -200094.07
+                    }
+                  ],
+                  "gl_gp": 7583876.57,
+                  "diff_gp": -0.0,
+                  "ok": true
+                },
+                "CY": {
+                  "revenue": 32280952.55,
+                  "gl_revenue": 32280952.55,
+                  "gp": 6967130.76,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 40478.29
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -43485.87
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -209350.42
+                    }
+                  ],
+                  "gl_gp": 6754772.76,
+                  "diff_gp": 0.0,
+                  "ok": true
+                }
+              }
+            },
+            "delta_gp": -829103.81,
+            "totals": {
+              "price": 275469.32,
+              "cost_tariff": -1100278.93,
+              "cost_other": -0.06,
+              "volume": 6660.71,
+              "mix": -1565.53,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": -9389.33
+            },
+            "management_totals": {
+              "price": 293646.17,
+              "cost_tariff": -1100976.57,
+              "cost_other": -14569.14,
+              "volume": 6660.71,
+              "mix": -4475.66,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": -9389.33
+            },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": -4475.66
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": -36.12
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": -328.99
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": 3275.24
+              }
+            ],
+            "findings": [
+              {
+                "kind": "masked",
+                "driver": "price",
+                "dimension": "customer",
+                "member": "Retailer B",
+                "amount": -563706.0,
+                "under": 275469.0
+              },
+              {
+                "kind": "masked",
+                "driver": "price",
+                "dimension": "origin",
+                "member": "Mexico",
+                "amount": -357985.0,
+                "under": 275469.0
+              },
+              {
+                "kind": "masked",
+                "driver": "price",
+                "dimension": "origin",
+                "member": "USA",
+                "amount": -205721.0,
+                "under": 275469.0
+              },
+              {
+                "kind": "top",
+                "driver": "cost_tariff",
+                "dimension": "origin",
+                "member": "China",
+                "amount": -1100279.0
+              },
+              {
+                "kind": "top",
+                "driver": "price",
+                "dimension": "origin",
+                "member": "China",
+                "amount": 839175.0
+              },
+              {
+                "kind": "top",
+                "driver": "cost_tariff",
+                "dimension": "channel",
+                "member": "DIFM",
+                "amount": -573119.0
+              },
+              {
+                "kind": "top",
+                "driver": "price",
+                "dimension": "customer",
+                "member": "Retailer B",
+                "amount": -563706.0
+              },
+              {
+                "kind": "top",
+                "driver": "cost_tariff",
+                "dimension": "line",
+                "member": "Climate",
+                "amount": -506164.0
+              },
+              {
+                "kind": "top",
+                "driver": "cost_tariff",
+                "dimension": "customer",
+                "member": "Retailer A",
+                "amount": -347650.0
+              },
+              {
+                "kind": "top",
+                "driver": "price",
+                "dimension": "channel",
+                "member": "DIFM",
+                "amount": 192328.0
+              },
+              {
+                "kind": "top",
+                "driver": "price",
+                "dimension": "line",
+                "member": "Climate",
+                "amount": 110585.0
+              }
+            ],
+            "truth": {
+              "price": 275514.19,
+              "cost_tariff": -1100385.81,
+              "cost_other": 0.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "h05",
+      "group": "hidden",
+      "title": "A product-line bridge calls a DIFM shift a price cut",
+      "runs": [
+        {
+          "run": 1,
+          "passed": true,
+          "failed_checks": [],
+          "error": "",
+          "latency_s": 0.0481,
+          "cost_usd": 0.0,
+          "judge_cost_usd": 0.0,
+          "verdicts": {
+            "stops_on_bad_data": {
+              "result": "pass",
+              "reason": ""
+            },
+            "names_the_problem": {
+              "result": "na",
+              "reason": ""
+            },
+            "ties_to_ledger": {
+              "result": "pass",
+              "reason": ""
+            },
+            "finds_the_driver": {
+              "result": "pass",
+              "reason": ""
+            },
+            "sizes_it_right": {
+              "result": "na",
+              "reason": ""
+            },
+            "no_false_alarm": {
+              "result": "na",
+              "reason": ""
+            }
+          },
+          "output": {
+            "published": true,
+            "issues": [],
+            "tie_out": {
+              "ok": true,
+              "periods": {
+                "PY": {
+                  "revenue": 30924343.85,
+                  "gl_revenue": 30924343.85,
+                  "gp": 7720043.44,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -167351.47
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -75804.22
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -127532.91
+                    }
+                  ],
+                  "gl_gp": 7349354.84,
+                  "diff_gp": 0.0,
+                  "ok": true
+                },
+                "CY": {
+                  "revenue": 30390519.94,
+                  "gl_revenue": 30390519.94,
+                  "gp": 7170698.44,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -167463.41
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -75854.92
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -127618.21
+                    }
+                  ],
+                  "gl_gp": 6799761.9,
+                  "diff_gp": -0.0,
+                  "ok": true
+                }
+              }
+            },
+            "delta_gp": -549592.94,
+            "totals": {
+              "price": -0.05,
+              "cost_tariff": -0.09,
+              "cost_other": -0.24,
+              "volume": 2804.55,
+              "mix": -552149.16,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": -247.94
+            },
+            "management_totals": {
+              "price": -546188.93,
+              "cost_tariff": 364.6,
+              "cost_other": -6337.01,
+              "volume": 2804.55,
+              "mix": 11.79,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": -247.94
+            },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": 11.79
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": -615873.14
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": 60251.04
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": 3461.15
+              }
+            ],
+            "findings": [
+              {
+                "kind": "reattributed",
+                "driver": "mix",
+                "dimension": "line",
+                "member": null,
+                "amount": -552149.0,
+                "management": 12.0
+              },
+              {
+                "kind": "reattributed",
+                "driver": "price",
+                "dimension": "line",
+                "member": null,
+                "amount": -0.0,
+                "management": -546189.0
+              },
+              {
+                "kind": "top",
+                "driver": "mix",
+                "dimension": "channel",
+                "member": null,
+                "amount": -615873.0
+              }
+            ],
+            "truth": {
+              "price": 0.0,
+              "cost_tariff": 0.0,
+              "cost_other": 0.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "h06",
+      "group": "hidden",
+      "title": "Material savings of 8% everywhere except Ignition, up 15%",
+      "runs": [
+        {
+          "run": 1,
+          "passed": true,
+          "failed_checks": [],
+          "error": "",
+          "latency_s": 0.0424,
+          "cost_usd": 0.0,
+          "judge_cost_usd": 0.0,
+          "verdicts": {
+            "stops_on_bad_data": {
+              "result": "pass",
+              "reason": ""
+            },
+            "names_the_problem": {
+              "result": "na",
+              "reason": ""
+            },
+            "ties_to_ledger": {
+              "result": "pass",
+              "reason": ""
+            },
+            "finds_the_driver": {
+              "result": "pass",
+              "reason": ""
+            },
+            "sizes_it_right": {
+              "result": "na",
+              "reason": ""
+            },
+            "no_false_alarm": {
+              "result": "na",
+              "reason": ""
+            }
+          },
+          "output": {
+            "published": true,
+            "issues": [],
+            "tie_out": {
+              "ok": true,
+              "periods": {
+                "PY": {
+                  "revenue": 32580746.52,
+                  "gl_revenue": 32580746.52,
+                  "gp": 7716836.62,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 36572.82
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -4250.02
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -145571.83
+                    }
+                  ],
+                  "gl_gp": 7603587.59,
+                  "diff_gp": 0.0,
+                  "ok": true
+                },
+                "CY": {
+                  "revenue": 32594635.04,
+                  "gl_revenue": 32594635.04,
+                  "gp": 8604692.35,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 35287.28
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -4100.63
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -140454.97
+                    }
+                  ],
+                  "gl_gp": 8495424.03,
+                  "diff_gp": 0.0,
+                  "ok": true
+                }
+              }
+            },
+            "delta_gp": 891836.44,
+            "totals": {
+              "price": -0.13,
+              "cost_tariff": 41240.5,
+              "cost_other": 844662.7,
+              "volume": 3998.87,
+              "mix": -2046.2,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": 3980.71
+            },
+            "management_totals": {
+              "price": -103.83,
+              "cost_tariff": 41502.97,
+              "cost_other": 845700.41,
+              "volume": 3998.87,
+              "mix": -3242.69,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": 3980.71
+            },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": -3242.69
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": 989.82
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": 80.36
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": 126.32
+              }
+            ],
+            "findings": [
+              {
+                "kind": "masked",
+                "driver": "cost_other",
+                "dimension": "line",
+                "member": "Ignition",
+                "amount": -231428.0,
+                "under": 844663.0
+              },
+              {
+                "kind": "top",
+                "driver": "cost_other",
+                "dimension": "line",
+                "member": "Climate",
+                "amount": 501344.0
+              },
+              {
+                "kind": "top",
+                "driver": "cost_other",
+                "dimension": "channel",
+                "member": "DIFM",
+                "amount": 473725.0
+              },
+              {
+                "kind": "top",
+                "driver": "cost_other",
+                "dimension": "origin",
+                "member": "China",
+                "amount": 412404.0
+              },
+              {
+                "kind": "top",
+                "driver": "cost_other",
+                "dimension": "customer",
+                "member": "Retailer A",
+                "amount": 268643.0
+              }
+            ],
+            "truth": {
+              "price": 0.0,
+              "cost_tariff": 41244.78,
+              "cost_other": 844720.59
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "h07",
+      "group": "hidden",
+      "title": "A product-line bridge calls a flat mix a gain",
+      "runs": [
+        {
+          "run": 1,
+          "passed": true,
+          "failed_checks": [],
+          "error": "",
+          "latency_s": 0.0421,
+          "cost_usd": 0.0,
+          "judge_cost_usd": 0.0,
+          "verdicts": {
+            "stops_on_bad_data": {
+              "result": "pass",
+              "reason": ""
+            },
+            "names_the_problem": {
+              "result": "na",
+              "reason": ""
+            },
+            "ties_to_ledger": {
+              "result": "pass",
+              "reason": ""
+            },
+            "finds_the_driver": {
+              "result": "pass",
+              "reason": ""
+            },
+            "sizes_it_right": {
+              "result": "na",
+              "reason": ""
+            },
+            "no_false_alarm": {
+              "result": "na",
+              "reason": ""
+            }
+          },
+          "output": {
+            "published": true,
+            "issues": [],
+            "tie_out": {
+              "ok": true,
+              "periods": {
+                "PY": {
+                  "revenue": 29054449.81,
+                  "gl_revenue": 29054449.81,
+                  "gp": 7130295.42,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -188929.77
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87466.11
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134555.67
+                    }
+                  ],
+                  "gl_gp": 6719343.87,
+                  "diff_gp": 0.0,
+                  "ok": true
+                },
+                "CY": {
+                  "revenue": 31022889.6,
+                  "gl_revenue": 31022889.6,
+                  "gp": 7431258.24,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -203299.13
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -94118.49
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -144789.52
+                    }
+                  ],
+                  "gl_gp": 6989051.1,
+                  "diff_gp": 0.0,
+                  "ok": true
+                }
+              }
+            },
+            "delta_gp": 269707.23,
+            "totals": {
+              "price": -0.22,
+              "cost_tariff": 0.15,
+              "cost_other": -0.01,
+              "volume": 357318.58,
+              "mix": -56355.68,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": -31255.59
+            },
+            "management_totals": {
+              "price": -431700.86,
+              "cost_tariff": 343.41,
+              "cost_other": 5466.54,
+              "volume": 357318.58,
+              "mix": 369535.15,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": -31255.59
+            },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": 369535.15
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": -468448.21
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": 44595.18
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": -2037.8
+              }
+            ],
+            "findings": [
+              {
+                "kind": "masked",
+                "driver": "mix",
+                "dimension": "channel",
+                "member": null,
+                "amount": -468448.0,
+                "under": 369535.0,
+                "under_dimension": "line"
+              },
+              {
+                "kind": "reattributed",
+                "driver": "mix",
+                "dimension": "line",
+                "member": null,
+                "amount": -56356.0,
+                "management": 369535.0
+              },
+              {
+                "kind": "reattributed",
+                "driver": "price",
+                "dimension": "line",
+                "member": null,
+                "amount": -0.0,
+                "management": -431701.0
+              },
+              {
+                "kind": "top",
+                "driver": "mix",
+                "dimension": "channel",
+                "member": null,
+                "amount": -468448.0
+              },
+              {
+                "kind": "top",
+                "driver": "mix",
+                "dimension": "line",
+                "member": null,
+                "amount": 369535.0
+              },
+              {
+                "kind": "top",
+                "driver": "volume",
+                "dimension": "channel",
+                "member": "DIY",
+                "amount": 226316.0
+              },
+              {
+                "kind": "top",
+                "driver": "volume",
+                "dimension": "origin",
+                "member": "China",
+                "amount": 144465.0
+              },
+              {
+                "kind": "top",
+                "driver": "volume",
+                "dimension": "line",
+                "member": "Sensors",
+                "amount": 119975.0
+              },
+              {
+                "kind": "top",
+                "driver": "volume",
+                "dimension": "customer",
+                "member": "Retailer A",
+                "amount": 118895.0
+              }
+            ],
+            "truth": {
+              "price": 0.0,
+              "cost_tariff": 0.0,
+              "cost_other": 0.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "h08",
+      "group": "hidden",
+      "title": "China tariff relief hides a new Mexico tariff",
+      "runs": [
+        {
+          "run": 1,
+          "passed": true,
+          "failed_checks": [],
+          "error": "",
+          "latency_s": 0.0421,
+          "cost_usd": 0.0,
+          "judge_cost_usd": 0.0,
+          "verdicts": {
+            "stops_on_bad_data": {
+              "result": "pass",
+              "reason": ""
+            },
+            "names_the_problem": {
+              "result": "na",
+              "reason": ""
+            },
+            "ties_to_ledger": {
+              "result": "pass",
+              "reason": ""
+            },
+            "finds_the_driver": {
+              "result": "pass",
+              "reason": ""
+            },
+            "sizes_it_right": {
+              "result": "na",
+              "reason": ""
+            },
+            "no_false_alarm": {
+              "result": "na",
+              "reason": ""
+            }
+          },
+          "output": {
+            "published": true,
+            "issues": [],
+            "tie_out": {
+              "ok": true,
+              "periods": {
+                "PY": {
+                  "revenue": 31981426.37,
+                  "gl_revenue": 31981426.37,
+                  "gp": 7786845.24,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 38688.56
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -41563.16
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -200094.07
+                    }
+                  ],
+                  "gl_gp": 7583876.57,
+                  "diff_gp": -0.0,
+                  "ok": true
+                },
+                "CY": {
+                  "revenue": 32005483.08,
+                  "gl_revenue": 32005483.08,
+                  "gp": 7873714.3,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 38588.12
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -41455.25
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -199574.6
+                    }
+                  ],
+                  "gl_gp": 7671272.57,
+                  "diff_gp": 0.0,
+                  "ok": true
+                }
+              }
+            },
+            "delta_gp": 87396.0,
+            "totals": {
+              "price": -0.15,
+              "cost_tariff": 81774.08,
+              "cost_other": -0.06,
+              "volume": 6660.71,
+              "mix": -1565.53,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": 526.94
+            },
+            "management_totals": {
+              "price": 18176.7,
+              "cost_tariff": 81076.44,
+              "cost_other": -14569.14,
+              "volume": 6660.71,
+              "mix": -4475.66,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": 526.94
+            },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": -4475.66
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": -36.12
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": -328.99
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": 3275.24
+              }
+            ],
+            "findings": [
+              {
+                "kind": "masked",
+                "driver": "cost_tariff",
+                "dimension": "origin",
+                "member": "Mexico",
+                "amount": -468365.0,
+                "under": 81774.0
+              },
+              {
+                "kind": "top",
+                "driver": "cost_tariff",
+                "dimension": "origin",
+                "member": "China",
+                "amount": 550139.0
+              }
+            ],
+            "truth": {
+              "price": 0.0,
+              "cost_tariff": 81803.7,
+              "cost_other": 0.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "t01",
+      "group": "trap",
+      "title": "New order type XFR missing from the channel map",
+      "runs": [
+        {
+          "run": 1,
+          "passed": true,
+          "failed_checks": [],
+          "error": "",
+          "latency_s": 0.0207,
+          "cost_usd": 0.0,
+          "judge_cost_usd": 0.0,
+          "verdicts": {
+            "stops_on_bad_data": {
+              "result": "pass",
+              "reason": ""
+            },
+            "names_the_problem": {
+              "result": "pass",
+              "reason": ""
+            },
+            "ties_to_ledger": {
+              "result": "na",
+              "reason": ""
+            },
+            "finds_the_driver": {
+              "result": "na",
+              "reason": ""
+            },
+            "sizes_it_right": {
+              "result": "na",
+              "reason": ""
+            },
+            "no_false_alarm": {
+              "result": "na",
+              "reason": ""
+            }
+          },
+          "output": {
+            "published": false,
+            "issues": [
+              {
+                "code": "unmapped_order_code",
+                "detail": "order type XFR on 40 lines ($491,980) has no channel",
+                "blocking": true
+              }
+            ],
+            "tie_out": null,
+            "findings": [],
+            "totals": null,
+            "truth": {
+              "price": 0.0,
+              "cost_tariff": 0.0,
+              "cost_other": 0.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "t02",
+      "group": "trap",
+      "title": "Retailer A starts buying wipers in cases of twelve",
+      "runs": [
+        {
+          "run": 1,
+          "passed": true,
+          "failed_checks": [],
+          "error": "",
+          "latency_s": 0.0232,
+          "cost_usd": 0.0,
+          "judge_cost_usd": 0.0,
+          "verdicts": {
+            "stops_on_bad_data": {
+              "result": "pass",
+              "reason": ""
+            },
+            "names_the_problem": {
+              "result": "pass",
+              "reason": ""
+            },
+            "ties_to_ledger": {
+              "result": "na",
+              "reason": ""
+            },
+            "finds_the_driver": {
+              "result": "na",
+              "reason": ""
+            },
+            "sizes_it_right": {
+              "result": "na",
+              "reason": ""
+            },
+            "no_false_alarm": {
+              "result": "na",
+              "reason": ""
+            }
+          },
+          "output": {
+            "published": false,
+            "issues": [
+              {
+                "code": "unknown_uom",
+                "detail": "unit of measure CS12 on 240 lines ($1,315,471) has no conversion to eaches",
+                "blocking": true
+              }
+            ],
+            "tie_out": null,
+            "findings": [],
+            "totals": null,
+            "truth": {
+              "price": 0.0,
+              "cost_tariff": 0.0,
+              "cost_other": 0.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "t03",
+      "group": "trap",
+      "title": "Rebate memo keyed to a customer name the master does not know",
+      "runs": [
+        {
+          "run": 1,
+          "passed": true,
+          "failed_checks": [],
+          "error": "",
+          "latency_s": 0.0212,
+          "cost_usd": 0.0,
+          "judge_cost_usd": 0.0,
+          "verdicts": {
+            "stops_on_bad_data": {
+              "result": "pass",
+              "reason": ""
+            },
+            "names_the_problem": {
+              "result": "pass",
+              "reason": ""
+            },
+            "ties_to_ledger": {
+              "result": "na",
+              "reason": ""
+            },
+            "finds_the_driver": {
+              "result": "na",
+              "reason": ""
+            },
+            "sizes_it_right": {
+              "result": "na",
+              "reason": ""
+            },
+            "no_false_alarm": {
+              "result": "na",
+              "reason": ""
+            }
+          },
+          "output": {
+            "published": false,
+            "issues": [
+              {
+                "code": "unmatched_rebate",
+                "detail": "rebate memo CM-RET-2026-07 ($191,448) names RETAILER B INC, not in the customer master",
+                "blocking": true
+              }
+            ],
+            "tie_out": null,
+            "findings": [],
+            "totals": null,
+            "truth": {
+              "price": 0.0,
+              "cost_tariff": 0.0,
+              "cost_other": 0.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "t04",
+      "group": "trap",
+      "title": "Extract cut off mid-September; ledger has the full month",
+      "runs": [
+        {
+          "run": 1,
+          "passed": true,
+          "failed_checks": [],
+          "error": "",
+          "latency_s": 0.0215,
+          "cost_usd": 0.0,
+          "judge_cost_usd": 0.0,
+          "verdicts": {
+            "stops_on_bad_data": {
+              "result": "pass",
+              "reason": ""
+            },
+            "names_the_problem": {
+              "result": "pass",
+              "reason": ""
+            },
+            "ties_to_ledger": {
+              "result": "na",
+              "reason": ""
+            },
+            "finds_the_driver": {
+              "result": "na",
+              "reason": ""
+            },
+            "sizes_it_right": {
+              "result": "na",
+              "reason": ""
+            },
+            "no_false_alarm": {
+              "result": "na",
+              "reason": ""
+            }
+          },
+          "output": {
+            "published": false,
+            "issues": [
+              {
+                "code": "tie_out_gap",
+                "detail": "extract does not tie to the ledger: current quarter gross profit off by -$178,158",
+                "blocking": true
+              }
+            ],
+            "tie_out": {
+              "ok": false,
+              "periods": {
+                "PY": {
+                  "revenue": 31981426.37,
+                  "gl_revenue": 31981426.37,
+                  "gp": 7786845.24,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 38688.56
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -41563.16
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -200094.07
+                    }
+                  ],
+                  "gl_gp": 7583876.57,
+                  "diff_gp": -0.0,
+                  "ok": true
+                },
+                "CY": {
+                  "revenue": 31284771.3,
+                  "gl_revenue": 32005483.08,
+                  "gp": 7613781.86,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": 38718.88
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -41595.73
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -200250.89
+                    }
+                  ],
+                  "gl_gp": 7588812.42,
+                  "diff_gp": -178158.3,
+                  "ok": false
+                }
+              }
+            },
+            "findings": [],
+            "totals": null,
+            "truth": {
+              "price": 0.0,
+              "cost_tariff": 0.0,
+              "cost_other": 0.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "t05",
+      "group": "trap",
+      "title": "Export repeated a page of invoices",
+      "runs": [
+        {
+          "run": 1,
+          "passed": true,
+          "failed_checks": [],
+          "error": "",
+          "latency_s": 0.0196,
+          "cost_usd": 0.0,
+          "judge_cost_usd": 0.0,
+          "verdicts": {
+            "stops_on_bad_data": {
+              "result": "pass",
+              "reason": ""
+            },
+            "names_the_problem": {
+              "result": "pass",
+              "reason": ""
+            },
+            "ties_to_ledger": {
+              "result": "na",
+              "reason": ""
+            },
+            "finds_the_driver": {
+              "result": "na",
+              "reason": ""
+            },
+            "sizes_it_right": {
+              "result": "na",
+              "reason": ""
+            },
+            "no_false_alarm": {
+              "result": "na",
+              "reason": ""
+            }
+          },
+          "output": {
+            "published": false,
+            "issues": [
+              {
+                "code": "duplicate_lines",
+                "detail": "30 invoice lines appear more than once",
+                "blocking": true
+              }
+            ],
+            "tie_out": null,
+            "findings": [],
+            "totals": null,
+            "truth": {
+              "price": 0.0,
+              "cost_tariff": 0.0,
+              "cost_other": 0.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "t06",
+      "group": "trap",
+      "title": "Unmapped order type on top of a real DIFM shift",
+      "runs": [
+        {
+          "run": 1,
+          "passed": true,
+          "failed_checks": [],
+          "error": "",
+          "latency_s": 0.0214,
+          "cost_usd": 0.0,
+          "judge_cost_usd": 0.0,
+          "verdicts": {
+            "stops_on_bad_data": {
+              "result": "pass",
+              "reason": ""
+            },
+            "names_the_problem": {
+              "result": "pass",
+              "reason": ""
+            },
+            "ties_to_ledger": {
+              "result": "na",
+              "reason": ""
+            },
+            "finds_the_driver": {
+              "result": "na",
+              "reason": ""
+            },
+            "sizes_it_right": {
+              "result": "na",
+              "reason": ""
+            },
+            "no_false_alarm": {
+              "result": "na",
+              "reason": ""
+            }
+          },
+          "output": {
+            "published": false,
+            "issues": [
+              {
+                "code": "unmapped_order_code",
+                "detail": "order type XFR on 40 lines ($638,967) has no channel",
+                "blocking": true
+              }
+            ],
+            "tie_out": null,
+            "findings": [],
+            "totals": null,
+            "truth": {
+              "price": 0.0,
+              "cost_tariff": 0.0,
+              "cost_other": 0.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "c01",
+      "group": "control",
+      "title": "Nothing planted (seed 7)",
+      "runs": [
+        {
+          "run": 1,
+          "passed": true,
+          "failed_checks": [],
+          "error": "",
+          "latency_s": 0.0436,
+          "cost_usd": 0.0,
+          "judge_cost_usd": 0.0,
+          "verdicts": {
+            "stops_on_bad_data": {
+              "result": "pass",
+              "reason": ""
+            },
+            "names_the_problem": {
+              "result": "na",
+              "reason": ""
+            },
+            "ties_to_ledger": {
+              "result": "pass",
+              "reason": ""
+            },
+            "finds_the_driver": {
+              "result": "na",
+              "reason": ""
+            },
+            "sizes_it_right": {
+              "result": "na",
+              "reason": ""
+            },
+            "no_false_alarm": {
+              "result": "pass",
+              "reason": ""
+            }
+          },
+          "output": {
+            "published": true,
+            "issues": [],
+            "tie_out": {
+              "ok": true,
+              "periods": {
+                "PY": {
+                  "revenue": 29054449.81,
+                  "gl_revenue": 29054449.81,
+                  "gp": 7130295.42,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -188929.77
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87466.11
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134555.67
+                    }
+                  ],
+                  "gl_gp": 6719343.87,
+                  "diff_gp": 0.0,
+                  "ok": true
+                },
+                "CY": {
+                  "revenue": 29071409.62,
+                  "gl_revenue": 29071409.62,
+                  "gp": 7132894.87,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -189053.52
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -87523.4
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -134643.8
+                    }
+                  ],
+                  "gl_gp": 6721674.15,
+                  "diff_gp": -0.0,
+                  "ok": true
+                }
+              }
+            },
+            "delta_gp": 2330.28,
+            "totals": {
+              "price": -0.18,
+              "cost_tariff": 0.21,
+              "cost_other": -0.07,
+              "volume": 975.38,
+              "mix": 1624.11,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": -269.17
+            },
+            "management_totals": {
+              "price": -5032.72,
+              "cost_tariff": 285.79,
+              "cost_other": 4732.99,
+              "volume": 975.38,
+              "mix": 1638.01,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": -269.17
+            },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": 1638.01
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": 2224.88
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": -350.7
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": -1888.07
+              }
+            ],
+            "findings": [],
+            "truth": {
+              "price": 0.0,
+              "cost_tariff": 0.0,
+              "cost_other": 0.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "c02",
+      "group": "control",
+      "title": "Nothing planted (seed 31)",
+      "runs": [
+        {
+          "run": 1,
+          "passed": true,
+          "failed_checks": [],
+          "error": "",
+          "latency_s": 0.0452,
+          "cost_usd": 0.0,
+          "judge_cost_usd": 0.0,
+          "verdicts": {
+            "stops_on_bad_data": {
+              "result": "pass",
+              "reason": ""
+            },
+            "names_the_problem": {
+              "result": "na",
+              "reason": ""
+            },
+            "ties_to_ledger": {
+              "result": "pass",
+              "reason": ""
+            },
+            "finds_the_driver": {
+              "result": "na",
+              "reason": ""
+            },
+            "sizes_it_right": {
+              "result": "na",
+              "reason": ""
+            },
+            "no_false_alarm": {
+              "result": "pass",
+              "reason": ""
+            }
+          },
+          "output": {
+            "published": true,
+            "issues": [],
+            "tie_out": {
+              "ok": true,
+              "periods": {
+                "PY": {
+                  "revenue": 32492405.65,
+                  "gl_revenue": 32492405.65,
+                  "gp": 8060723.58,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -25152.14
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -62192.03
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -214527.78
+                    }
+                  ],
+                  "gl_gp": 7758851.63,
+                  "diff_gp": 0.0,
+                  "ok": true
+                },
+                "CY": {
+                  "revenue": 32471054.4,
+                  "gl_revenue": 32471054.4,
+                  "gp": 8058567.72,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -25132.38
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -62143.16
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -214359.23
+                    }
+                  ],
+                  "gl_gp": 7756932.95,
+                  "diff_gp": 0.0,
+                  "ok": true
+                }
+              }
+            },
+            "delta_gp": -1918.68,
+            "totals": {
+              "price": -0.19,
+              "cost_tariff": -0.15,
+              "cost_other": 0.38,
+              "volume": 3394.89,
+              "mix": -5550.79,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": 237.18
+            },
+            "management_totals": {
+              "price": -5616.87,
+              "cost_tariff": 718.3,
+              "cost_other": 3461.71,
+              "volume": 3394.89,
+              "mix": -4113.89,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": 237.18
+            },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": -4113.89
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": 1000.69
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": -575.55
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": -1862.03
+              }
+            ],
+            "findings": [],
+            "truth": {
+              "price": 0.0,
+              "cost_tariff": 0.0,
+              "cost_other": 0.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "c03",
+      "group": "control",
+      "title": "Units up 2%, nothing else",
+      "runs": [
+        {
+          "run": 1,
+          "passed": true,
+          "failed_checks": [],
+          "error": "",
+          "latency_s": 0.0458,
+          "cost_usd": 0.0,
+          "judge_cost_usd": 0.0,
+          "verdicts": {
+            "stops_on_bad_data": {
+              "result": "pass",
+              "reason": ""
+            },
+            "names_the_problem": {
+              "result": "na",
+              "reason": ""
+            },
+            "ties_to_ledger": {
+              "result": "pass",
+              "reason": ""
+            },
+            "finds_the_driver": {
+              "result": "na",
+              "reason": ""
+            },
+            "sizes_it_right": {
+              "result": "na",
+              "reason": ""
+            },
+            "no_false_alarm": {
+              "result": "pass",
+              "reason": ""
+            }
+          },
+          "output": {
+            "published": true,
+            "issues": [],
+            "tie_out": {
+              "ok": true,
+              "periods": {
+                "PY": {
+                  "revenue": 30973353.38,
+                  "gl_revenue": 30973353.38,
+                  "gp": 7724454.93,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -67595.83
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -102558.1
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -173060.69
+                    }
+                  ],
+                  "gl_gp": 7381240.31,
+                  "diff_gp": 0.0,
+                  "ok": true
+                },
+                "CY": {
+                  "revenue": 31620743.19,
+                  "gl_revenue": 31620743.19,
+                  "gp": 7888043.74,
+                  "ledger_items": [
+                    {
+                      "name": "purchase price and manufacturing variances",
+                      "amount": -69002.48
+                    },
+                    {
+                      "name": "inventory and obsolescence reserve change",
+                      "amount": -104692.29
+                    },
+                    {
+                      "name": "inbound freight not in standard cost",
+                      "amount": -176662.02
+                    }
+                  ],
+                  "gl_gp": 7537686.95,
+                  "diff_gp": -0.0,
+                  "ok": true
+                }
+              }
+            },
+            "delta_gp": 156446.64,
+            "totals": {
+              "price": 0.41,
+              "cost_tariff": 0.11,
+              "cost_other": 0.03,
+              "volume": 162189.88,
+              "mix": 1398.38,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": -7142.17
+            },
+            "management_totals": {
+              "price": 423.54,
+              "cost_tariff": -83.02,
+              "cost_other": 74.53,
+              "volume": 162189.88,
+              "mix": 983.89,
+              "new": 0.0,
+              "lost": 0.0,
+              "ledger_items": -7142.17
+            },
+            "mix_levels": [
+              {
+                "level": "line",
+                "label": "product mix",
+                "amount": 983.89
+              },
+              {
+                "level": "channel",
+                "label": "channel mix within product lines",
+                "amount": 186.28
+              },
+              {
+                "level": "customer",
+                "label": "customer mix within product line and channel",
+                "amount": 162.01
+              },
+              {
+                "level": "sku",
+                "label": "SKU mix within the rest",
+                "amount": 66.2
+              }
+            ],
+            "findings": [
+              {
+                "kind": "top",
+                "driver": "volume",
+                "dimension": "channel",
+                "member": "DIY",
+                "amount": 102604.0
+              }
+            ],
+            "truth": {
+              "price": 0.0,
+              "cost_tariff": 0.0,
+              "cost_other": 0.0
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

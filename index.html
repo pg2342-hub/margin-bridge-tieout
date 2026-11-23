@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Margin bridge tie-out</title>
+<style>
+:root { --fg:#111; --muted:#555; --line:#ddd; --bg:#fff; --soft:#f4f4f4; }
+@media (prefers-color-scheme: dark) { :root { --fg:#eee; --muted:#aaa; --line:#333; --bg:#111; --soft:#1b1b1b; } }
+body { font: 16px/1.55 Inter, -apple-system, Segoe UI, sans-serif; color:var(--fg); background:var(--bg); margin:0; }
+main { max-width: 860px; margin: 0 auto; padding: 32px 16px 64px; }
+h1 { font-size: 28px; margin: 0 0 6px; } h2 { font-size: 19px; margin: 36px 0 8px; }
+p.lead { color: var(--muted); margin-top: 0; }
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 14.5px; }
+th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-weight: 600; } td:nth-child(n+2) { white-space: nowrap; }
+tr.diff td { font-weight: 600; background: var(--soft); }
+.box { border: 1px solid var(--fg); padding: 14px 16px; margin: 16px 0; }
+.muted { color: var(--muted); font-size: 14px; } code { font-size: 14px; }
+a { color: inherit; }
+.wrap td:nth-child(3) { white-space: normal; }
+</style></head><body><main>
+<h1>Margin bridge tie-out</h1>
+<p class="lead">Rebuild a quarter's gross-profit bridge from ERP invoice lines, tie it to the ledger, and find the driver a favorable total hides. All data is made up: a parts maker with 6 product lines, 6 customers, 5,520 invoice lines and 36 rebate memos across two quarters.</p>
+
+<div class="box"><strong>The quarter in one line.</strong> Revenue rose from $29.05M to $31.44M, yet gross profit moved -$80K ($6.72M to $6.64M). The product-line bridge says surcharges barely stuck (price +$359K against a -$1.07M tariff hit) and mix helped (+$453K). The item-level bridge says the opposite: surcharges recovered 80% of the -$1.07M tariff hit (+$856K price), and a +$453K gain from richer product mix hid a -$540K drag from lower-margin installer (DIFM) business at the two largest retailers, which the product-line bridge booked as a price cut. The lever is the installer program's margin, not list price.</div>
+
+<h2>1. Tie-out first</h2>
+<p>Nothing is decomposed until the extract ties to the general ledger, each quarter: revenue within $1, and gross profit within $1 after named, sized items that post only at the ledger. Anything left unexplained stops the bridge.</p>
+<table><tr><th></th><th>Extract</th><th>Ledger</th></tr>
+<tr><td>Prior quarter: gross profit from invoice lines</td><td>$7.13M</td><td></td></tr>
+<tr><td>&nbsp;&nbsp;less purchase price and manufacturing variances</td><td>$189K</td><td></td></tr>
+<tr><td>&nbsp;&nbsp;less inventory and obsolescence reserve change</td><td>$87K</td><td></td></tr>
+<tr><td>&nbsp;&nbsp;less inbound freight not in standard cost</td><td>$135K</td><td></td></tr>
+<tr><td><strong>Prior quarter: gross profit after named items</strong></td><td><strong>$6.72M</strong></td><td><strong>$6.72M</strong></td></tr>
+<tr><td>Current quarter: gross profit from invoice lines</td><td>$7.10M</td><td></td></tr>
+<tr><td>&nbsp;&nbsp;less purchase price and manufacturing variances</td><td>$210K</td><td></td></tr>
+<tr><td>&nbsp;&nbsp;less inventory and obsolescence reserve change</td><td>$97K</td><td></td></tr>
+<tr><td>&nbsp;&nbsp;less inbound freight not in standard cost</td><td>$149K</td><td></td></tr>
+<tr><td><strong>Current quarter: gross profit after named items</strong></td><td><strong>$6.64M</strong></td><td><strong>$6.64M</strong></td></tr></table>
+<p class="muted">Rebates post as separate customer-level memos, so they are allocated to invoice lines by gross sales within each customer and month before any price is calculated. Order types map to channels, and units convert to eaches, from one definitions file finance owns.</p>
+
+<h2>2. The bridge at two grains</h2>
+<table><tr><th>Effect on gross profit</th><th>Product-line bridge</th><th>Item-level bridge (SKU x customer x channel)</th></tr>
+<tr class="diff"><td>Price (net of rebates, incl. tariff surcharges)</td><td>+$359K</td><td>+$856K</td></tr>
+<tr><td>Tariff cost</td><td>-$1.07M</td><td>-$1.07M</td></tr>
+<tr><td>Material and other cost</td><td>+$6K</td><td>$0</td></tr>
+<tr><td>Volume</td><td>+$215K</td><td>+$215K</td></tr>
+<tr class="diff"><td>Mix</td><td>+$453K</td><td>-$38K</td></tr>
+<tr><td>Ledger-only items (variances, reserves, freight)</td><td>-$45K</td><td>-$45K</td></tr>
+<tr><td><strong>Change in gross profit</strong></td><td><strong>-$80K</strong></td><td><strong>-$80K</strong></td></tr></table>
+<p><strong>Mix, split so the parts add up.</strong> Each level is the mix it adds on top of the coarser one, so the four rows sum to the item-level mix.</p>
+<table><tr><th>Mix level</th><th>Effect</th></tr>
+<tr><td>Product mix</td><td>+$453K</td></tr>
+<tr><td>Channel mix within product lines</td><td>-$540K</td></tr>
+<tr><td>Customer mix within product line and channel</td><td>+$52K</td></tr>
+<tr><td>SKU mix within the rest</td><td>-$2K</td></tr></table>
+<p class="muted">Both bridges add up to the same total. Shaded rows read differently at the two grains: when installer business grows inside a product line, the product-line bridge books the lower program price as a price cut.</p>
+
+<h2>3. What the driver finder flags</h2>
+<table class="wrap"><tr><th>Finding</th><th>Amount</th><th>What it means</th></tr>
+<tr><td>Channel mix masked</td><td>-$540K</td><td>Installer (DIFM) share grew inside product lines at Retailers A and B, hidden under a favorable product mix of +$453K.</td></tr>
+<tr><td>Price reattributed</td><td>+$856K</td><td>Like-for-like price held up better than the product-line bridge shows (+$359K): it books the installer shift inside its lines as a price cut. Surcharges held.</td></tr>
+<tr><td>Tariff cost</td><td>-$1.07M</td><td>All of it on China-origin parts; surcharges recovered 80%.</td></tr></table>
+
+<h2>4. Bad extracts stop the bridge</h2>
+<table class="wrap"><tr><th>Planted problem</th><th>Result</th><th>What the check says</th></tr>
+<tr><td>A new order type, XFR, that nobody added to the channel map</td><td>Stopped</td><td>order type XFR on 40 lines ($484,024) has no channel</td></tr>
+<tr><td>Wipers sold in cases of twelve, a unit with no conversion</td><td>Stopped</td><td>unit of measure CS12 on 240 lines ($1,501,878) has no conversion to eaches</td></tr>
+<tr><td>A rebate memo keyed to RETAILER B INC instead of Retailer B</td><td>Stopped</td><td>rebate memo CM-RET-2026-07 ($191,448) names RETAILER B INC, not in the customer master</td></tr>
+<tr><td>An extract cut off in September while the ledger has the full month</td><td>Stopped</td><td>extract does not tie to the ledger: current quarter gross profit off by -$178,158</td></tr>
+<tr><td>An export that repeated a page of invoices</td><td>Stopped</td><td>30 invoice lines appear more than once</td></tr></table>
+
+<h2>5. Go-live gate</h2>
+<p>25 planted scenarios (8 routine drivers, 8 hidden drivers, 6 bad extracts, 3 clean controls), scored with <a href="https://github.com/pg2342-hub/golive-gate">golive-gate</a>. The gate: 24 of 25 overall, every hidden driver, every bad extract stopped, no false alarms, and zero critical failures (publishing on bad data, missing a planted data problem, or a bridge that does not tie).</p>
+<table><tr><th>Analysis</th><th>Cases passed</th><th>Gate</th><th>Report</th></tr>
+<tr><td>Tie-out + item-level bridge + driver finder</td><td>25 of 25</td><td>GO</td><td><a href="gate/">every case and check</a></td></tr>
+<tr><td>Product-line workbook (ties to the ledger and stops if it does not; product line only, so it cannot see customer, channel, or origin; no data checks)</td><td>7 of 25</td><td>NO-GO</td><td><a href="gate-workbook/">every case and check</a></td></tr></table>
+<p class="muted">The workbook's misses are mostly structural: a product-line view cannot name a customer or a channel, and without data checks it cannot name a bad extract. The cases were written on fixed data seeds; on seven seeds they were not written with, the tie-out passes 172 of 175 cases. CI runs the tests, this gate, and that sweep on every push. Code: <a href="https://github.com/pg2342-hub/margin-bridge-tieout">github.com/pg2342-hub/margin-bridge-tieout</a>. Run it yourself: <code>pip install -e . &amp;&amp; golive run eval/golive.yml</code></p>
+</main></body></html>

@@ -114,9 +114,7 @@ def waterfall(key: str, label: str, start: tuple, steps: list, end: tuple, lo: f
         cls = "tot" if kind == "total" else tone(amt)
         cells.append(f'<div class="val {cls}" style="grid-row:{r}">{val}</div>')
     assert abs(run - end[3]) < 1, "bridge does not reach the current quarter"
-    axis = "".join(
-        f'<span{ODD if k % 2 else ""} style="left:{x(t) / 10:.2f}%">${t / 1e6:.1f}M</span>' for k, t in enumerate(ticks)
-    )
+    axis = "".join(f'<span{ODD if k % 2 else ""} style="left:{x(t) / 10:.2f}%">${t / 1e6:.1f}M</span>' for k, t in enumerate(ticks))
     svg = (
         f'<svg class="bars" style="grid-row:2/span {n};height:{h}px" viewBox="0 0 1000 {h}" preserveAspectRatio="none" '
         f'role="img" aria-label="{html.escape(label)}">' + "".join(shapes) + "</svg>"
@@ -205,7 +203,9 @@ def main() -> None:
             f'<td class="num">{level(per["gl_gp"])}</td><td class="num">{exact(per["diff_gp"])}</td>'
             f'<td class="st">{ok_chip if per["ok"] else BRK}</td></tr>'
         )
-    led.append('<tr class="grp"><th colspan="5" scope="rowgroup">The same check on a planted cut-off extract (separate test data)</th></tr>')
+    led.append(
+        '<tr class="grp"><th colspan="5" scope="rowgroup">The same check on a planted cut-off extract (separate test data)</th></tr>'
+    )
     led.append(
         f'<tr class="tieline break"><td>Current quarter gross profit after named items</td><td></td><td></td>'
         f'<td class="num">{exact(cutoff)}</td><td class="st"><span class="chip brk">Break</span></td></tr>'
@@ -236,8 +236,12 @@ def main() -> None:
     start = ("Prior quarter", "Gross profit", False, py["gl_gp"])
     end = ("Current quarter", "Gross profit", False, cy["gl_gp"])
     lo, hi, ticks = scale(running(py["gl_gp"], item_steps), running(py["gl_gp"], mgmt_steps))
-    wf_item = waterfall("item", f"Item-level bridge: gross profit {level(py['gl_gp'])} to {level(cy['gl_gp'])}", start, item_steps, end, lo, hi, ticks)
-    wf_mgmt = waterfall("mgmt", f"Product-line bridge: gross profit {level(py['gl_gp'])} to {level(cy['gl_gp'])}", start, mgmt_steps, end, lo, hi, ticks)
+    wf_item = waterfall(
+        "item", f"Item-level bridge: gross profit {level(py['gl_gp'])} to {level(cy['gl_gp'])}", start, item_steps, end, lo, hi, ticks
+    )
+    wf_mgmt = waterfall(
+        "mgmt", f"Product-line bridge: gross profit {level(py['gl_gp'])} to {level(cy['gl_gp'])}", start, mgmt_steps, end, lo, hi, ticks
+    )
 
     grain_rows = []
     for d in (*DRIVERS, "ledger_items"):

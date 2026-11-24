@@ -3,76 +3,304 @@
 <!-- demo-chrome --><meta name="theme-color" content="#f4f2ec"><link rel="icon" href="https://pranavgudise.dev/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="https://pranavgudise.dev/kit/demo.css"><!-- /demo-chrome -->
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Margin bridge tie-out</title>
+<meta name="description" content="A quarter's gross-profit bridge rebuilt from invoice lines and tied to the ledger: gross profit moved -$80K, and a -$540K installer channel drag hid under a favorable product mix.">
 <style>
-main{padding-bottom:24px}
-p.lead{color:var(--ink-2);font-size:18px;max-width:42em}
-table{margin:16px 0}
-td:nth-child(n+2){white-space:nowrap}
-tr.diff td{font-weight:500;background:var(--tint-1)}
-.box{border-left:2px solid var(--green);padding:4px 0 4px 18px;margin:32px 0;max-width:46em;font-size:17px}
-.muted{color:var(--ink-2);font-size:15px;max-width:46em}
-code{background:rgb(27 26 23/.05);padding:1px 5px;border-radius:4px}
-.wrap td:nth-child(3){white-space:normal}
-.tbl{overflow-x:auto}
+.head h1{margin:40px 0 14px}
+.head .lead{max-width:38em}
+.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.note{color:var(--ink-2);font-size:15px;max-width:44em;margin-top:14px}
+h2+.note{margin-top:0}
+.up{color:var(--green)}.down{color:var(--ink)}
+/* status chips: a tie is the evergreen moment, a break is ink */
+.chip{display:inline-flex;align-items:center;gap:6px;min-height:24px;padding:0 10px;border-radius:999px;font:500 12px/1 var(--mono);letter-spacing:.04em;white-space:nowrap;border:1px solid transparent}
+.chip.ok{background:var(--green-wash);color:var(--green)}
+.chip.ok::before{content:"";width:8px;height:4px;border-left:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(-45deg)}
+.chip.brk{background:var(--ink);color:var(--paper)}
+.chip.brk::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--paper);transform:rotate(45deg)}
+.chip.big{min-height:32px;padding:0 14px;font-size:13px}
+/* verdict */
+.verdict{margin:36px 0 0;border:1px solid var(--rule);border-radius:16px;background:#fbfaf6;overflow:hidden}
+.vtop{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding:16px 24px;border-bottom:1px solid var(--rule)}
+.vtop p{margin:0;color:var(--ink-2);font-size:15px;flex:1 1 18em}
+.vgate{display:inline-flex;align-items:center;gap:10px;font-size:14px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.vbody{display:grid;grid-template-columns:minmax(0,17em) minmax(0,1fr);gap:28px 40px;padding:28px 24px;align-items:start}
+.vnum b{display:block;font:400 64px/1 var(--serif);letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.vnum span{display:block;margin-top:10px;color:var(--ink-2);font-size:14px;line-height:1.45;max-width:17em}
+.vline{font:400 25px/1.3 var(--serif);margin:0 0 12px;text-wrap:pretty}
+.vsay p:last-child{color:var(--ink-2);margin:0;max-width:40em}
+.vfoot{padding:14px 24px;border-top:1px solid var(--rule);font-size:15px;color:var(--ink-2)}
+.vfoot b{color:var(--ink)}
+/* page body: content and a side column */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:56px;align-items:start;margin-top:8px}
+.side{position:sticky;top:24px;margin-top:64px;display:grid;gap:22px;font-size:14px;color:var(--ink-2)}
+.side h3{margin:0 0 6px;font:500 13px/1.3 var(--sans);color:var(--ink)}
+.side p{margin:0}
+.side nav a{display:block;padding:5px 0;color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--rule-soft)}
+.side nav a:hover{color:var(--ink)}
+.side pre{font-size:12px;margin:6px 0 0}
+section[id],h2[id]{scroll-margin-top:24px}
+/* the bridge: a horizontal waterfall */
+.chart{border:1px solid var(--rule);border-radius:16px;background:#fbfaf6;padding:18px 24px 16px}
+.ctop{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;margin-bottom:10px}
+.seg{display:flex;width:fit-content;max-width:100%;flex-wrap:wrap;gap:2px;padding:3px;border:1px solid var(--rule);border-radius:999px;background:var(--paper)}
+.seg button{min-height:34px;padding:0 14px;border:0;border-radius:999px;background:transparent;color:var(--ink-2);font:500 14px/1 var(--sans);cursor:pointer}
+.seg button span{font-weight:400;opacity:.75;margin-left:4px}
+.seg button[aria-checked=true]{background:var(--ink);color:var(--paper)}
+.legend{display:flex;flex-wrap:wrap;gap:4px 16px;color:var(--ink-2);font-size:13px}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.legend i{width:14px;height:10px;border-radius:2px}
+.legend .inc{background:var(--green)}.legend .dec{background:var(--paper);box-shadow:inset 0 0 0 1.5px var(--ink)}.legend .tot{background:#a8a496}
+.wf{display:grid;grid-template-columns:minmax(0,13em) minmax(0,1fr) 5.5em;column-gap:16px;position:relative}
+.wf[hidden]{display:none}
+.axis{grid-column:2;grid-row:1;position:relative;font:400 12px/28px var(--mono);color:var(--ink-2);font-variant-numeric:tabular-nums}
+.axis span{position:absolute;top:0;transform:translateX(-50%);white-space:nowrap}
+.band{grid-column:1/-1;margin:0 -12px;border-radius:8px;border-top:1px solid var(--rule-soft)}
+.band.key{background:var(--green-wash);border-top-color:transparent}
+.band.key+.lbl b{color:var(--green)}
+.lbl,.val{position:relative;align-self:center;line-height:1.25}
+.lbl{grid-column:1;font-size:14px}
+.lbl b{display:block;font-weight:500}
+.lbl span{display:block;color:var(--ink-2);font-size:12.5px}
+.lbl.t b{font-weight:600}
+.val{grid-column:3;text-align:right;font:500 14px/1.2 var(--sans);font-variant-numeric:tabular-nums;white-space:nowrap}
+.val.tot{font-weight:600}
+.bars{grid-column:2;width:100%;display:block;position:relative;overflow:visible}
+.bars .grid{stroke:var(--rule);stroke-width:1;vector-effect:non-scaling-stroke}
+.bars .tot{fill:#a8a496}
+.bars .brk{fill:#fbfaf6}
+.band.key~.bars .brk{fill:#fbfaf6}
+.bars .inc{fill:var(--green)}
+.bars rect.dec{fill:var(--paper);stroke:var(--ink);stroke-width:1.5;vector-effect:non-scaling-stroke}
+.bars .tick{stroke-width:2;vector-effect:non-scaling-stroke}
+.bars .tick.inc{stroke:var(--green)}.bars .tick.dec{stroke:var(--ink)}
+.bars .link{stroke:var(--ink-2);stroke-width:1;stroke-dasharray:2 3;vector-effect:non-scaling-stroke}
+.cnote{margin:12px 0 0;font-size:15px}
+.scale{margin:6px 0 0;font-size:13px;color:var(--ink-2)}
+.pair{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:32px;margin-top:8px}
+.pair h3{margin:32px 0 6px}
+tr.diff td{background:var(--tint-1)}
+tr.diff td:first-child{box-shadow:inset 3px 0 0 var(--green);padding-left:10px}
+tr.sum td{font-weight:600;border-top:1px solid var(--ink);border-bottom:0}
+/* ledgers */
+.ledger td,.ledger th{padding-left:0}
+.ledger td+td,.ledger th+th{padding-left:16px}
+.ledger tr.grp th{font:400 18px/1.3 var(--serif);color:var(--ink);letter-spacing:0;border-bottom:1px solid var(--rule);padding-top:22px;white-space:normal}
+.ledger tr.less td:first-child{padding-left:18px;color:var(--ink-2)}
+.ledger tr.less td{color:var(--ink-2)}
+.ledger tr.tieline td{font-weight:500}
+.ledger tr.tieline td.num:nth-child(2),.ledger tr.tieline td.num:nth-child(3){border-top:1px solid var(--ink)}
+.ledger .st{text-align:right;width:1%;white-space:nowrap}
+.ledger tr.break td{background:rgb(27 26 23/.045)}
+.ledger tr.break td:first-child{box-shadow:inset 3px 0 0 var(--ink);padding-left:12px}
+.traps .say{font-family:var(--mono);font-size:13px;color:var(--ink-2)}
+/* driver finder */
+.finds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.find{border:1px solid var(--rule);border-radius:16px;background:#fbfaf6;padding:20px 22px}
+.find.key{border-color:var(--green);box-shadow:inset 0 0 0 1px var(--green)}
+.find b{display:block;font:400 36px/1 var(--serif);font-variant-numeric:tabular-nums}
+.find h3{margin:12px 0 6px;font:500 16px/1.3 var(--sans)}
+.find p{margin:0;font-size:15px;color:var(--ink-2)}
+/* gate */
+.gates{border:1px solid var(--rule);border-radius:16px;background:#fbfaf6;overflow:hidden}
+.grow{display:grid;grid-template-columns:minmax(0,1fr) 7em 5.5em 10em;align-items:center;gap:16px 24px;padding:20px 24px}
+.grow+.grow{border-top:1px solid var(--rule-soft)}
+.gwho b{display:block;font:400 20px/1.25 var(--serif)}
+.gwho span{display:block;color:var(--ink-2);font-size:14px;line-height:1.4;margin-top:4px}
+.gscore b{font:400 40px/1 var(--serif)}
+.gscore span{display:block;color:var(--ink-2);font-size:13px;margin-top:4px}
+.grow .badge{justify-self:start}
+.grow a{font-size:14px;justify-self:end}
+@media (max-width:1000px){
+ .layout{grid-template-columns:minmax(0,1fr);gap:0}
+ .side{position:static;margin-top:48px}
+ .pair{grid-template-columns:minmax(0,1fr);gap:0}
+ .finds{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:760px){
+ .vbody{grid-template-columns:minmax(0,1fr);gap:18px}
+ .vnum b{font-size:52px}
+ .vline{font-size:21px}
+ .grow{grid-template-columns:minmax(0,1fr) auto;gap:12px 16px}
+ .gwho{grid-column:1/-1}
+ .grow a{grid-column:1/-1;justify-self:start}
+}
+@media (max-width:640px){
+ .vtop,.vbody,.vfoot{padding-left:18px;padding-right:18px}
+ .chart{padding:16px 14px 14px}
+ .wf{grid-template-columns:minmax(0,8.5em) minmax(0,1fr) 4.4em;column-gap:10px}
+ .band{margin:0 -8px}
+ .lbl{font-size:13px}.lbl span{font-size:11.5px}
+ .val{font-size:13px}
+ .axis span.odd{display:none}
+ .seg button span{display:none}
+ .grow{padding:18px}
+ /* ledgers stack: the line on top, its figures in a row beneath */
+ .ledger,.ledger tbody,.ledger thead{display:block}
+ .ledger tr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) 30px;column-gap:10px;align-items:center;border-bottom:1px solid var(--rule)}
+ .ledger td,.ledger th,.ledger td+td,.ledger th+th{border:0;padding:0}
+ .ledger thead tr{border-bottom:1px solid var(--ink);padding:8px 0}
+ .ledger thead th:first-child{display:none}
+ .ledger td:first-child{grid-column:1/-1;padding:10px 0 2px}
+ .ledger tr>td:not(:first-child){padding-bottom:10px}
+ .ledger tr.grp th{grid-column:1/-1;padding:18px 0 8px}
+ .ledger tr.less td:first-child{padding-left:14px}
+ .ledger tr.break{background:rgb(27 26 23/.045);box-shadow:inset 3px 0 0 var(--ink);padding:0 10px 0 14px}
+ .ledger tr.break td,.ledger tr.break td:first-child{background:none;box-shadow:none;padding-left:0}
+ .ledger:not(.traps) .chip{font-size:0;gap:0;min-height:22px;padding:0 7px}
+ .ledger:not(.traps) th.st{font-size:0}
+ .ledger .st{width:auto}
+ .ledger tr.tieline td.num:nth-child(2),.ledger tr.tieline td.num:nth-child(3){border-top:0}
+ .traps tr{grid-template-columns:minmax(0,1fr) auto}
+ .traps thead th:first-child{display:block}
+ .traps thead th:nth-child(2){display:none}
+ .traps td.say{padding-bottom:10px}
+ .pair th{white-space:normal}
+ .pair td,.pair th{padding-right:8px}
+ .pair td:last-child,.pair th:last-child{padding-right:0}
+}
 </style></head><body>
 <!-- demo-chrome --><header class="demo-top"><a class="demo-brand" href="https://pranavgudise.dev/"><svg class="demo-mark" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.25"/><g class="n"><path class="f" d="M15.5 8.5 L 13.4 13.4 L 8.5 15.5 L 10.6 10.6 Z"/></g><circle class="p" cx="12" cy="12" r=".7"/></svg><span>Pranav Gudise</span></a><a class="pill" href="https://github.com/pg2342-hub/margin-bridge-tieout">Code on GitHub</a></header><!-- /demo-chrome -->
 <main>
+<div class="head">
 <h1>Margin bridge tie-out</h1>
-<p class="lead">Rebuild a quarter's gross-profit bridge from ERP invoice lines, tie it to the ledger, and find the driver a favorable total hides. All data is made up: a parts maker with 6 product lines, 6 customers, 5,520 invoice lines and 36 rebate memos across two quarters.</p>
+<p class="lead">Rebuild a quarter's gross-profit bridge from ERP invoice lines, tie it to the ledger, and find the driver a favorable total hides.</p>
+</div>
 
-<div class="box"><strong>The quarter in one line.</strong> Revenue rose from $29.05M to $31.44M, yet gross profit moved -$80K ($6.72M to $6.64M). The product-line bridge says surcharges barely stuck (price +$359K against a -$1.07M tariff hit) and mix helped (+$453K). The item-level bridge says the opposite: surcharges recovered 80% of the -$1.07M tariff hit (+$856K price), and a +$453K gain from richer product mix hid a -$540K drag from lower-margin installer (DIFM) business at the two largest retailers, which the product-line bridge booked as a price cut. The lever is the installer program's margin, not list price.</div>
+<section class="verdict" aria-label="Result">
+  <div class="vtop">
+    <span class="chip ok big">Ties to the ledger</span>
+    <p>Both quarters, revenue and gross profit, within $1 of the general ledger</p>
+    <span class="vgate">Go-live gate <span class="badge go">GO</span> 25 of 25</span>
+  </div>
+  <div class="vbody">
+    <div class="vnum"><b>-$80K</b><span>Gross profit, $6.72M to $6.64M, while revenue rose from $29.05M to $31.44M</span></div>
+    <div class="vsay">
+      <p class="vline">The real driver is a -$540K drag from lower-margin installer (DIFM) business at the two largest retailers, hidden under a +$453K gain from richer product mix.</p>
+      <p>Surcharges recovered 80% of the -$1.07M tariff hit (+$856K price). The lever is the installer program's margin, not list price.</p>
+    </div>
+  </div>
+  <div class="vfoot"><b>The product-line bridge says the opposite:</b> surcharges barely stuck (price +$359K against a -$1.07M tariff hit) and mix helped (+$453K). It booked the installer shift as a price cut.</div>
+</section>
 
-<h2>1. Tie-out first</h2>
-<p>Nothing is decomposed until the extract ties to the general ledger, each quarter: revenue within $1, and gross profit within $1 after named, sized items that post only at the ledger. Anything left unexplained stops the bridge.</p>
-<div class="tbl"><table><tr><th></th><th>Extract</th><th>Ledger</th></tr>
-<tr><td>Prior quarter: gross profit from invoice lines</td><td>$7.13M</td><td></td></tr>
-<tr><td>&nbsp;&nbsp;less purchase price and manufacturing variances</td><td>$189K</td><td></td></tr>
-<tr><td>&nbsp;&nbsp;less inventory and obsolescence reserve change</td><td>$87K</td><td></td></tr>
-<tr><td>&nbsp;&nbsp;less inbound freight not in standard cost</td><td>$135K</td><td></td></tr>
-<tr><td><strong>Prior quarter: gross profit after named items</strong></td><td><strong>$6.72M</strong></td><td><strong>$6.72M</strong></td></tr>
-<tr><td>Current quarter: gross profit from invoice lines</td><td>$7.10M</td><td></td></tr>
-<tr><td>&nbsp;&nbsp;less purchase price and manufacturing variances</td><td>$210K</td><td></td></tr>
-<tr><td>&nbsp;&nbsp;less inventory and obsolescence reserve change</td><td>$97K</td><td></td></tr>
-<tr><td>&nbsp;&nbsp;less inbound freight not in standard cost</td><td>$149K</td><td></td></tr>
-<tr><td><strong>Current quarter: gross profit after named items</strong></td><td><strong>$6.64M</strong></td><td><strong>$6.64M</strong></td></tr></table></div>
-<p class="muted">Rebates post as separate customer-level memos, so they are allocated to invoice lines by gross sales within each customer and month before any price is calculated. Order types map to channels, and units convert to eaches, from one definitions file finance owns.</p>
+<div class="layout">
+<div class="content">
 
-<h2>2. The bridge at two grains</h2>
-<div class="tbl"><table><tr><th>Effect on gross profit</th><th>Product-line bridge</th><th>Item-level bridge (SKU x customer x channel)</th></tr>
-<tr class="diff"><td>Price (net of rebates, incl. tariff surcharges)</td><td>+$359K</td><td>+$856K</td></tr>
-<tr><td>Tariff cost</td><td>-$1.07M</td><td>-$1.07M</td></tr>
-<tr><td>Material and other cost</td><td>+$6K</td><td>$0</td></tr>
-<tr><td>Volume</td><td>+$215K</td><td>+$215K</td></tr>
-<tr class="diff"><td>Mix</td><td>+$453K</td><td>-$38K</td></tr>
-<tr><td>Ledger-only items (variances, reserves, freight)</td><td>-$45K</td><td>-$45K</td></tr>
-<tr><td><strong>Change in gross profit</strong></td><td><strong>-$80K</strong></td><td><strong>-$80K</strong></td></tr></table></div>
-<p><strong>Mix, split so the parts add up.</strong> Each level is the mix it adds on top of the coarser one, so the four rows sum to the item-level mix.</p>
-<div class="tbl"><table><tr><th>Mix level</th><th>Effect</th></tr>
-<tr><td>Product mix</td><td>+$453K</td></tr>
-<tr><td>Channel mix within product lines</td><td>-$540K</td></tr>
-<tr><td>Customer mix within product line and channel</td><td>+$52K</td></tr>
-<tr><td>SKU mix within the rest</td><td>-$2K</td></tr></table></div>
-<p class="muted">Both bridges add up to the same total. Shaded rows read differently at the two grains: when installer business grows inside a product line, the product-line bridge books the lower program price as a price cut.</p>
+<h2 id="bridge">The bridge</h2>
+<p class="note">Prior quarter gross profit to current quarter, one step per effect. Both grains end at the same -$80K; they disagree on why.</p>
+<div class="chart">
+  <div class="ctop">
+    <div class="seg" role="radiogroup" aria-label="Bridge grain"><button type="button" role="radio" aria-checked="true" data-v="item">Item-level <span>SKU x customer x channel</span></button><button type="button" role="radio" aria-checked="false" data-v="mgmt">Product-line</button></div>
+    <div class="legend" aria-hidden="true"><span><i class="inc"></i>Raises gross profit</span><span><i class="dec"></i>Lowers it</span><span><i class="tot"></i>Quarter total</span></div>
+  </div>
+  <div class="wf" id="wf-item" style="grid-template-rows:28px repeat(10,52px)"><div class="axis" aria-hidden="true"><span style="left:12.50%">$6.0M</span><span class="odd" style="left:37.50%">$6.5M</span><span style="left:62.50%">$7.0M</span><span class="odd" style="left:87.50%">$7.5M</span></div><div class="band" style="grid-row:2"></div><div class="lbl t" style="grid-row:2"><b>Prior quarter</b><span>Gross profit</span></div><div class="val tot" style="grid-row:2">$6.72M</div><div class="band" style="grid-row:3"></div><div class="lbl" style="grid-row:3"><b>Price</b><span>Net of rebates, incl. tariff surcharges</span></div><div class="val up" style="grid-row:3">+$856K</div><div class="band" style="grid-row:4"></div><div class="lbl" style="grid-row:4"><b>Tariff cost</b></div><div class="val down" style="grid-row:4">-$1.07M</div><div class="band" style="grid-row:5"></div><div class="lbl" style="grid-row:5"><b>Volume</b></div><div class="val up" style="grid-row:5">+$215K</div><div class="band" style="grid-row:6"></div><div class="lbl" style="grid-row:6"><b>Product mix</b></div><div class="val up" style="grid-row:6">+$453K</div><div class="band key" style="grid-row:7"></div><div class="lbl" style="grid-row:7"><b>Channel mix</b><span>Within product lines</span></div><div class="val down" style="grid-row:7">-$540K</div><div class="band" style="grid-row:8"></div><div class="lbl" style="grid-row:8"><b>Customer mix</b><span>Within product line and channel</span></div><div class="val up" style="grid-row:8">+$52K</div><div class="band" style="grid-row:9"></div><div class="lbl" style="grid-row:9"><b>SKU mix</b><span>Within the rest</span></div><div class="val down" style="grid-row:9">-$2K</div><div class="band" style="grid-row:10"></div><div class="lbl" style="grid-row:10"><b>Ledger-only items</b><span>Variances, reserves, freight</span></div><div class="val down" style="grid-row:10">-$45K</div><div class="band" style="grid-row:11"></div><div class="lbl t" style="grid-row:11"><b>Current quarter</b><span>Gross profit</span></div><div class="val tot" style="grid-row:11">$6.64M</div><svg class="bars" style="grid-row:2/span 10;height:520px" viewBox="0 0 1000 520" preserveAspectRatio="none" role="img" aria-label="Item-level bridge: gross profit $6.72M to $6.64M"><line class="grid" x1="125.00" x2="125.00" y1="0" y2="520"/><line class="grid" x1="375.00" x2="375.00" y1="0" y2="520"/><line class="grid" x1="625.00" x2="625.00" y1="0" y2="520"/><line class="grid" x1="875.00" x2="875.00" y1="0" y2="520"/><rect class="tot" x="0" y="16.0" width="484.67" height="20"/><rect class="brk" x="14" y="14.0" width="6" height="24"/><line class="link" x1="484.67" x2="484.67" y1="36.0" y2="68.0"/><rect class="inc" x="484.67" y="68.0" width="427.83" height="20"/><line class="link" x1="912.50" x2="912.50" y1="88.0" y2="120.0"/><rect class="dec" x="378.75" y="120.0" width="533.75" height="20"/><line class="link" x1="378.75" x2="378.75" y1="140.0" y2="172.0"/><rect class="inc" x="378.75" y="172.0" width="107.47" height="20"/><line class="link" x1="486.23" x2="486.23" y1="192.0" y2="224.0"/><rect class="inc" x="486.23" y="224.0" width="226.27" height="20"/><line class="link" x1="712.50" x2="712.50" y1="244.0" y2="276.0"/><rect class="dec" x="442.59" y="276.0" width="269.91" height="20"/><line class="link" x1="442.59" x2="442.59" y1="296.0" y2="328.0"/><rect class="inc" x="442.59" y="328.0" width="25.83" height="20"/><line class="link" x1="468.42" x2="468.42" y1="348.0" y2="380.0"/><rect class="dec" x="467.33" y="380.0" width="1.09" height="20"/><line class="tick dec" x1="468.42" x2="468.42" y1="377.0" y2="403.0"/><line class="link" x1="467.33" x2="467.33" y1="400.0" y2="432.0"/><rect class="dec" x="444.63" y="432.0" width="22.70" height="20"/><line class="link" x1="444.63" x2="444.63" y1="452.0" y2="484.0"/><rect class="tot" x="0" y="484.0" width="444.63" height="20"/><rect class="brk" x="14" y="482.0" width="6" height="24"/></svg></div>
+  <div class="wf" hidden id="wf-mgmt" style="grid-template-rows:28px repeat(8,52px)"><div class="axis" aria-hidden="true"><span style="left:12.50%">$6.0M</span><span class="odd" style="left:37.50%">$6.5M</span><span style="left:62.50%">$7.0M</span><span class="odd" style="left:87.50%">$7.5M</span></div><div class="band" style="grid-row:2"></div><div class="lbl t" style="grid-row:2"><b>Prior quarter</b><span>Gross profit</span></div><div class="val tot" style="grid-row:2">$6.72M</div><div class="band key" style="grid-row:3"></div><div class="lbl" style="grid-row:3"><b>Price</b><span>Net of rebates, incl. tariff surcharges</span></div><div class="val up" style="grid-row:3">+$359K</div><div class="band" style="grid-row:4"></div><div class="lbl" style="grid-row:4"><b>Tariff cost</b></div><div class="val down" style="grid-row:4">-$1.07M</div><div class="band" style="grid-row:5"></div><div class="lbl" style="grid-row:5"><b>Material and other cost</b></div><div class="val up" style="grid-row:5">+$6K</div><div class="band" style="grid-row:6"></div><div class="lbl" style="grid-row:6"><b>Volume</b></div><div class="val up" style="grid-row:6">+$215K</div><div class="band key" style="grid-row:7"></div><div class="lbl" style="grid-row:7"><b>Mix</b></div><div class="val up" style="grid-row:7">+$453K</div><div class="band" style="grid-row:8"></div><div class="lbl" style="grid-row:8"><b>Ledger-only items</b><span>Variances, reserves, freight</span></div><div class="val down" style="grid-row:8">-$45K</div><div class="band" style="grid-row:9"></div><div class="lbl t" style="grid-row:9"><b>Current quarter</b><span>Gross profit</span></div><div class="val tot" style="grid-row:9">$6.64M</div><svg class="bars" style="grid-row:2/span 8;height:416px" viewBox="0 0 1000 416" preserveAspectRatio="none" role="img" aria-label="Product-line bridge: gross profit $6.72M to $6.64M"><line class="grid" x1="125.00" x2="125.00" y1="0" y2="416"/><line class="grid" x1="375.00" x2="375.00" y1="0" y2="416"/><line class="grid" x1="625.00" x2="625.00" y1="0" y2="416"/><line class="grid" x1="875.00" x2="875.00" y1="0" y2="416"/><rect class="tot" x="0" y="16.0" width="484.67" height="20"/><rect class="brk" x="14" y="14.0" width="6" height="24"/><line class="link" x1="484.67" x2="484.67" y1="36.0" y2="68.0"/><rect class="inc" x="484.67" y="68.0" width="179.65" height="20"/><line class="link" x1="664.32" x2="664.32" y1="88.0" y2="120.0"/><rect class="dec" x="130.74" y="120.0" width="533.58" height="20"/><line class="link" x1="130.74" x2="130.74" y1="140.0" y2="172.0"/><rect class="inc" x="130.74" y="172.0" width="2.84" height="20"/><line class="tick inc" x1="133.58" x2="133.58" y1="169.0" y2="195.0"/><line class="link" x1="133.58" x2="133.58" y1="192.0" y2="224.0"/><rect class="inc" x="133.58" y="224.0" width="107.47" height="20"/><line class="link" x1="241.06" x2="241.06" y1="244.0" y2="276.0"/><rect class="inc" x="241.06" y="276.0" width="226.27" height="20"/><line class="link" x1="467.33" x2="467.33" y1="296.0" y2="328.0"/><rect class="dec" x="444.63" y="328.0" width="22.70" height="20"/><line class="link" x1="444.63" x2="444.63" y1="348.0" y2="380.0"/><rect class="tot" x="0" y="380.0" width="444.63" height="20"/><rect class="brk" x="14" y="378.0" width="6" height="24"/></svg></div>
+  <p class="cnote" data-for="item">Item-level mix is split into four nested levels, each the mix it adds on top of the coarser one. Channel mix is the driver.</p>
+  <p class="cnote" data-for="mgmt" hidden>The product-line bridge has one mix line and books the installer shift inside its lines as a lower price.</p>
+  <p class="scale">Scale starts at $5.75M, not zero; the break in each total bar marks it. Every step is drawn to the same scale.</p>
+</div>
 
-<h2>3. What the driver finder flags</h2>
-<div class="tbl"><table class="wrap"><tr><th>Finding</th><th>Amount</th><th>What it means</th></tr>
-<tr><td>Channel mix masked</td><td>-$540K</td><td>Installer (DIFM) share grew inside product lines at Retailers A and B, hidden under a favorable product mix of +$453K.</td></tr>
-<tr><td>Price reattributed</td><td>+$856K</td><td>Like-for-like price held up better than the product-line bridge shows (+$359K): it books the installer shift inside its lines as a price cut. Surcharges held.</td></tr>
-<tr><td>Tariff cost</td><td>-$1.07M</td><td>All of it on China-origin parts; surcharges recovered 80%.</td></tr></table></div>
+<div class="pair">
+<div>
+<h3>Both grains, line by line</h3>
+<div class="scroll"><table><thead><tr><th>Effect on gross profit</th><th class="num">Product line</th><th class="num">Item level</th></tr></thead><tbody>
+<tr class="diff"><td>Price (net of rebates, incl. tariff surcharges)</td><td class="num">+$359K</td><td class="num">+$856K</td></tr>
+<tr><td>Tariff cost</td><td class="num">-$1.07M</td><td class="num">-$1.07M</td></tr>
+<tr><td>Material and other cost</td><td class="num">+$6K</td><td class="num">$0</td></tr>
+<tr><td>Volume</td><td class="num">+$215K</td><td class="num">+$215K</td></tr>
+<tr class="diff"><td>Mix</td><td class="num">+$453K</td><td class="num">-$38K</td></tr>
+<tr><td>Ledger-only items (variances, reserves, freight)</td><td class="num">-$45K</td><td class="num">-$45K</td></tr>
+<tr class="sum"><td>Change in gross profit</td><td class="num">-$80K</td><td class="num">-$80K</td></tr></tbody></table></div>
+<p class="note">Marked rows read differently at the two grains: when installer business grows inside a product line, the product-line bridge books the lower program price as a price cut.</p>
+</div>
+<div>
+<h3>Mix, split so the parts add up</h3>
+<div class="scroll"><table><thead><tr><th>Mix level</th><th class="num">Effect</th></tr></thead><tbody>
+<tr><td>Product mix</td><td class="num">+$453K</td></tr>
+<tr class="diff"><td>Channel mix within product lines</td><td class="num">-$540K</td></tr>
+<tr><td>Customer mix within product line and channel</td><td class="num">+$52K</td></tr>
+<tr><td>SKU mix within the rest</td><td class="num">-$2K</td></tr>
+<tr class="sum"><td>Item-level mix</td><td class="num">-$38K</td></tr></tbody></table></div>
+<p class="note">Each level is the mix it adds on top of the coarser one, so the four rows sum to the item-level mix.</p>
+</div>
+</div>
 
-<h2>4. Bad extracts stop the bridge</h2>
-<div class="tbl"><table class="wrap"><tr><th>Planted problem</th><th>Result</th><th>What the check says</th></tr>
-<tr><td>A new order type, XFR, that nobody added to the channel map</td><td>Stopped</td><td>order type XFR on 40 lines ($484,024) has no channel</td></tr>
-<tr><td>Wipers sold in cases of twelve, a unit with no conversion</td><td>Stopped</td><td>unit of measure CS12 on 240 lines ($1,501,878) has no conversion to eaches</td></tr>
-<tr><td>A rebate memo keyed to RETAILER B INC instead of Retailer B</td><td>Stopped</td><td>rebate memo CM-RET-2026-07 ($191,448) names RETAILER B INC, not in the customer master</td></tr>
-<tr><td>An extract cut off in September while the ledger has the full month</td><td>Stopped</td><td>extract does not tie to the ledger: current quarter gross profit off by -$178,158</td></tr>
-<tr><td>An export that repeated a page of invoices</td><td>Stopped</td><td>30 invoice lines appear more than once</td></tr></table></div>
+<h2 id="tie-out">Tie-out</h2>
+<p class="note">Nothing is decomposed until the extract ties to the general ledger, each quarter: revenue within $1, and gross profit within $1 after named, sized items that post only at the ledger. Anything left unexplained stops the bridge.</p>
+<div class="scroll"><table class="ledger"><thead><tr><th></th><th class="num">Extract</th><th class="num">Ledger</th><th class="num">Difference</th><th class="st">Status</th></tr></thead><tbody>
+<tr class="grp"><th colspan="5" scope="rowgroup">Prior quarter</th></tr>
+<tr class="tieline"><td>Revenue</td><td class="num">$29.05M</td><td class="num">$29.05M</td><td class="num">$0</td><td class="st"><span class="chip ok">Ties</span></td></tr>
+<tr><td>Gross profit from invoice lines</td><td class="num">$7.13M</td><td></td><td></td><td></td></tr>
+<tr class="less"><td>less purchase price and manufacturing variances</td><td class="num">($189K)</td><td></td><td></td><td></td></tr>
+<tr class="less"><td>less inventory and obsolescence reserve change</td><td class="num">($87K)</td><td></td><td></td><td></td></tr>
+<tr class="less"><td>less inbound freight not in standard cost</td><td class="num">($135K)</td><td></td><td></td><td></td></tr>
+<tr class="tieline"><td>Gross profit after named items</td><td class="num">$6.72M</td><td class="num">$6.72M</td><td class="num">$0</td><td class="st"><span class="chip ok">Ties</span></td></tr>
+<tr class="grp"><th colspan="5" scope="rowgroup">Current quarter</th></tr>
+<tr class="tieline"><td>Revenue</td><td class="num">$31.44M</td><td class="num">$31.44M</td><td class="num">$0</td><td class="st"><span class="chip ok">Ties</span></td></tr>
+<tr><td>Gross profit from invoice lines</td><td class="num">$7.10M</td><td></td><td></td><td></td></tr>
+<tr class="less"><td>less purchase price and manufacturing variances</td><td class="num">($210K)</td><td></td><td></td><td></td></tr>
+<tr class="less"><td>less inventory and obsolescence reserve change</td><td class="num">($97K)</td><td></td><td></td><td></td></tr>
+<tr class="less"><td>less inbound freight not in standard cost</td><td class="num">($149K)</td><td></td><td></td><td></td></tr>
+<tr class="tieline"><td>Gross profit after named items</td><td class="num">$6.64M</td><td class="num">$6.64M</td><td class="num">$0</td><td class="st"><span class="chip ok">Ties</span></td></tr>
+<tr class="grp"><th colspan="5" scope="rowgroup">The same check on a planted cut-off extract (separate test data)</th></tr>
+<tr class="tieline break"><td>Current quarter gross profit after named items</td><td></td><td></td><td class="num">-$178,158</td><td class="st"><span class="chip brk">Break</span></td></tr>
+</tbody></table></div>
+<p class="note">Rebates post as separate customer-level memos, so they are allocated to invoice lines by gross sales within each customer and month before any price is calculated. Order types map to channels, and units convert to eaches, from one definitions file finance owns.</p>
 
-<h2>5. Go-live gate</h2>
-<p>25 planted scenarios (8 routine drivers, 8 hidden drivers, 6 bad extracts, 3 clean controls), scored with <a href="https://github.com/pg2342-hub/golive-gate">golive-gate</a>. The gate: 24 of 25 overall, every hidden driver, every bad extract stopped, no false alarms, and zero critical failures (publishing on bad data, missing a planted data problem, or a bridge that does not tie).</p>
-<div class="tbl"><table><tr><th>Analysis</th><th>Cases passed</th><th>Gate</th><th>Report</th></tr>
-<tr><td>Tie-out + item-level bridge + driver finder</td><td>25 of 25</td><td><span class="badge go">GO</span></td><td><a href="gate/">every case and check</a></td></tr>
-<tr><td>Product-line workbook (ties to the ledger and stops if it does not; product line only, so it cannot see customer, channel, or origin; no data checks)</td><td>7 of 25</td><td><span class="badge no-go">NO-GO</span></td><td><a href="gate-workbook/">every case and check</a></td></tr></table></div>
-<p class="muted">The workbook's misses are mostly structural: a product-line view cannot name a customer or a channel, and without data checks it cannot name a bad extract. The cases were written on fixed data seeds; on seven seeds they were not written with, the tie-out passes 172 of 175 cases. CI runs the tests, this gate, and that sweep on every push. Code: <a href="https://github.com/pg2342-hub/margin-bridge-tieout">github.com/pg2342-hub/margin-bridge-tieout</a>. Run it yourself: <code>pip install -e . &amp;&amp; golive run eval/golive.yml</code></p>
-</main><!-- demo-chrome --><footer class="demo-foot"><span>A working build by <a href="https://pranavgudise.dev/">Pranav Gudise</a>. Synthetic or public data only.</span><a href="https://github.com/pg2342-hub/margin-bridge-tieout">github.com/pg2342-hub/margin-bridge-tieout</a></footer><!-- /demo-chrome -->
+<h2 id="drivers">What the driver finder flags</h2>
+<div class="finds">
+  <div class="find key"><b class="down">-$540K</b><h3>Channel mix masked</h3><p>Installer (DIFM) share grew inside product lines at Retailers A and B, hidden under a favorable product mix of +$453K.</p></div>
+  <div class="find"><b class="up">+$856K</b><h3>Price reattributed</h3><p>Like-for-like price held up better than the product-line bridge shows (+$359K): it books the installer shift inside its lines as a price cut. Surcharges held.</p></div>
+  <div class="find"><b class="down">-$1.07M</b><h3>Tariff cost</h3><p>All of it on China-origin parts; surcharges recovered 80%.</p></div>
+</div>
+
+<h2 id="checks">Bad extracts stop the bridge</h2>
+<p class="note">Five planted problems, each on its own test extract. Every one stops the bridge before a number is published.</p>
+<div class="scroll"><table class="ledger traps"><thead><tr><th>Planted problem</th><th>What the check says</th><th class="st">Result</th></tr></thead><tbody>
+<tr class="break"><td>A new order type, XFR, that nobody added to the channel map</td><td class="say">order type XFR on 40 lines ($484,024) has no channel</td><td class="st"><span class="chip brk">Stopped</span></td></tr>
+<tr class="break"><td>Wipers sold in cases of twelve, a unit with no conversion</td><td class="say">unit of measure CS12 on 240 lines ($1,501,878) has no conversion to eaches</td><td class="st"><span class="chip brk">Stopped</span></td></tr>
+<tr class="break"><td>A rebate memo keyed to RETAILER B INC instead of Retailer B</td><td class="say">rebate memo CM-RET-2026-07 ($191,448) names RETAILER B INC, not in the customer master</td><td class="st"><span class="chip brk">Stopped</span></td></tr>
+<tr class="break"><td>An extract cut off in September while the ledger has the full month</td><td class="say">extract does not tie to the ledger: current quarter gross profit off by -$178,158</td><td class="st"><span class="chip brk">Stopped</span></td></tr>
+<tr class="break"><td>An export that repeated a page of invoices</td><td class="say">30 invoice lines appear more than once</td><td class="st"><span class="chip brk">Stopped</span></td></tr>
+</tbody></table></div>
+
+<h2 id="gate">Go-live gate</h2>
+<p class="note">25 planted scenarios (8 routine drivers, 8 hidden drivers, 6 bad extracts, 3 clean controls), scored with <a href="https://github.com/pg2342-hub/golive-gate">golive-gate</a>. The gate: 24 of 25 overall, every hidden driver, every bad extract stopped, no false alarms, and zero critical failures (publishing on bad data, missing a planted data problem, or a bridge that does not tie).</p>
+<div class="gates">
+<div class="grow">
+  <div class="gwho"><b>Tie-out, item-level bridge and driver finder</b><span>What this page shows</span></div>
+  <div class="gscore"><b>25</b><span>of 25 cases</span></div>
+  <span class="badge go">GO</span>
+  <a href="gate/">Every case and check</a>
+</div>
+<div class="grow">
+  <div class="gwho"><b>Product-line workbook</b><span>Ties to the ledger and stops if it does not; product line only, so it cannot see customer, channel, or origin; no data checks</span></div>
+  <div class="gscore"><b>7</b><span>of 25 cases</span></div>
+  <span class="badge no-go">NO-GO</span>
+  <a href="gate-workbook/">Every case and check</a>
+</div>
+</div>
+<p class="note">The workbook's misses are mostly structural: a product-line view cannot name a customer or a channel, and without data checks it cannot name a bad extract. The cases were written on fixed data seeds; on seven seeds they were not written with, the tie-out passes 172 of 175 cases. CI runs the tests, this gate, and that sweep on every push.</p>
+</div>
+
+<aside class="side" aria-label="About this build">
+  <nav aria-label="On this page"><a href="#bridge">The bridge</a><a href="#tie-out">Tie-out</a><a href="#drivers">Driver finder</a><a href="#checks">Bad extracts</a><a href="#gate">Go-live gate</a></nav>
+  <div><h3>Data</h3><p>All data is made up: a parts maker with 6 product lines, 6 customers, 5,520 invoice lines and 36 rebate memos across two quarters. Customers, SKUs, prices, tariffs and the ledger are synthetic.</p></div>
+  <div><h3>Run it yourself</h3><p>Python 3.9+.</p><pre>pip install -e .
+golive run eval/golive.yml
+golive run eval/golive.yml \
+  --agent agent:workbook_agent
+python scripts/seed_sweep.py</pre></div>
+  <div><a class="pill" href="https://github.com/pg2342-hub/margin-bridge-tieout">Code on GitHub</a></div>
+</aside>
+</div>
+</main>
+<script>
+const seg=[...document.querySelectorAll('.seg button')];
+seg.forEach(b=>b.addEventListener('click',()=>{
+ seg.forEach(x=>x.setAttribute('aria-checked',String(x===b)));
+ const v=b.dataset.v;
+ document.querySelectorAll('.wf').forEach(w=>w.hidden=w.id!=='wf-'+v);
+ document.querySelectorAll('.cnote').forEach(p=>p.hidden=p.dataset.for!==v);
+}));
+</script><!-- demo-chrome --><footer class="demo-foot"><span>A working build by <a href="https://pranavgudise.dev/">Pranav Gudise</a>. Synthetic or public data only.</span><a href="https://github.com/pg2342-hub/margin-bridge-tieout">github.com/pg2342-hub/margin-bridge-tieout</a></footer><!-- /demo-chrome -->
 </body></html>
